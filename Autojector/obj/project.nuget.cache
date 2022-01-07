@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "sfKazdWbRC+3eGPnhE6VwZvbZGb74YaqHsCNpLWIOGQnrVX2Yb8w5X9sTsBka7LHjiyCEPgtRHmA4uOZThKYoA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector\\Autojector.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

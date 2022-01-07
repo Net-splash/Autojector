@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autojector", "Autojector\Autojector.csproj", "{EBF30530-243D-4B3D-BD06-F416F38FF8EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autojector.Tests", "Autojector.Tests\Autojector.Tests.csproj", "{F41EC88A-447E-4CDC-9F3C-E2C4D37BB7C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBF30530-243D-4B3D-BD06-F416F38FF8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF30530-243D-4B3D-BD06-F416F38FF8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF30530-243D-4B3D-BD06-F416F38FF8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF30530-243D-4B3D-BD06-F416F38FF8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41EC88A-447E-4CDC-9F3C-E2C4D37BB7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41EC88A-447E-4CDC-9F3C-E2C4D37BB7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41EC88A-447E-4CDC-9F3C-E2C4D37BB7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41EC88A-447E-4CDC-9F3C-E2C4D37BB7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CBB590B-44B3-4455-B190-E1BDC0A2B914}
+	EndGlobalSection
+EndGlobal
