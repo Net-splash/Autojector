@@ -1,0 +1,15 @@
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\InjectableClassesAssembly.deps.json
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\InjectableClassesAssembly.dll
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\ref\InjectableClassesAssembly.dll
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\InjectableClassesAssembly.pdb
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\Autojector.dll
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\Autojector.pdb
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.GeneratedMSBuildEditorConfig.editorconfig
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.AssemblyInfoInputs.cache
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.AssemblyInfo.cs
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.csproj.CoreCompileInputs.cache
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.csproj.CopyComplete
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.dll
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\ref\InjectableClassesAssembly.dll
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.pdb
+D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.csproj.AssemblyReference.cache

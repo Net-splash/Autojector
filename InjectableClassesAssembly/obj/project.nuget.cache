@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "iRDOj32+tn9WFdC00W3Lt3pfjDEEssCRuinAY8dTNW79aEn7u5PuQSR41Zi8o64sx59mJ4KrHZHc5fFYwWOFUQ==",
+  "success": true,
+  "projectFilePath": "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -10,3 +10,15 @@ C:\Users\crist\source\repos\AutomaticInjector\Autojector\obj\Debug\net5.0\Autoje
 C:\Users\crist\source\repos\AutomaticInjector\Autojector\obj\Debug\net5.0\Autojector.dll
 C:\Users\crist\source\repos\AutomaticInjector\Autojector\obj\Debug\net5.0\ref\Autojector.dll
 C:\Users\crist\source\repos\AutomaticInjector\Autojector\obj\Debug\net5.0\Autojector.pdb
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.csproj.AssemblyReference.cache
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.GeneratedMSBuildEditorConfig.editorconfig
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.AssemblyInfoInputs.cache
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.AssemblyInfo.cs
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.csproj.CoreCompileInputs.cache
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.dll
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\ref\Autojector.dll
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net5.0\Autojector.pdb
+D:\PersonalWork\Autojector\Autojector\bin\Debug\net5.0\Autojector.deps.json
+D:\PersonalWork\Autojector\Autojector\bin\Debug\net5.0\Autojector.dll
+D:\PersonalWork\Autojector\Autojector\bin\Debug\net5.0\ref\Autojector.dll
+D:\PersonalWork\Autojector\Autojector\bin\Debug\net5.0\Autojector.pdb

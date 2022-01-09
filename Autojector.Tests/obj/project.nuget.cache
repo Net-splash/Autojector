@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RayM71ESty4WX7IXLQaxxlxlY7IdM81y5MM3odE3O+Utcha3YP1XJBSmtbipZ2hPplDW2HXi0f5azabVBt5IJQ==",
+  "dgSpecHash": "YFn00exXSuzLQEIGn5RmyBAbYOXNPEpAAv9RuEWCcm4J9spxcxH74v2C/9K3ssFxW+kpJvm095I8MCvg9/2evQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector.Tests\\Autojector.Tests.csproj",
+  "projectFilePath": "D:\\PersonalWork\\Autojector\\Autojector.Tests\\Autojector.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\crist\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",

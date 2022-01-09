@@ -1,7 +1,4 @@
-﻿namespace Autojector.Public
+﻿namespace Autojector.Public;
+public interface ILifetypeInjectable : IInjectable
 {
-    public interface ILifetypeInjectable : IInjectable
-    {
-
-    }
 }

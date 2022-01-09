@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Autojector.Features
+namespace Autojector.Features;
+interface IAutojectorFeature
 {
-    interface IAutojectorFeature
-    {
-        public void ConfigureServices(IServiceCollection services);
-        public AutojectorFeaturesEnum Priority { get; }
-    }
+    public void ConfigureServices(IServiceCollection services);
+    internal AutojectorFeaturesEnum Priority { get; }
 }

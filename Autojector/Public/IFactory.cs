@@ -1,7 +1,5 @@
-﻿namespace Autojector.Public
+﻿namespace Autojector.Public;
+public interface IFactory<T>
 {
-    public interface IFactory<T>
-    {
-        T GetService();
-    }
+    T GetService();
 }

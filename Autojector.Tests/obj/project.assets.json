@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "Castle.Core/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -83,10 +83,10 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {}
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -95,10 +95,10 @@
       "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -1948,10 +1948,10 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll": {}
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll": {}
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2731,7 +2731,7 @@
       },
       "Autojector/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
@@ -2740,6 +2740,19 @@
         },
         "runtime": {
           "bin/placeholder/Autojector.dll": {}
+        }
+      },
+      "InjectableClassesAssembly/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Autojector": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/InjectableClassesAssembly.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InjectableClassesAssembly.dll": {}
         }
       }
     }
@@ -9388,11 +9401,17 @@
       "type": "project",
       "path": "../Autojector/Autojector.csproj",
       "msbuildProject": "../Autojector/Autojector.csproj"
+    },
+    "InjectableClassesAssembly/1.0.0": {
+      "type": "project",
+      "path": "../InjectableClassesAssembly/InjectableClassesAssembly.csproj",
+      "msbuildProject": "../InjectableClassesAssembly/InjectableClassesAssembly.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    "net6.0": [
       "Autojector >= 1.0.0",
+      "InjectableClassesAssembly >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 6.0.0",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "Moq >= 4.16.1",
@@ -9403,34 +9422,42 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\crist\\.nuget\\packages\\": {}
+    "C:\\Users\\crist\\.nuget\\packages\\": {},
+    "D:\\Installs\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector.Tests\\Autojector.Tests.csproj",
+      "projectUniqueName": "D:\\PersonalWork\\Autojector\\Autojector.Tests\\Autojector.Tests.csproj",
       "projectName": "Autojector.Tests",
-      "projectPath": "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector.Tests\\Autojector.Tests.csproj",
+      "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Tests\\Autojector.Tests.csproj",
       "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector.Tests\\obj\\",
+      "outputPath": "D:\\PersonalWork\\Autojector\\Autojector.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Installs\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector\\Autojector.csproj": {
-              "projectPath": "C:\\Users\\crist\\source\\repos\\AutomaticInjector\\Autojector\\Autojector.csproj"
+            "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
+              "projectPath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj"
+            },
+            "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj": {
+              "projectPath": "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj"
             }
           }
         }
@@ -9442,8 +9469,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",

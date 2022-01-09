@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Autojector.Public
+namespace Autojector.Public;
+public interface ITransientInjectable<T> : ILifetypeInjectable
 {
-    public interface ITransientInjectable : ILifetypeInjectable
-    {
-    }
 }
