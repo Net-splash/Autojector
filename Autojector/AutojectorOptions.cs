@@ -13,37 +13,52 @@ public class AutojectorOptions
         {
 
         }
+
+        public AutojectorValidatorsOptions UseCycleDependencyCheck()
+        {
+            return this;
+        }
+
     }
-    internal AutojectorOptions()
+    internal AutojectorOptions(Assembly[] assemblies)
     {
         Features = new List<IAutojectorFeature>();
+        Assemblies = assemblies;
     }
     private List<IAutojectorFeature> Features { get; }
+    private Assembly[] Assemblies { get; }
 
-    public AutojectorOptions UseAutojectorSimpleInjection(IEnumerable<Assembly> assemblies = null)
+    public AutojectorOptions UseAutojectorSimpleInjection(params Assembly[] assemblies)
     {
+        assemblies = GetAssemblies(assemblies);
         Features.Add(new AutojectorSimpleInjectionFeature(assemblies));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorFactories(IEnumerable<Assembly> assemblies = null)
+
+    public AutojectorOptions UseAutojectorFactories(params Assembly[] assemblies)
     {
+        assemblies = GetAssemblies(assemblies);
         Features.Add(new AutojectorFactoriesFeature(assemblies));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorAsyncFactories()
+    public AutojectorOptions UseAutojectorAsyncFactories(params Assembly[] assemblies)
     {
+        assemblies = GetAssemblies(assemblies);
+        Features.Add(new AutojectorFactoriesFeature(assemblies));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorDecorator()
+    public AutojectorOptions UseAutojectorDecorator(params Assembly[] assemblies)
     {
+        assemblies = GetAssemblies(assemblies);
         return this;
     }
 
-    public AutojectorOptions UseAutojectorValidators(Action<AutojectorValidatorsOptions> validatorsConfigureOptions, IEnumerable<Assembly> assemblies = null)
+    public AutojectorOptions UseAutojectorValidators(Action<AutojectorValidatorsOptions> validatorsConfigureOptions, params Assembly[] assemblies)
     {
+        assemblies = GetAssemblies(assemblies);
         var autojectorValidatorsOptions = new AutojectorValidatorsOptions();
         validatorsConfigureOptions(autojectorValidatorsOptions);
         Features.Add(new AutojectorValidatorsFeatures(autojectorValidatorsOptions, assemblies));
@@ -54,5 +69,15 @@ public class AutojectorOptions
     {
         var orderedFeatures = Features.OrderBy(feature => feature.Priority);
         return orderedFeatures;
+    }
+
+    private Assembly[] GetAssemblies(Assembly[] assemblies)
+    {
+        if (assemblies == null || !assemblies.Any())
+        {
+            assemblies = Assemblies;
+        }
+
+        return assemblies;
     }
 }

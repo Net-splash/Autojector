@@ -7,9 +7,7 @@ using System.Reflection;
 namespace Autojector.Features;
 internal class AutojectorSimpleInjectionFeature : BaseAutojectorFeature
 {
-
-
-    public AutojectorSimpleInjectionFeature(IEnumerable<Assembly> assemblies = null) : base(assemblies)
+    public AutojectorSimpleInjectionFeature(IEnumerable<Assembly> assemblies) : base(assemblies)
     {
     }
 

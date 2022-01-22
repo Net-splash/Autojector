@@ -7,7 +7,7 @@ using System.Reflection;
 namespace Autojector.Features;
 internal class AutojectorFactoriesFeature : BaseAutojectorFeature
 {
-    public AutojectorFactoriesFeature(IEnumerable<Assembly> assemblies = null) : base(assemblies)
+    public AutojectorFactoriesFeature(IEnumerable<Assembly> assemblies) : base(assemblies)
     {
     }
 
@@ -18,18 +18,19 @@ internal class AutojectorFactoriesFeature : BaseAutojectorFeature
         var factories = GetFactories();
         foreach (var factory in factories)
         {
-
+            factory.ConfigureServices(services);
         }
     }
 
     public IEnumerable<FactoryInjectableClassType> GetFactories()
     {
-        return Assemblies
+        var allTypes = Assemblies
             .SelectMany(type => type.GetTypes())
-            .Where(type => FactoriesInjectableTypes.FactoryType.IsAssignableFrom(type) &&
-                           type.IsClass &&
-                           !type.IsAbstract
-                  )
-            .Select(type => new FactoryInjectableClassType(type));
+            .Where(type => type.IsClass && !type.IsAbstract);
+
+        var factories = allTypes
+            .Where(type => type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == FactoriesInjectableTypes.FactoryType));
+
+        return factories.Select(type => new FactoryInjectableClassType(type));
     }
 }

@@ -4,6 +4,7 @@ using Shouldly;
 using Xunit;
 
 namespace Autojector.Tests;
+
 public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBaseTest
 {
     public AutojectorExtensionsSimpleInjectorNoParameterTests() : base()
@@ -110,16 +111,4 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
         //Assert
         ShouldFailOnGetService<NoLifetimeType>();
     }
-
-    [Fact]
-    public void ShouldFailWhenImplementsTheLifetimeTypeButNotTheInterface()
-    {
-        //Arrange & Act
-        ServiceCollection.AddAutojector();
-
-        //Assert
-        ShouldFailOnGetService<NoInterfaceImplemented>();
-    }
-
-   
 }

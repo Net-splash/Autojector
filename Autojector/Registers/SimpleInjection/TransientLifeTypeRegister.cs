@@ -12,8 +12,5 @@ internal class TransientLifeTypeRegister : ISimpleLifetypeRegisterStrategy
     private IServiceCollection Services { get; }
 
     public IServiceCollection Add(Type classType, Type interfaceType)
-    {
-        Services.AddTransient(interfaceType, classType);
-        return Services;
-    }
+        => Services.AddTransient(interfaceType, classType);
 }

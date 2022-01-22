@@ -41,11 +41,7 @@ public class AutojectorExtensionsSimpleInjectorFromExternalAssembly : Autojector
     
     private void AddAutojectorWithExternalAssembly()
     {
-        var externalAssemblies = new List<Assembly>()
-        {
-            GetExternalAssemby(),
-        };
-        ServiceCollection.AddAutojector(a => a.UseAutojectorSimpleInjection(externalAssemblies));
+        ServiceCollection.AddAutojector(a => a.UseAutojectorSimpleInjection(GetExternalAssemby()));
     }
 
 }

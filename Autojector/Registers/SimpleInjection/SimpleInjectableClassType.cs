@@ -12,13 +12,13 @@ public record SimpleInjectableClassType(Type ClassType)
             !SimpleInjectableTypes.SimpleLifeTypeInterfaces.Contains(i));
 
     private IEnumerable<Type> _lifetypeManagementInterfaces;
-    public IEnumerable<Type> LifetypeManagementInterfaces =>
+    private IEnumerable<Type> LifetypeManagementInterfaces =>
         _lifetypeManagementInterfaces ?? (_lifetypeManagementInterfaces = GetLifeTypeInterfaces(ClassType));
 
-    public IEnumerable<Type> GetCustomInterfaceFromLifetypeToRegister()
+    private IEnumerable<Type> GetCustomInterfaceFromLifetypeToRegister()
     {
         var customInterfaceFromLifeType = LifetypeManagementInterfaces.Select(i => i.GetGenericArguments().First());
-        var interfacesThatAreNotInTheClass = customInterfaceFromLifeType.Except(customInterfaceFromLifeType);
+        var interfacesThatAreNotInTheClass = customInterfaceFromLifeType.Except(CustomInterfaces.Concat(new Type[] { ClassType }));
         if (interfacesThatAreNotInTheClass.Any())
         {
             var interfacesNames = interfacesThatAreNotInTheClass.Select(i => i.Name);
@@ -29,7 +29,7 @@ public record SimpleInjectableClassType(Type ClassType)
         return customInterfaceFromLifeType;
     }
 
-    public IEnumerable<Type> GetLifeTypeInterfaces(Type type)
+    private IEnumerable<Type> GetLifeTypeInterfaces(Type type)
     {
         var allInterfaces = type.GetInterfaces();
         var groupedInterfaces = allInterfaces.ToLookup(i => i.IsGenericType && SimpleInjectableTypes.SimpleLifeTypeInterfaces.Contains(i.GetGenericTypeDefinition()));

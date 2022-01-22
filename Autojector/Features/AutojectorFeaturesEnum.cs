@@ -5,6 +5,6 @@ internal enum AutojectorFeaturesEnum
     Factories = 1,
     AsyncFactories = 2,
     Decorators = 3,
-    AppConfigs = 9,
+    Configs = 9,
     Validators = 10,
 }

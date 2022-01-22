@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Autojector;
@@ -12,7 +13,7 @@ internal abstract class BaseAutojectorFeature : IAutojectorFeature
 
     protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies = null)
     {
-        if (assemblies == null)
+        if (assemblies == null || !assemblies.Any())
         {
             assemblies = AppDomain.CurrentDomain.GetAssemblies();
         }

@@ -2,9 +2,9 @@
 using System;
 
 namespace Autojector.Registers.SimpleInjection;
-internal class ScopetLifeTypeRegister : ISimpleLifetypeRegisterStrategy
+internal class ScopeLifeTypeRegister : ISimpleLifetypeRegisterStrategy
 {
-    public ScopetLifeTypeRegister(IServiceCollection services)
+    public ScopeLifeTypeRegister(IServiceCollection services)
     {
         Services = services;
     }
@@ -12,8 +12,5 @@ internal class ScopetLifeTypeRegister : ISimpleLifetypeRegisterStrategy
     private IServiceCollection Services { get; }
 
     public IServiceCollection Add(Type classType, Type interfaceType)
-    {
-        Services.AddScoped(interfaceType, classType);
-        return Services;
-    }
+        => Services.AddScoped(interfaceType, classType);
 }

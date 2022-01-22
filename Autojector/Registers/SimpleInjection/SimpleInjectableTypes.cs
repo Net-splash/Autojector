@@ -9,7 +9,6 @@ internal static class SimpleInjectableTypes
     public static Type TransientInjectableType = typeof(ITransientInjectable<>);
     public static Type ScopeInjectableType = typeof(IScopeInjectable<>);
     public static Type SingletonInjectableType = typeof(ISingletonInjectable<>);
-    public static Type InjectableType = typeof(IInjectable);
     public static IEnumerable<Type> SimpleLifeTypeInterfaces = new List<Type>()
         {
             TransientInjectableType,
@@ -19,7 +18,7 @@ internal static class SimpleInjectableTypes
 
     public static IEnumerable<Type> InjectableInterfaces = new List<Type>()
             {
-                InjectableType,
+                CommonInjectableTypes.InjectableType,
                 ILifetypeInjectableType,
             };
 }

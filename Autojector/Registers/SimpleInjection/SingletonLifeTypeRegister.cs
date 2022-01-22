@@ -12,8 +12,5 @@ internal class SingletonLifeTypeRegister : ISimpleLifetypeRegisterStrategy
     private IServiceCollection Services { get; }
 
     public IServiceCollection Add(Type classType, Type interfaceType)
-    {
-        Services.AddSingleton(interfaceType, classType);
-        return Services;
-    }
+        => Services.AddSingleton(interfaceType, classType);
 }
