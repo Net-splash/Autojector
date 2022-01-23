@@ -1,5 +1,6 @@
-﻿using Autojector.Registers.SimpleInjection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Autojector.Registers;
+using Autojector.Registers.SimpleInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,23 +14,20 @@ internal class AutojectorSimpleInjectionFeature : BaseAutojectorFeature
 
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.SimpleInjection;
 
-    public override void ConfigureServices(IServiceCollection services)
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
     {
-        var injectableClasses = GetInjectables();
-        foreach (var injectableClass in injectableClasses)
-        {
-            injectableClass.ConfigureServices(services);
-        }
+        var nonAbstractClasses = types.Where(type => type.IsClass && !type.IsAbstract);
+        var injectables = nonAbstractClasses.Where(HasGenericInterface);
+        return injectables.Select(type => new SimpleInjectableTypeOperator(type));
     }
 
-    public IEnumerable<SimpleInjectableClassType> GetInjectables()
+    private bool HasGenericInterface(Type type)
     {
-        return Assemblies
-            .SelectMany(type => type.GetTypes())
-            .Where(type => SimpleInjectableTypes.ILifetypeInjectableType.IsAssignableFrom(type) &&
-                           type.IsClass &&
-                           !type.IsAbstract
-                  )
-            .Select(type => new SimpleInjectableClassType(type));
+        var injectablePredefinedInterfaces = SimpleInjectableTypeOperator.SimpleLifeTypeInterfaces;
+        var typeGenericInterfaces = type
+                .GetInterfaces()
+                .Where(i => i.IsGenericType)
+                .Select(i => i.GetGenericTypeDefinition());
+        return injectablePredefinedInterfaces.Intersect(typeGenericInterfaces).Any();
     }
 }

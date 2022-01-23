@@ -2,7 +2,7 @@
 using System;
 
 namespace Autojector.Registers.Factories;
-internal interface IFactoryLifetypeRegisterStrategy
+internal interface IFactoryRegisterStrategy
 {
     IServiceCollection Add(Type factoryImplementationType, Type factoryInterfaceType);
 }

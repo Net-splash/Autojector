@@ -1,4 +1,4 @@
 ﻿namespace Autojector.Public;
-public interface ITransientInjectable<T> : ILifetypeInjectable
+public interface ITransientInjectable<T> : IInjectable
 {
 }

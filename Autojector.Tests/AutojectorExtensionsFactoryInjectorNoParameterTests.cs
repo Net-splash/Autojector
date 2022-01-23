@@ -68,6 +68,4 @@ public class AutojectorExtensionsFactoryInjectorNoParameterTests : AutojectorBas
         ShouldFailOnGetService<ITestTransientDependent>();
         ShouldFailOnGetService<TestTransientDependent>();
     }
-
-
 }

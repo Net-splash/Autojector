@@ -23,6 +23,10 @@ public class AutojectorOptions
     internal AutojectorOptions(Assembly[] assemblies)
     {
         Features = new List<IAutojectorFeature>();
+        if (assemblies == null || !assemblies.Any())
+        {
+            assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        }
         Assemblies = assemblies;
     }
     private List<IAutojectorFeature> Features { get; }
@@ -34,7 +38,6 @@ public class AutojectorOptions
         Features.Add(new AutojectorSimpleInjectionFeature(assemblies));
         return this;
     }
-
 
     public AutojectorOptions UseAutojectorFactories(params Assembly[] assemblies)
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autojector.Registers;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -14,8 +15,8 @@ internal class AutojectorValidatorsFeatures : BaseAutojectorFeature
 
     protected AutojectorOptions.AutojectorValidatorsOptions AutojectorValidatorsOptions { get; }
 
-    public override void ConfigureServices(IServiceCollection services)
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
     {
-
+        return null;
     }
 }

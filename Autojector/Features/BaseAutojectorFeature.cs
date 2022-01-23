@@ -1,4 +1,5 @@
 ﻿using Autojector.Features;
+using Autojector.Registers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,24 @@ internal abstract class BaseAutojectorFeature : IAutojectorFeature
 {
     protected IEnumerable<Assembly> Assemblies { get; }
 
-
-    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies = null)
+    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies)
     {
-        if (assemblies == null || !assemblies.Any())
-        {
-            assemblies = AppDomain.CurrentDomain.GetAssemblies();
-        }
         Assemblies = assemblies;
     }
 
-    public abstract void ConfigureServices(IServiceCollection services);
+    public IServiceCollection ConfigureServices(IServiceCollection services)
+    {
+        var types = Assemblies.SelectMany(type => type.GetTypes());
+        var typeConfigurators = GetTypeConfigurators(types);
+        foreach (var configurator in typeConfigurators)
+        {
+            configurator.ConfigureServices(services);
+        }
+
+        return services;
+    }
+
+    protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types);
+
     public abstract AutojectorFeaturesEnum Priority { get; }
 }
