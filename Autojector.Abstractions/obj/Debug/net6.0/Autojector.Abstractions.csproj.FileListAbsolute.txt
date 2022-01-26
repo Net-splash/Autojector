@@ -1,0 +1,12 @@
+D:\PersonalWork\Autojector\Autojector.Abstractions\bin\Debug\net6.0\Autojector.Abstractions.deps.json
+D:\PersonalWork\Autojector\Autojector.Abstractions\bin\Debug\net6.0\Autojector.Abstractions.dll
+D:\PersonalWork\Autojector\Autojector.Abstractions\bin\Debug\net6.0\ref\Autojector.Abstractions.dll
+D:\PersonalWork\Autojector\Autojector.Abstractions\bin\Debug\net6.0\Autojector.Abstractions.pdb
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.csproj.AssemblyReference.cache
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.AssemblyInfoInputs.cache
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.AssemblyInfo.cs
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.csproj.CoreCompileInputs.cache
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.dll
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\ref\Autojector.Abstractions.dll
+D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.pdb

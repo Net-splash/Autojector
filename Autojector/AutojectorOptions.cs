@@ -49,7 +49,7 @@ public class AutojectorOptions
     public AutojectorOptions UseAutojectorAsyncFactories(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
-        Features.Add(new AutojectorFactoriesFeature(assemblies));
+        Features.Add(new AutojectorAsyncFactoriesFeature(assemblies));
         return this;
     }
 

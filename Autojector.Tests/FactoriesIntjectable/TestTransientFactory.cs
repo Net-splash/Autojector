@@ -1,4 +1,4 @@
-﻿using Autojector.Public;
+﻿using Autojector.Abstractions;
 
 namespace Autojector.Tests.FactoriesIntjectable;
 interface ITestTransientService { }

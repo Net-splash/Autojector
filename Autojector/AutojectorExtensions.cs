@@ -10,7 +10,7 @@ public static class AutojectorExtensions
         var autojectorOptions = new AutojectorOptions(assemblies);
         if(configureOptions == null)
         {
-            configureOptions = (o) => o.UseAutojectorSimpleInjection();  
+            configureOptions = (options) => options.UseAutojectorSimpleInjection();  
         }
         configureOptions(autojectorOptions);
         foreach(var feature in autojectorOptions.GetAutojectorFeatures())

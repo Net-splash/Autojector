@@ -13,6 +13,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "Autojector.Abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Autojector.Abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Autojector.Abstractions.dll": {}
+        }
       }
     }
   },
@@ -41,10 +51,16 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Autojector.Abstractions/1.0.0": {
+      "type": "project",
+      "path": "../Autojector.Abstractions/Autojector.Abstractions.csproj",
+      "msbuildProject": "../Autojector.Abstractions/Autojector.Abstractions.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Autojector.Abstractions >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0"
     ]
   },
@@ -79,7 +95,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+              "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

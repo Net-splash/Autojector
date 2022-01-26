@@ -28,6 +28,12 @@ internal abstract class BaseAutojectorFeature : IAutojectorFeature
         return services;
     }
 
+    protected IEnumerable<Type> GetNonAbstractClasses(IEnumerable<Type> types)
+    {
+        var nonAbstractClasses = types.Where(type => type.IsClass && !type.IsAbstract);
+        return nonAbstractClasses;
+    }
+
     protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types);
 
     public abstract AutojectorFeaturesEnum Priority { get; }

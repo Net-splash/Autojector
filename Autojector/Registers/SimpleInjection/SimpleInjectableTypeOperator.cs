@@ -1,4 +1,4 @@
-﻿using Autojector.Public;
+﻿using Autojector.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ public record SimpleInjectableTypeOperator(Type Type) : BaseTypeOperator(Type), 
     public static Type TransientInjectableType = typeof(ITransientInjectable<>);
     public static Type ScopeInjectableType = typeof(IScopeInjectable<>);
     public static Type SingletonInjectableType = typeof(ISingletonInjectable<>);
-    public static IEnumerable<Type> SimpleLifeTypeInterfaces = new List<Type>()
+    public static IEnumerable<Type> SimpleLifetimeInterfaces = new List<Type>()
         {
             TransientInjectableType,
             ScopeInjectableType,
@@ -28,7 +28,7 @@ public record SimpleInjectableTypeOperator(Type Type) : BaseTypeOperator(Type), 
         ValidateUnknownInjectableType(injectableTypes);
         ValidateNotImplementedInterface(injectableTypes);
 
-        var registerStrategyFactory = new RegisterStrategyFactory(services);
+        var registerStrategyFactory = new SimpleRegisterStrategyFactory(services);
 
         foreach (var injectableType in injectableTypes)
         {
@@ -44,7 +44,7 @@ public record SimpleInjectableTypeOperator(Type Type) : BaseTypeOperator(Type), 
     {
         var filteredInterfaces = this.GetInterfacesFromTree(i =>
                 i.IsGenericType &&
-                SimpleLifeTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
+                SimpleLifetimeInterfaces.Contains(i.GetGenericTypeDefinition()));
         return filteredInterfaces;
     }
 
@@ -52,7 +52,7 @@ public record SimpleInjectableTypeOperator(Type Type) : BaseTypeOperator(Type), 
     {
         var customInterface = Type.GetInterfaces()
             .Where(i => !InjectableInterfaces.Contains(i) &&
-                        !SimpleLifeTypeInterfaces.Contains(i))
+                        !SimpleLifetimeInterfaces.Contains(i))
             .Concat(new Type[] { Type });
 
         var customInterfaceFromLifeType = lifetypeManagementInterfaces.Select(i => i.GetGenericArguments().First());
@@ -69,7 +69,7 @@ public record SimpleInjectableTypeOperator(Type Type) : BaseTypeOperator(Type), 
     {
         if (!injectableInterface.Any())
         {
-            var lifetypeInterfacesNames = SimpleLifeTypeInterfaces.Select(c => c.Name);
+            var lifetypeInterfacesNames = SimpleLifetimeInterfaces.Select(c => c.Name);
             throw new InvalidOperationException(@$"
                             The class {Type.Name} doesn't implement a LifeType interface
                             LifeTypeInterfacess allowed {string.Join(",", lifetypeInterfacesNames)}

@@ -20,7 +20,12 @@
       "ProjectGuid": "2afb2f43-9b64-46a6-9026-97f368f1292d",
       "DisplayName": "InjectableClassesAssembly",
       "ColorIndex": 2
+    },
+    "4ac1d62f-8059-472e-8e40-b5503141c9bc": {
+      "ProjectGuid": "4ac1d62f-8059-472e-8e40-b5503141c9bc",
+      "DisplayName": "Autojector.Abstractions",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

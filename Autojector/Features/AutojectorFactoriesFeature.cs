@@ -17,11 +17,11 @@ internal class AutojectorFactoriesFeature : BaseAutojectorFeature
 
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
     {
-        var allTypes = types.Where(type => type.IsClass && !type.IsAbstract);
-        var factories = allTypes
+        var nonAbstractClasses = GetNonAbstractClasses(types);
+        var factories = nonAbstractClasses
             .Where(type => type.GetInterfaces()
                                .Any(i => i.IsGenericType && 
-                                    i.GetGenericTypeDefinition() == FactoriesInjectableTypes.FactoryType));
+                                    i.GetGenericTypeDefinition() == FactoryInjectableTypeOperator.FactoryType));
 
         return factories.Select(type => new FactoryInjectableTypeOperator(type));
     }

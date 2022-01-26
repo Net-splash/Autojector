@@ -1,4 +1,5 @@
-﻿using Autojector.Public;
+﻿
+using Autojector.Abstractions;
 
 namespace Autojector.Tests.SimpleInjectableClasses;
 

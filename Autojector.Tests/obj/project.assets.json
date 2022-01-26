@@ -2733,6 +2733,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Autojector.Abstractions": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "compile": {
@@ -2740,6 +2741,16 @@
         },
         "runtime": {
           "bin/placeholder/Autojector.dll": {}
+        }
+      },
+      "Autojector.Abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Autojector.Abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Autojector.Abstractions.dll": {}
         }
       },
       "InjectableClassesAssembly/1.0.0": {
@@ -9401,6 +9412,11 @@
       "type": "project",
       "path": "../Autojector/Autojector.csproj",
       "msbuildProject": "../Autojector/Autojector.csproj"
+    },
+    "Autojector.Abstractions/1.0.0": {
+      "type": "project",
+      "path": "../Autojector.Abstractions/Autojector.Abstractions.csproj",
+      "msbuildProject": "../Autojector.Abstractions/Autojector.Abstractions.csproj"
     },
     "InjectableClassesAssembly/1.0.0": {
       "type": "project",

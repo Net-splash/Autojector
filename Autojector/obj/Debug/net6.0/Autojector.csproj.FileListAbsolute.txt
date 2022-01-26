@@ -10,3 +10,6 @@ D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.csproj.CoreCom
 D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.dll
 D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\ref\Autojector.dll
 D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.pdb
+D:\PersonalWork\Autojector\Autojector\bin\Debug\net6.0\Autojector.Abstractions.dll
+D:\PersonalWork\Autojector\Autojector\bin\Debug\net6.0\Autojector.Abstractions.pdb
+D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.csproj.CopyComplete

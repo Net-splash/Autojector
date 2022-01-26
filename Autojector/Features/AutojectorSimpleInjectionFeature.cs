@@ -16,14 +16,14 @@ internal class AutojectorSimpleInjectionFeature : BaseAutojectorFeature
 
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
     {
-        var nonAbstractClasses = types.Where(type => type.IsClass && !type.IsAbstract);
-        var injectables = nonAbstractClasses.Where(HasGenericInterface);
+        var nonAbstractClasses = GetNonAbstractClasses(types);
+        var injectables = nonAbstractClasses.Where(HasSimpleInjectalbeGenericInterface);
         return injectables.Select(type => new SimpleInjectableTypeOperator(type));
     }
 
-    private bool HasGenericInterface(Type type)
+    private bool HasSimpleInjectalbeGenericInterface(Type type)
     {
-        var injectablePredefinedInterfaces = SimpleInjectableTypeOperator.SimpleLifeTypeInterfaces;
+        var injectablePredefinedInterfaces = SimpleInjectableTypeOperator.SimpleLifetimeInterfaces;
         var typeGenericInterfaces = type
                 .GetInterfaces()
                 .Where(i => i.IsGenericType)

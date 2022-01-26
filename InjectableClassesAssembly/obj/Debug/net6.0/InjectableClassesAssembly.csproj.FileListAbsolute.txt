@@ -13,3 +13,5 @@ D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\Injectable
 D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\ref\InjectableClassesAssembly.dll
 D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.pdb
 D:\PersonalWork\Autojector\InjectableClassesAssembly\obj\Debug\net6.0\InjectableClassesAssembly.csproj.AssemblyReference.cache
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\Autojector.Abstractions.dll
+D:\PersonalWork\Autojector\InjectableClassesAssembly\bin\Debug\net6.0\Autojector.Abstractions.pdb
