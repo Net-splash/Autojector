@@ -18,8 +18,7 @@ internal abstract class BaseAutojectorFeature : IAutojectorFeature
 
     public IServiceCollection ConfigureServices(IServiceCollection services)
     {
-        var types = Assemblies.SelectMany(type => type.GetTypes());
-        var typeConfigurators = GetTypeConfigurators(types);
+        var typeConfigurators = GetTypeConfigurators();
         foreach (var configurator in typeConfigurators)
         {
             configurator.ConfigureServices(services);
@@ -28,13 +27,23 @@ internal abstract class BaseAutojectorFeature : IAutojectorFeature
         return services;
     }
 
-    protected IEnumerable<Type> GetNonAbstractClasses(IEnumerable<Type> types)
+    protected IEnumerable<Type> AllTypesFromAssemblies
     {
-        var nonAbstractClasses = types.Where(type => type.IsClass && !type.IsAbstract);
-        return nonAbstractClasses;
+        get
+        {
+            return Assemblies.SelectMany(type => type.GetTypes());
+        }
     }
 
-    protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types);
+    protected IEnumerable<Type> NonAbstractClassesFromAssemblies
+    {
+        get
+        {
+            return AllTypesFromAssemblies.Where(type => type.IsClass && !type.IsAbstract);
+        }
+    }
+
+    protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators();
 
     public abstract AutojectorFeaturesEnum Priority { get; }
 }

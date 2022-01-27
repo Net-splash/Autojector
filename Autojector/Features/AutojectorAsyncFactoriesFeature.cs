@@ -1,6 +1,5 @@
 ﻿using Autojector.Registers;
 using Autojector.Registers.AsyncFactories;
-using Autojector.Registers.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +15,9 @@ internal class AutojectorAsyncFactoriesFeature : BaseAutojectorFeature
 
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.AsyncFactories;
 
-    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
-        var nonAbstractClasses = GetNonAbstractClasses(types);
-        var factories = nonAbstractClasses
+        var factories = NonAbstractClassesFromAssemblies
             .Where(type => type.GetInterfaces()
                                .Any(i => i.IsGenericType &&
                                     i.GetGenericTypeDefinition() == AsyncFactoryInjectableTypeOperator.AsyncFactoryType));

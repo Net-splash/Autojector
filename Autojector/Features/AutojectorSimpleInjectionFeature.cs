@@ -14,10 +14,9 @@ internal class AutojectorSimpleInjectionFeature : BaseAutojectorFeature
 
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.SimpleInjection;
 
-    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
-        var nonAbstractClasses = GetNonAbstractClasses(types);
-        var injectables = nonAbstractClasses.Where(HasSimpleInjectalbeGenericInterface);
+        var injectables = NonAbstractClassesFromAssemblies.Where(HasSimpleInjectalbeGenericInterface);
         return injectables.Select(type => new SimpleInjectableTypeOperator(type));
     }
 

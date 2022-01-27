@@ -15,7 +15,7 @@ internal class AutojectorValidatorsFeatures : BaseAutojectorFeature
 
     protected AutojectorOptions.AutojectorValidatorsOptions AutojectorValidatorsOptions { get; }
 
-    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
         return null;
     }

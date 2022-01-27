@@ -15,10 +15,9 @@ internal class AutojectorFactoriesFeature : BaseAutojectorFeature
 
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.Factories;
 
-    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators(IEnumerable<Type> types)
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
-        var nonAbstractClasses = GetNonAbstractClasses(types);
-        var factories = nonAbstractClasses
+        var factories = NonAbstractClassesFromAssemblies
             .Where(type => type.GetInterfaces()
                                .Any(i => i.IsGenericType && 
                                     i.GetGenericTypeDefinition() == FactoryInjectableTypeOperator.FactoryType));

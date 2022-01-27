@@ -56,6 +56,7 @@ public class AutojectorOptions
     public AutojectorOptions UseAutojectorDecorator(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
+        Features.Add(new AutojectorDecoratorsFeature(assemblies));
         return this;
     }
 
