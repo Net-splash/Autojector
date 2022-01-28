@@ -15,7 +15,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddTestSingletonClass()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<TestSingleton>();
@@ -25,7 +25,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddTestSingletonInterface()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<ITestSingleton>();
@@ -34,7 +34,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddDependentSingletonClass()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<TestDependentSingleton>();
@@ -44,7 +44,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddTransientClass()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<TestTransient>();
@@ -55,7 +55,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddTransientInterface()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<ITestTransient>();
@@ -65,7 +65,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddScopedInterface()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<ITestScope>();
@@ -75,7 +75,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddScopedClass()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<TestScope>();
@@ -85,7 +85,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddTransientDependentOnSingleton()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         var service = ServiceShouldNotBeNull<ITestTransientDependent>();
@@ -96,7 +96,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldAddTransientClassesWithNoInterface()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ServiceShouldNotBeNull<NoInterfaceTransient>();
@@ -106,7 +106,7 @@ public class AutojectorExtensionsSimpleInjectorNoParameterTests : AutojectorBase
     public void ShouldFailWhenNoDoesntImplementInjectable()
     {
         //Arrange & Act
-        ServiceCollection.AddAutojector();
+        ServiceCollection.WithAutojector();
 
         //Assert
         ShouldFailOnGetService<NoLifetimeType>();

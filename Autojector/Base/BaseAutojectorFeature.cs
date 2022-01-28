@@ -1,30 +1,29 @@
-﻿using Autojector.Features;
-using Autojector.Registers;
+﻿using Autojector.Base;
+using Autojector.Features;
+using Autojector.Features.Base;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Autojector;
-internal abstract class BaseAutojectorFeature : IAutojectorFeature
+namespace Autojector.Registers.Base;
+internal abstract class BaseAutojectorFeature : BaseTypeConfigurator,IAutojectorFeature
 {
     protected IEnumerable<Assembly> Assemblies { get; }
 
-    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies)
+    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies,IServiceCollection services) : base(services)
     {
         Assemblies = assemblies;
     }
 
-    public IServiceCollection ConfigureServices(IServiceCollection services)
+    public override void ConfigureServices()
     {
         var typeConfigurators = GetTypeConfigurators();
         foreach (var configurator in typeConfigurators)
         {
-            configurator.ConfigureServices(services);
+            configurator.ConfigureServices();
         }
-
-        return services;
     }
 
     protected IEnumerable<Type> AllTypesFromAssemblies

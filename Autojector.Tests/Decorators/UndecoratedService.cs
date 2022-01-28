@@ -9,7 +9,7 @@ internal interface IUndecoratedService
 
 }
 
-internal class UndecoratedService : ITransientInjectable<IUndecoratedService>, IUndecoratedService
+internal class UndecoratedService : ITransient<IUndecoratedService>, IUndecoratedService
 {
 }
 

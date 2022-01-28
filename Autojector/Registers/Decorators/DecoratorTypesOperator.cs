@@ -1,25 +1,22 @@
 ﻿
 
 using Autojector.Abstractions;
+using Autojector.Registers.Base;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Autojector.Registers.Decorators;
-internal record DecoratorTypesOperator(Type DecoratedType,IEnumerable<Type> Decorators) : BaseOperator, ITypeConfigurator
+internal record DecoratorTypesOperator(Type DecoratedType,IEnumerable<Type> Decorators, IDecoratorRegisterStrategy DecoratorRegisterStrategy) : BaseOperator, ITypeConfigurator
 {
-    public static Type DecoratorType = typeof(IDecorator<>);
-    public IServiceCollection ConfigureServices(IServiceCollection services)
+    public void ConfigureServices()
     {
-        var decoratorRegisterStrategy = new DecoratorRegisterStrategy(services);
         var orderedDecorators = GetOrderDecorators();
         foreach(var decorator in orderedDecorators)
         {
-            decoratorRegisterStrategy.Add(decorator, DecoratedType);
+            DecoratorRegisterStrategy.Add(decorator, DecoratedType);
         }
-
-        return services;
     }
 
     private IEnumerable<Type> GetOrderDecorators()

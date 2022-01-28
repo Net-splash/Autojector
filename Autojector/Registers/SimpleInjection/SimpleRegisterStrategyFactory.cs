@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-
+using static Autojector.Abstractions.Types;
 namespace Autojector.Registers.SimpleInjection;
 internal interface ISimpleRegisterStrategyFactory
 {
@@ -18,9 +18,9 @@ internal class SimpleRegisterStrategyFactory : ISimpleRegisterStrategyFactory
 
     private Dictionary<Type, Func<IServiceCollection, ISimpleRegisterStrategy>> SimpleLifetypeRegisterStrategies = new Dictionary<Type, Func<IServiceCollection, ISimpleRegisterStrategy>>()
             {
-                {SimpleInjectableTypeOperator.TransientInjectableType,(services) => new SimpleRegisterStrategy(services.AddTransient) },
-                {SimpleInjectableTypeOperator.ScopeInjectableType,(services) => new SimpleRegisterStrategy(services.AddScoped) },
-                {SimpleInjectableTypeOperator.SingletonInjectableType,(services) => new SimpleRegisterStrategy(services.AddSingleton) },
+                {TransientType,(services) => new SimpleRegisterStrategy(services.AddTransient) },
+                {ScopeType,(services) => new SimpleRegisterStrategy(services.AddScoped) },
+                {SingletonType,(services) => new SimpleRegisterStrategy(services.AddSingleton) },
 
             };
     public ISimpleRegisterStrategy GetSimpleLifetypeRegisterStrategy(Type lifetimeType)

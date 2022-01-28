@@ -2,7 +2,7 @@
 
 namespace Autojector.Tests.SimpleInjectableClasses;
 
-internal interface ITestTransientDependent : ITransientInjectable<ITestTransientDependent>
+internal interface ITestTransientDependent : ITransient<ITestTransientDependent>
 {
     public TestDependentSingleton TestDependentSingleton { get; }
 }

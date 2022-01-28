@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using static Autojector.Abstractions.Types;
 
 namespace Autojector.Registers.AsyncFactories;
 internal interface IAsyncFactoryRegisterStrategyFactory
@@ -19,9 +20,9 @@ internal class AsyncFactoryRegisterStrategyFactory : IAsyncFactoryRegisterStrate
 
     private Dictionary<Type, Func<IServiceCollection, IAsyncFactoryRegisterStrategy>> AsyncFactoryLifetypeRegisterStrategies = new Dictionary<Type, Func<IServiceCollection, IAsyncFactoryRegisterStrategy>>()
         {
-                {AsyncFactoryInjectableTypeOperator.AsyncTransientInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddTransient,services.AddTransient) },
-                {AsyncFactoryInjectableTypeOperator.AsyncScopeInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddScoped,services.AddScoped) },
-                {AsyncFactoryInjectableTypeOperator.AsyncSingletonInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddSingleton,services.AddSingleton) },
+                {AsyncTransientInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddTransient,services.AddTransient) },
+                {AsyncScopeInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddScoped,services.AddScoped) },
+                {AsyncSingletonInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddSingleton,services.AddSingleton) },
         };
     public IAsyncFactoryRegisterStrategy GetAsyncFactoryLifetypeRegisterStrategy(Type lifetimeType)
     {

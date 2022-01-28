@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "tkOk3iLdE7Eu39l6J0sM50+nHGSfaOOAdTk+unqn5lAihvWiFfpppVNw3i59eoYS90CK/vEM0CrQZ10FEDB2FA==",
+  "dgSpecHash": "1TnR1R/G/EToUkIvVuB7OZmbLCLyfjdOYebvuinGx3igd6d+6zhooUX5CR6KVpu3f0Cb4ST5HQ9AxqjXSYpjSQ==",
   "success": true,
   "projectFilePath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
+    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\crist\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

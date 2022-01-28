@@ -4,7 +4,7 @@ namespace Autojector.Tests.Decorators;
 
 internal interface ISimpleService { }
 
-internal class SimpleService : ITransientInjectable<ISimpleService>, ISimpleService
+internal class SimpleService : ITransient<ISimpleService>, ISimpleService
 {
 }
 

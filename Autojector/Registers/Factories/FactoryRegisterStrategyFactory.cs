@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using static Autojector.Abstractions.Types;
 
 namespace Autojector.Registers.Factories;
-
 internal interface IFactoryRegisterStrategyFactory
 {
     public IFactoryRegisterStrategy GetFactoryLifetypeRegisterStrategy(Type lifetimeType);
@@ -20,9 +20,9 @@ internal class FactoryRegisterStrategyFactory : IFactoryRegisterStrategyFactory
 
     private Dictionary<Type, Func<IServiceCollection, IFactoryRegisterStrategy>> FactoryLifetypeRegisterStrategies = new Dictionary<Type, Func<IServiceCollection, IFactoryRegisterStrategy>>()
         {
-                {FactoryInjectableTypeOperator.TransientInjectableType,(services) => new FactoryRegisterStrategy(services.AddTransient,services.AddTransient) },
-                {FactoryInjectableTypeOperator.ScopeInjectableType,(services) => new FactoryRegisterStrategy(services.AddScoped,services.AddScoped) },
-                {FactoryInjectableTypeOperator.SingletonInjectableType,(services) => new FactoryRegisterStrategy(services.AddSingleton,services.AddSingleton) },
+                {FactoryTransientType,(services) => new FactoryRegisterStrategy(services.AddTransient,services.AddTransient) },
+                {FactoryScopeType,(services) => new FactoryRegisterStrategy(services.AddScoped,services.AddScoped) },
+                {FactorySingletonType,(services) => new FactoryRegisterStrategy(services.AddSingleton,services.AddSingleton) },
         };
     public IFactoryRegisterStrategy GetFactoryLifetypeRegisterStrategy(Type lifetimeType)
     {

@@ -1,4 +1,4 @@
-﻿namespace Autojector.Features;
+﻿namespace Autojector.Registers;
 internal enum AutojectorFeaturesEnum
 {
     SimpleInjection = 0,

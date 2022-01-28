@@ -1,4 +1,12 @@
 ﻿using Autojector.Features;
+using Autojector.Features.AsyncFactories;
+using Autojector.Features.Base;
+using Autojector.Features.Decorators;
+using Autojector.Features.Factories;
+using Autojector.Features.SimpleInjection;
+using Autojector.Features.Validators;
+using Autojector.Registers.Configs;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +28,7 @@ public class AutojectorOptions
         }
 
     }
-    internal AutojectorOptions(Assembly[] assemblies)
+    internal AutojectorOptions(Assembly[] assemblies, IServiceCollection services)
     {
         Features = new List<IAutojectorFeature>();
         if (assemblies == null || !assemblies.Any())
@@ -28,44 +36,53 @@ public class AutojectorOptions
             assemblies = AppDomain.CurrentDomain.GetAssemblies();
         }
         Assemblies = assemblies;
+        Services = services;
     }
     private List<IAutojectorFeature> Features { get; }
     private Assembly[] Assemblies { get; }
+    private IServiceCollection Services { get; }
 
-    public AutojectorOptions UseAutojectorSimpleInjection(params Assembly[] assemblies)
+    public AutojectorOptions UseSimpleInjection(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
-        Features.Add(new AutojectorSimpleInjectionFeature(assemblies));
+        Features.Add(new AutojectorSimpleInjectionFeature(assemblies, Services));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorFactories(params Assembly[] assemblies)
+    public AutojectorOptions UseFactories(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
-        Features.Add(new AutojectorFactoriesFeature(assemblies));
+        Features.Add(new AutojectorFactoriesFeature(assemblies, Services));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorAsyncFactories(params Assembly[] assemblies)
+    public AutojectorOptions UseAsyncFactories(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
-        Features.Add(new AutojectorAsyncFactoriesFeature(assemblies));
+        Features.Add(new AutojectorAsyncFactoriesFeature(assemblies, Services));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorDecorator(params Assembly[] assemblies)
+    public AutojectorOptions UseDecorator(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
-        Features.Add(new AutojectorDecoratorsFeature(assemblies));
+        Features.Add(new AutojectorDecoratorsFeature(assemblies, Services));
         return this;
     }
 
-    public AutojectorOptions UseAutojectorValidators(Action<AutojectorValidatorsOptions> validatorsConfigureOptions, params Assembly[] assemblies)
+    public AutojectorOptions UseConfigs(params Assembly[] assemblies)
+    {
+        assemblies = GetAssemblies(assemblies);
+        Features.Add(new AutojectorConfigsFeature(assemblies, Services));
+        return this;
+    }
+
+    public AutojectorOptions UseValidators(Action<AutojectorValidatorsOptions> validatorsConfigureOptions, params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
         var autojectorValidatorsOptions = new AutojectorValidatorsOptions();
         validatorsConfigureOptions(autojectorValidatorsOptions);
-        Features.Add(new AutojectorValidatorsFeatures(autojectorValidatorsOptions, assemblies));
+        Features.Add(new AutojectorValidatorsFeatures(autojectorValidatorsOptions, assemblies, Services));
         return this;
     }
 

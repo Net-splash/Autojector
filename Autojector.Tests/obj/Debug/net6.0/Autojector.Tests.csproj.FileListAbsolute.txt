@@ -220,3 +220,7 @@ D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\InjectableClassesAs
 D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\InjectableClassesAssembly.pdb
 D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\Autojector.Abstractions.dll
 D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\Autojector.Abstractions.pdb
+D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\PersonalWork\Autojector\Autojector.Tests\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll

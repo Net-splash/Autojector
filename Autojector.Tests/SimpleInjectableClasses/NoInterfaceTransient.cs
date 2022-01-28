@@ -2,6 +2,6 @@
 
 namespace Autojector.Tests.SimpleInjectableClasses;
 
-internal class NoInterfaceTransient: ITransientInjectable<NoInterfaceTransient>
+internal class NoInterfaceTransient: ITransient<NoInterfaceTransient>
 {
 }

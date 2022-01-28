@@ -6,7 +6,7 @@ namespace InjectableClassesAssembly;
 public interface IExternalTransientService { }
 public class ExternalTransientService: IExternalTransientService { }
 
-public interface IExternalTransientFactory : ITransientFactoryInjectable<IExternalTransientService>
+public interface IExternalTransientFactory : ITransientFactory<IExternalTransientService>
 {
 }
 

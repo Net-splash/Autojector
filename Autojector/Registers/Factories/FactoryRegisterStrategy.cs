@@ -25,7 +25,6 @@ internal record FactoryRegisterStrategy(
         {
             var serviceFactory = serviceProvider.GetService(factoryImplementationType);
             return method.Invoke(serviceFactory, null);
-
         });
     }
 }

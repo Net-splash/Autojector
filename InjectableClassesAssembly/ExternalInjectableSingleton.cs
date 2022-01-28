@@ -2,7 +2,7 @@
 
 namespace InjectableClassesAssembly;
 
-public interface IExternalInjectableSingleton: ISingletonInjectable<IExternalInjectableSingleton>
+public interface IExternalInjectableSingleton: ISingleton<IExternalInjectableSingleton>
 {
 }
 

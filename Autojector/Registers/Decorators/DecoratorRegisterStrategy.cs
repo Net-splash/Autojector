@@ -1,12 +1,9 @@
-﻿
-using Autojector.Registers.Decorators;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Linq;
-
+using static Autojector.Abstractions.Types;
 namespace Autojector.Registers.Decorators;
-
 internal interface IDecoratorRegisterStrategy
 {
     IServiceCollection Add(Type decorator, Type decorated);
@@ -24,7 +21,7 @@ internal class DecoratorRegisterStrategy : IDecoratorRegisterStrategy
     public IServiceCollection Add(Type decorator, Type decorated)
     {
         var serviceType = decorator.GetInterfaces()
-                                   .SingleOrDefault(s => s.IsGenericType && s.GetGenericTypeDefinition() == DecoratorTypesOperator.DecoratorType)
+                                   .SingleOrDefault(s => s.IsGenericType && s.GetGenericTypeDefinition() == DecoratorType)
                                    .GetGenericArguments()
                                    .FirstOrDefault();
 

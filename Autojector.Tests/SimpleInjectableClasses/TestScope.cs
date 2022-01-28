@@ -2,5 +2,5 @@
 
 namespace Autojector.Tests.SimpleInjectableClasses;
 
-internal class TestScope : ITestScope, IScopeInjectable<TestScope> { }
-internal interface ITestScope : IScopeInjectable<ITestScope> { }
+internal class TestScope : ITestScope, IScope<TestScope> { }
+internal interface ITestScope : IScope<ITestScope> { }
