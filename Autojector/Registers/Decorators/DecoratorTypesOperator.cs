@@ -22,28 +22,32 @@ internal record DecoratorTypesOperator(Type DecoratedType,IEnumerable<Type> Deco
     private IEnumerable<Type> GetOrderDecorators()
     {
         var splittedDecorators = Decorators.ToLookup(d => d.GetCustomAttributes(typeof(DecoratorOrderAttribute), true).Any());
-
         var unordedDecorators = splittedDecorators[false];
-
-        if (unordedDecorators.Skip(1).Any())
-        {
-            throw new InvalidOperationException("Can not have more than on unordered decorator");
-        }
-
-        var orderedDecorators = splittedDecorators[true].OrderBy( d => GetDecoratorOrderNumber(d)).ToList();
+        ValidateAgainstMultipleUnorderedDecorators(unordedDecorators);
+        var orderedDecorators = splittedDecorators[true].OrderBy(d => GetDecoratorOrderNumber(d)).ToList();
         return unordedDecorators.Concat(orderedDecorators);
     }
 
     private int GetDecoratorOrderNumber(Type d)
     {
         var attributes = d.GetCustomAttributes(typeof(DecoratorOrderAttribute), true);
+        ValidateAgainstMultipleOrderDecoratorsOnSameClass(attributes);
+        var attribute = (DecoratorOrderAttribute)attributes.First();
+        return attribute.Order;
+    }
+
+    private static void ValidateAgainstMultipleOrderDecoratorsOnSameClass(object[] attributes)
+    {
         if (attributes.Skip(1).Any())
         {
             throw new InvalidOperationException("Can not have multiple order operators");
         }
-
-        var attribute = (DecoratorOrderAttribute)attributes.First();
-
-        return attribute.Order;
+    }
+    private static void ValidateAgainstMultipleUnorderedDecorators(IEnumerable<Type> unordedDecorators)
+    {
+        if (unordedDecorators.Skip(1).Any())
+        {
+            throw new InvalidOperationException("Can not have more than on unordered decorator");
+        }
     }
 }

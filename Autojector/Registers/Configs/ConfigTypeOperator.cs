@@ -6,9 +6,5 @@ internal record ConfigTypeOperator(Type Config, IConfigRegisterStrategy ConfigRe
     BaseOperator,
     ITypeConfigurator
 {
-    public void ConfigureServices()
-    {
-        ConfigRegisterStrategy.Add(Config);
-    }
-
+    public void ConfigureServices() => ConfigRegisterStrategy.Add(Config);
 }

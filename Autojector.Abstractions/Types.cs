@@ -45,6 +45,9 @@ public class Types
 
 
     public static Type DecoratorType = typeof(IDecorator<>);
+
     public static Type ConfigType = typeof(IConfig);
+
+    public static Type ChainLinkType = typeof(IChainLink<,>);
 }
 

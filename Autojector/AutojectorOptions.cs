@@ -1,10 +1,9 @@
-﻿using Autojector.Features;
-using Autojector.Features.AsyncFactories;
+﻿using Autojector.Features.AsyncFactories;
 using Autojector.Features.Base;
 using Autojector.Features.Decorators;
 using Autojector.Features.Factories;
 using Autojector.Features.SimpleInjection;
-using Autojector.Features.Validators;
+using Autojector.Registers.Chains;
 using Autojector.Registers.Configs;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -15,19 +14,6 @@ using System.Reflection;
 namespace Autojector;
 public class AutojectorOptions
 {
-    public class AutojectorValidatorsOptions
-    {
-        internal AutojectorValidatorsOptions()
-        {
-
-        }
-
-        public AutojectorValidatorsOptions UseCycleDependencyCheck()
-        {
-            return this;
-        }
-
-    }
     internal AutojectorOptions(Assembly[] assemblies, IServiceCollection services)
     {
         Features = new List<IAutojectorFeature>();
@@ -77,12 +63,10 @@ public class AutojectorOptions
         return this;
     }
 
-    public AutojectorOptions UseValidators(Action<AutojectorValidatorsOptions> validatorsConfigureOptions, params Assembly[] assemblies)
+    public AutojectorOptions UseChains(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
-        var autojectorValidatorsOptions = new AutojectorValidatorsOptions();
-        validatorsConfigureOptions(autojectorValidatorsOptions);
-        Features.Add(new AutojectorValidatorsFeatures(autojectorValidatorsOptions, assemblies, Services));
+        Features.Add(new AutojectorChainsFeature(assemblies, Services));
         return this;
     }
 

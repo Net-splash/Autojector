@@ -30,6 +30,7 @@ public static class AutojectorExtensions
         autojectorOptions.UseAsyncFactories();
         autojectorOptions.UseDecorator();
         autojectorOptions.UseConfigs();
+        autojectorOptions.UseChains();
 
         foreach (var feature in autojectorOptions.GetAutojectorFeatures())
         {
