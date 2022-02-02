@@ -41,9 +41,6 @@ public class Types
             AsyncSingletonInjectableType
         };
 
-
-
-
     public static Type DecoratorType = typeof(IDecorator<>);
     public static Type DecoratorOrderAttributeType = typeof(DecoratorOrderAttribute);
 

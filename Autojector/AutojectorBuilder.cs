@@ -28,15 +28,15 @@ public class AutojectorBuilder
     private List<IAutojectorFeature> Features { get; }
     private Assembly[] Assemblies { get; }
     private IServiceCollection Services { get; }
-    
+
     /// <summary>
-    /// This method will add the feature of Autoinjector where all the simple interface: ITransient<T>, IScope<T>, ISingleton<T>
+    /// This method will add the feature of Autoinjector where all the classes that implement simple interface: ITransient<T>, IScope<T>, ISingleton<T>
     /// will be injected automatically without registing them anywhere.
     /// </summary>
     /// <param name="assemblies">
     /// This should be a list with all the assembies where the autojector will search for services.
-    /// If null the assemblies provided in the exteded method are used
-    /// If those are also null the AppDomain.CurrentDomain..GetAssemblies() will be used.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
@@ -49,6 +49,19 @@ public class AutojectorBuilder
         return this;
     }
 
+    /// <summary>
+    /// This method will add the feature of Autoinjector where all the classes that implement factory interfaces: ITransientFactory<T>, IScopFactorye<T>, ISingletonFactory<T>
+    /// will be registered as the factory for the service specifited as T.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// Only exception is the Build method.
+    /// </returns>
     public AutojectorBuilder UseFactories(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
@@ -56,6 +69,20 @@ public class AutojectorBuilder
         return this;
     }
 
+    /// <summary>
+    /// This method will add the feature of Autoinjector where all the classes that implement async factory interfaces: IAsyncTransientFactory<T>, IAsyncScopFactorye<T>, IAsyncSingletonFactory<T>
+    /// will be registered as the factory for the service specifited as IAsyncDependency<T>.
+    /// The IAsyncDependency<T> contains a properties (Value,ServiceAsync) that return asynchronous the service.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// Only exception is the Build method.
+    /// </returns>
     public AutojectorBuilder UseAsyncFactories(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
@@ -63,6 +90,21 @@ public class AutojectorBuilder
         return this;
     }
 
+    /// <summary>
+    /// This method will add the feature of Autoinjector where all the classes that implement IDecorator<T>
+    /// will take the place of the currently existing service and will receive, if requested, an instance of that service.
+    /// To decorate a decorator you should add DecoratorOrderAttribute on the second class or any other after that
+    /// to make sure in which the decorator is used
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// Only exception is the Build method.
+    /// </returns>
     public AutojectorBuilder UseDecorator(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
@@ -70,6 +112,19 @@ public class AutojectorBuilder
         return this;
     }
 
+    /// <summary>
+    /// This method will add the feature of Autoinjector which will register all clases that implement the IConfig interface
+    /// as self services and will bind the data from Configuration to an instance of the class.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// Only exception is the Build method.
+    /// </returns>
     public AutojectorBuilder UseConfigs(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
@@ -77,6 +132,21 @@ public class AutojectorBuilder
         return this;
     }
 
+    /// <summary>
+    /// This method will add the feature of Autoinjector will register all clases that implement IChainLink<TRequest,TResponse> 
+    /// as a chain grouped by TRequest and TResponse. Will provide the class IChain<TRequest,TResponse> that expose the method Handle.
+    /// That dependnecy will search for the first IChainLink that can be used to handle the request and will return the response from the first one that can.
+    /// You can use ChainLinkOrderAttribute to ensure the order in which a the ChainLink will be called
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// Only exception is the Build method.
+    /// </returns>
     public AutojectorBuilder UseChains(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
