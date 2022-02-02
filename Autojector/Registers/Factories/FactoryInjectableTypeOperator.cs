@@ -1,4 +1,5 @@
 ﻿using Autojector.Abstractions;
+using Autojector.Base;
 using Autojector.Registers.Base;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,7 +27,7 @@ internal record FactoryInjectableTypeOperator(
 
     private IEnumerable<Type> GetAllFactories()
     {
-        var filteredInterfaces = this.GetInterfacesFromTree(i => i.IsGenericType && FactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
+        var filteredInterfaces = Type.GetInterfacesFromTree(i => i.IsGenericType && FactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
         return filteredInterfaces;
     }
 }

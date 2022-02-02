@@ -1,4 +1,5 @@
-﻿using Autojector.Registers.Base;
+﻿using Autojector.Base;
+using Autojector.Registers.Base;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ internal record AsyncFactoryInjectableTypeOperator(Type Type, IAsyncFactoryRegis
 
     private IEnumerable<Type> GetAllAsyncFactories()
     {
-        var filteredInterfaces = this.GetInterfacesFromTree(i => i.IsGenericType && AsyncFactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
+        var filteredInterfaces = Type.GetInterfacesFromTree(i => i.IsGenericType && AsyncFactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
         return filteredInterfaces;
     }
 }

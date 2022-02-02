@@ -1,4 +1,4 @@
-﻿using Autojector.Tests.FactoriesIntjectable;
+﻿using Autojector.Tests.Factories;
 using Autojector.Tests.SimpleInjectableClasses;
 using InjectableClassesAssembly;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +17,7 @@ public class AutojectorExtensionsFactoryInjectorTests : AutojectorBaseTest
     public void ShouldAddTransientServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseFactories());
+        ServiceCollection.WithAutojector(a => a.UseFactories().Build());
 
         //Assert
         ServiceShouldNotBeNull<ITestTransientService>().ShouldBeAssignableTo<TestTransientService>();
@@ -27,7 +27,7 @@ public class AutojectorExtensionsFactoryInjectorTests : AutojectorBaseTest
     public void ShouldAddExtenalTransientServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseFactories(GetExternalAssemby()));
+        ServiceCollection.WithAutojector(a => a.UseFactories(GetExternalAssemby()).Build());
 
         //Assert
         ServiceShouldNotBeNull<IExternalTransientService>().ShouldBeAssignableTo<ExternalTransientService>();
@@ -38,7 +38,7 @@ public class AutojectorExtensionsFactoryInjectorTests : AutojectorBaseTest
     public void ShouldAddScopeServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseFactories());
+        ServiceCollection.WithAutojector(a => a.UseFactories().Build());
 
         //Assert
         ServiceShouldNotBeNull<ITestScopeService>().ShouldBeAssignableTo<TestScopeService>();
@@ -48,7 +48,7 @@ public class AutojectorExtensionsFactoryInjectorTests : AutojectorBaseTest
     public void ShouldAddSingletonServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseFactories());
+        ServiceCollection.WithAutojector(a => a.UseFactories().Build());
 
         //Assert
         ServiceShouldNotBeNull<ITestSingletonService>().ShouldBeAssignableTo<TestSingletonService>();
@@ -58,7 +58,7 @@ public class AutojectorExtensionsFactoryInjectorTests : AutojectorBaseTest
     public void ShouldNotAddSimpleInjectionsWithOnlyFactoriesEnabled()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseFactories());
+        ServiceCollection.WithAutojector(a => a.UseFactories().Build());
 
         // Act & Assert
         ShouldFailOnGetService<ITestSingleton>();

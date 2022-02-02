@@ -1,6 +1,6 @@
 ﻿using Autojector.Abstractions;
 
-namespace Autojector.Tests.FactoriesIntjectable;
+namespace Autojector.Tests.Factories;
 interface ITestTransientService { }
 class TestTransientService : ITestTransientService { }
 internal class TestTransientFactory : ITransientFactory<ITestTransientService>

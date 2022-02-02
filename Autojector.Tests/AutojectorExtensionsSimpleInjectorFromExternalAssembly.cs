@@ -37,11 +37,10 @@ public class AutojectorExtensionsSimpleInjectorFromExternalAssembly : Autojector
         ShouldFailOnGetService<ITestTransientDependent>();
         ShouldFailOnGetService<TestTransientDependent>();
     }
-
     
     private void AddAutojectorWithExternalAssembly()
     {
-        ServiceCollection.WithAutojector(a => a.UseSimpleInjection(GetExternalAssemby()));
+        ServiceCollection.WithAutojector(a => a.UseSimpleInjection(GetExternalAssemby()).Build());
     }
 
 }

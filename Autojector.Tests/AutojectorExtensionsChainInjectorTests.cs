@@ -17,14 +17,14 @@ public class AutojectorExtensionsChainInjectorTests : AutojectorBaseTest
     public void ShouldCreateChainFromChainLinks()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseChains()) ;
+        ServiceCollection.WithAutojector(a => a.UseChains().Build()) ;
 
         //Assert
-       var chain = ServiceShouldNotBeNull<IChain<ChainLinkRequest, ChainLinkResponse>>();
+        var chain = ServiceShouldNotBeNull<IChain<ChainLinkRequest, ChainLinkResponse>>();
 
         var response = chain.Handle(new ChainLinkRequest());
 
-        response.ShouldBeNull();
+        response.ShouldNotBeNull();
     }
 
 }

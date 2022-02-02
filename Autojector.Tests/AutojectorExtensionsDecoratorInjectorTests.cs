@@ -18,7 +18,9 @@ public class AutojectorExtensionsDecoratorInjectorTests : AutojectorBaseTest
         ServiceCollection.WithAutojector(a => a
             .UseSimpleInjection()
             .UseFactories()
-            .UseDecorator()) ;
+            .UseDecorator()
+            .Build()
+            ) ;
 
         //Assert
         ServiceShouldNotBeNull<IUndecoratedService>().ShouldBeAssignableTo<DecoratedService>();
@@ -34,6 +36,7 @@ public class AutojectorExtensionsDecoratorInjectorTests : AutojectorBaseTest
             .UseSimpleInjection()
             .UseFactories()
             .UseDecorator()
+            .Build()
             );
 
         //Assert
@@ -52,7 +55,7 @@ public class AutojectorExtensionsDecoratorInjectorTests : AutojectorBaseTest
         ServiceCollection.WithAutojector(a => a
             .UseFactories()
             .UseSimpleInjection()
-            .UseDecorator());
+            .UseDecorator().Build());
 
         //Assert
         var abstractService = ServiceShouldNotBeNull<IUndecoratedFactoryProvidedService>();

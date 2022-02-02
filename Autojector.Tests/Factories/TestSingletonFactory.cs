@@ -1,10 +1,10 @@
 ﻿
 using Autojector.Abstractions;
 
-namespace Autojector.Tests.FactoriesIntjectable;
+namespace Autojector.Tests.Factories;
 interface ITestSingletonService { }
 class TestSingletonService : ITestSingletonService { }
-internal class TestSingletonFactory : ISingletonFactoryInjectable<ITestSingletonService>
+internal class TestSingletonFactory : ISingletonFactory<ITestSingletonService>
 {
     public ITestSingletonService GetService() => new TestSingletonService();
 }

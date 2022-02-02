@@ -29,7 +29,7 @@ public class AutojectorExtensionsConfigInjectorTests : AutojectorBaseTest
         ServiceCollection.AddSingleton(configuration);
         
         //Act
-        ServiceCollection.WithAutojector(a => a.UseConfigs());
+        ServiceCollection.WithAutojector(a => a.UseConfigs().Build());
 
         //Assert
         var config = ServiceShouldNotBeNull<TestConfig>();

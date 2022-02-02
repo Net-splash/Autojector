@@ -15,14 +15,14 @@ public class Types
         };
 
     public static IEnumerable<Type> InjectableInterfaces = new List<Type>()
-            {
-                InjectableType,
-            };
+        {
+            InjectableType,
+        };
 
     public static Type FactoryType = typeof(IFactory<>);
     public static Type FactoryTransientType = typeof(ITransientFactory<>);
-    public static Type FactoryScopeType = typeof(IScopeFactoryInjectable<>);
-    public static Type FactorySingletonType = typeof(ISingletonFactoryInjectable<>);
+    public static Type FactoryScopeType = typeof(IScopeFactory<>);
+    public static Type FactorySingletonType = typeof(ISingletonFactory<>);
     public static IEnumerable<Type> FactoriesTypeInterfaces = new List<Type>()
         {
             FactoryTransientType,
@@ -45,6 +45,7 @@ public class Types
 
 
     public static Type DecoratorType = typeof(IDecorator<>);
+    public static Type DecoratorOrderAttributeType = typeof(DecoratorOrderAttribute);
 
     public static Type ConfigType = typeof(IConfig);
 

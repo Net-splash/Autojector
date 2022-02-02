@@ -1,10 +1,10 @@
 ﻿
 using Autojector.Abstractions;
 
-namespace Autojector.Tests.FactoriesIntjectable;
+namespace Autojector.Tests.Factories;
 interface ITestScopeService { }
 class TestScopeService : ITestScopeService { }
-internal class TestScopeFactory : IScopeFactoryInjectable<ITestScopeService>
+internal class TestScopeFactory : IScopeFactory<ITestScopeService>
 {
     public ITestScopeService GetService() => new TestScopeService();
 }

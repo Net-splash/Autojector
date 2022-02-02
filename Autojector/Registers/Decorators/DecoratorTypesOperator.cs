@@ -1,42 +1,49 @@
-﻿
-
-using Autojector.Abstractions;
+﻿using Autojector.Abstractions;
 using Autojector.Registers.Base;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Autojector.Abstractions.Types;
 
 namespace Autojector.Registers.Decorators;
-internal record DecoratorTypesOperator(Type DecoratedType,IEnumerable<Type> Decorators, IDecoratorRegisterStrategy DecoratorRegisterStrategy) : BaseOperator, ITypeConfigurator
+internal record DecoratorTypesOperator(
+    Type DecoratedType,
+    IEnumerable<Type> Decorators, 
+    IDecoratorRegisterStrategy DecoratorRegisterStrategy) : BaseOperator, ITypeConfigurator
 {
     public void ConfigureServices()
     {
-        var orderedDecorators = GetOrderDecorators();
-        foreach(var decorator in orderedDecorators)
+        var orderedDecoratorsTypes = GetOrderDecorators();
+        foreach(var decoratorType in orderedDecoratorsTypes)
         {
-            DecoratorRegisterStrategy.Add(decorator, DecoratedType);
+            DecoratorRegisterStrategy.Add(decoratorType, DecoratedType);
         }
     }
 
     private IEnumerable<Type> GetOrderDecorators()
     {
-        var splittedDecorators = Decorators.ToLookup(d => d.GetCustomAttributes(typeof(DecoratorOrderAttribute), true).Any());
+        var splittedDecorators = Decorators.ToLookup(decoratorType => GetOrderAttributes(decoratorType).Any());
         var unordedDecorators = splittedDecorators[false];
         ValidateAgainstMultipleUnorderedDecorators(unordedDecorators);
-        var orderedDecorators = splittedDecorators[true].OrderBy(d => GetDecoratorOrderNumber(d)).ToList();
+        var orderedDecorators = splittedDecorators[true].OrderBy(GetDecoratorOrderNumber);
         return unordedDecorators.Concat(orderedDecorators);
     }
 
-    private int GetDecoratorOrderNumber(Type d)
+    private int GetDecoratorOrderNumber(Type decoratorType)
     {
-        var attributes = d.GetCustomAttributes(typeof(DecoratorOrderAttribute), true);
-        ValidateAgainstMultipleOrderDecoratorsOnSameClass(attributes);
-        var attribute = (DecoratorOrderAttribute)attributes.First();
+        var orderAttributes = GetOrderAttributes(decoratorType);
+        ValidateAgainstMultipleOrderDecoratorsOnSameClass(orderAttributes);
+        var attribute = orderAttributes.First();
         return attribute.Order;
     }
 
-    private static void ValidateAgainstMultipleOrderDecoratorsOnSameClass(object[] attributes)
+    private static IEnumerable<DecoratorOrderAttribute> GetOrderAttributes(Type decoratorType)
+    {
+        return decoratorType.GetCustomAttributes(DecoratorOrderAttributeType, true)
+            .Select(attribute => (DecoratorOrderAttribute)attribute);
+    }
+
+    private static void ValidateAgainstMultipleOrderDecoratorsOnSameClass(IEnumerable<DecoratorOrderAttribute> attributes)
     {
         if (attributes.Skip(1).Any())
         {
@@ -47,7 +54,7 @@ internal record DecoratorTypesOperator(Type DecoratedType,IEnumerable<Type> Deco
     {
         if (unordedDecorators.Skip(1).Any())
         {
-            throw new InvalidOperationException("Can not have more than on unordered decorator");
+            throw new InvalidOperationException("Can not have more than one unordered decorator");
         }
     }
 }

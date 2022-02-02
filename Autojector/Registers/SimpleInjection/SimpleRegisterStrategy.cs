@@ -10,6 +10,6 @@ internal interface ISimpleRegisterStrategy
 
 internal record SimpleRegisterStrategy(Func<Type, Type, IServiceCollection> Method) : ISimpleRegisterStrategy
 {
-    public IServiceCollection Add(Type classType, Type interfaceType)
-        => Method(classType, interfaceType);
+    public IServiceCollection Add(Type interfaceType, Type implementationType)
+        => Method(interfaceType, implementationType);
 }

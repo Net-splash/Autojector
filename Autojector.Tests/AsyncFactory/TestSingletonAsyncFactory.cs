@@ -1,7 +1,7 @@
 ﻿using Autojector.Abstractions;
 using System.Threading.Tasks;
 
-namespace Autojector.Tests.AsyncFactoryInjectable;
+namespace Autojector.Tests.AsyncFactory;
 interface ITestSingletonAsyncService { }
 class TestSingletonAsyncService : ITestSingletonAsyncService { }
 

@@ -14,7 +14,8 @@
         "outputPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Installs\\Shared\\NuGetPackages"
+          "D:\\Installs\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",

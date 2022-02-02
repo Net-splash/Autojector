@@ -1,6 +1,6 @@
 ﻿
 using Autojector.Abstractions;
-using Autojector.Tests.AsyncFactoryInjectable;
+using Autojector.Tests.AsyncFactory;
 using Shouldly;
 using Xunit;
 
@@ -16,7 +16,7 @@ public class AutojectorExtensionsAsyncFactoryInjectorTests : AutojectorBaseTest
     public async void ShouldAddAsyncTransientServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseAsyncFactories());
+        ServiceCollection.WithAutojector(a => a.UseAsyncFactories().Build());
 
         //Assert
         var dependency = ServiceShouldNotBeNull<IAsyncDependency<ITestTransientAsyncService>>();
@@ -28,7 +28,7 @@ public class AutojectorExtensionsAsyncFactoryInjectorTests : AutojectorBaseTest
     public async void ShouldAddAsyncScopeServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseAsyncFactories());
+        ServiceCollection.WithAutojector(a => a.UseAsyncFactories().Build());
 
         //Assert
         var dependency = ServiceShouldNotBeNull<IAsyncDependency<ITestScopeAsyncService>>();
@@ -40,7 +40,7 @@ public class AutojectorExtensionsAsyncFactoryInjectorTests : AutojectorBaseTest
     public async void ShouldAddAsyncSingletonServiceFromFactory()
     {
         //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseAsyncFactories());
+        ServiceCollection.WithAutojector(a => a.UseAsyncFactories().Build());
 
         //Assert
         var dependency = ServiceShouldNotBeNull<IAsyncDependency<ITestSingletonAsyncService>>();

@@ -21,26 +21,28 @@ internal class AutojectorDecoratorsFeature : BaseAutojectorFeature
 
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
-        var decorators = NonAbstractClassesFromAssemblies
-            .Where(type => type.GetInterfaces()
-                               .Any(i => i.IsGenericType &&
-                                    i.GetGenericTypeDefinition() == DecoratorType));
+        var decorators = NonAbstractClassesFromAssemblies.Where(type => GetDecoratorInterfacesFromType(type).Any());
 
-        var pairs = decorators.SelectMany(d => ExtractPairs(d));
-        var resultDecoratorsGrouped = pairs.GroupBy(d => d.Decorated)
+        var resultDecoratorsGrouped = decorators
+            .SelectMany(d => ConvertToPairType(d))
+            .GroupBy(d => d.Decorated)
             .Select(g => new DecoratorTypesOperator(g.Key, g.Select(x => x.Decorator), DecoratorRegisterStrategy));
 
         return resultDecoratorsGrouped;
     }
 
-    private static IEnumerable<DecoratorWithDecoratedType> ExtractPairs(Type type)
+    private static IEnumerable<DecoratorWithDecoratedType> ConvertToPairType(Type type)
     {
-        var implementedDecorators = type.GetInterfaces()
-                                    .Where(d => d.IsGenericType &&
-                                        d.GetGenericTypeDefinition() == DecoratorType);
+        var implementedDecorators = GetDecoratorInterfacesFromType(type);
+        return implementedDecorators
+            .Select(decorator => new DecoratorWithDecoratedType(type, decorator
+                .GetGenericArguments()
+                .First())
+            );
+    }
 
-        return implementedDecorators.Select(d => new DecoratorWithDecoratedType(type,
-                                    d.GetGenericArguments()
-                                    .First()));
+    private static IEnumerable<Type> GetDecoratorInterfacesFromType(Type type)
+    {
+        return type.GetInterfaces().Where(d => d.IsGenericType && d.GetGenericTypeDefinition() == DecoratorType);
     }
 }
