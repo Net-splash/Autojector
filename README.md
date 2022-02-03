@@ -3,7 +3,7 @@
 Very simple library that can be used for automatic injection without registering or adding the classes in the default microsoft inversion of control container.
 
 
-### Installing Autojector
+### When should you use them
 
 Autojector is composed by 2 libraries:
 1. Autojector
