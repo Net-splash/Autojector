@@ -275,7 +275,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

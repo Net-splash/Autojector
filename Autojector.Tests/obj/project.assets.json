@@ -2810,6 +2810,9 @@
       "InjectableClassesAssembly/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Autojector.Abstraction": "1.0.2"
+        },
         "compile": {
           "bin/placeholder/InjectableClassesAssembly.dll": {}
         },

@@ -9,4 +9,3 @@ D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.A
 D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.dll
 D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\ref\Autojector.Abstractions.dll
 D:\PersonalWork\Autojector\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.pdb
-D:\PersonalWork\Autojector\Autojector.Abstractions\bin\Debug\net6.0\autojector-icon.png

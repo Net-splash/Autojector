@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "Autojector.Tests/1.0.0": {
         "dependencies": {
-          "Autojector": "1.0.0",
+          "Autojector": "1.0.2",
+          "Autojector.Abstraction": "1.0.2",
           "InjectableClassesAssembly": "1.0.0",
           "Microsoft.Extensions.Configuration": "6.0.0",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
@@ -2011,9 +2012,9 @@
         }
       },
       "xunit.runner.visualstudio/2.4.3": {},
-      "Autojector/1.0.0": {
+      "Autojector/1.0.2": {
         "dependencies": {
-          "Autojector.Abstractions": "1.0.0",
+          "Autojector.Abstraction": "1.0.2",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
@@ -2022,14 +2023,14 @@
           "Autojector.dll": {}
         }
       },
-      "Autojector.Abstractions/1.0.0": {
+      "Autojector.Abstraction/1.0.2": {
         "runtime": {
           "Autojector.Abstractions.dll": {}
         }
       },
       "InjectableClassesAssembly/1.0.0": {
         "dependencies": {
-          "Autojector": "1.0.0"
+          "Autojector.Abstraction": "1.0.2"
         },
         "runtime": {
           "InjectableClassesAssembly.dll": {}
@@ -3198,12 +3199,12 @@
       "path": "xunit.runner.visualstudio/2.4.3",
       "hashPath": "xunit.runner.visualstudio.2.4.3.nupkg.sha512"
     },
-    "Autojector/1.0.0": {
+    "Autojector/1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Autojector.Abstractions/1.0.0": {
+    "Autojector.Abstraction/1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

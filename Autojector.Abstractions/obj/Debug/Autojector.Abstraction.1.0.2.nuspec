@@ -12,6 +12,6 @@
   </metadata>
   <files>
     <file src="D:\PersonalWork\Autojector\Autojector.Abstractions\bin\Debug\net6.0\Autojector.Abstractions.dll" target="lib\net6.0\Autojector.Abstractions.dll" />
-    <file src="D:\PersonalWork\Autojector\Autojector.Abstractions\autojector-icon.png" target="\autojector-icon.png" />
+    <file src="D:\PersonalWork\Autojector\autojector-icon.png" target="\autojector-icon.png" />
   </files>
 </package>
