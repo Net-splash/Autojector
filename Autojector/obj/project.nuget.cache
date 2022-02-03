@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3N0zVjjOc9yNrH1LhJznW5o6VTyWuUAlNF1CMwusJkZj8JKpwU0pwmKt+TKtQqGqknmPMmx6YdpVgqLPBJizxA==",
+  "dgSpecHash": "znkX37L1JaE+YT6k2xKVU610+BXRCLq96FcxpbfvTnVNGpxOm6/pL/nZWH4sFmo7Y3gd5OH3WrgEx6Gm/NsVeQ==",
   "success": true,
   "projectFilePath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\crist\\.nuget\\packages\\autojector.abstraction\\1.0.0\\autojector.abstraction.1.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Autojector.Abstraction/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Autojector.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Autojector.Abstractions.dll": {}
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -64,20 +73,22 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
-      },
-      "Autojector.Abstractions/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/Autojector.Abstractions.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Autojector.Abstractions.dll": {}
-        }
       }
     }
   },
   "libraries": {
+    "Autojector.Abstraction/1.0.0": {
+      "sha512": "JOa/W2QSGXWvXuwfQsXR98/J1UQLbqKupsuvsdC/QN2e1+dHOB5QVBa55w/K9JUkXZrL5brkVM+t/nTcbu5fiQ==",
+      "type": "package",
+      "path": "autojector.abstraction/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autojector.abstraction.1.0.0.nupkg.sha512",
+        "autojector.abstraction.nuspec",
+        "lib/net6.0/Autojector.Abstractions.dll"
+      ]
+    },
     "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
       "sha512": "qWzV9o+ZRWq+pGm+1dF+R7qTgTYoXvbyowRoBxQJGfqTpqDun2eteerjRQhq5PQ/14S+lqto3Ft4gYaRyl4rdQ==",
       "type": "package",
@@ -190,16 +201,11 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Autojector.Abstractions/1.0.0": {
-      "type": "project",
-      "path": "../Autojector.Abstractions/Autojector.Abstractions.csproj",
-      "msbuildProject": "../Autojector.Abstractions/Autojector.Abstractions.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Autojector.Abstractions >= 1.0.0",
+      "Autojector.Abstraction >= 1.0.0",
       "Microsoft.Extensions.Configuration.Abstractions >= 6.0.0",
       "Microsoft.Extensions.Configuration.Binder >= 6.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0"
@@ -211,7 +217,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "restore": {
       "projectUniqueName": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj",
       "projectName": "Autojector",
@@ -238,11 +244,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-              "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -255,6 +257,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Autojector.Abstraction": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
           "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",
             "version": "[6.0.0, )"

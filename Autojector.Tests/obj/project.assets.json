@@ -2781,11 +2781,11 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "Autojector/1.0.0": {
+      "Autojector/1.0.2": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Autojector.Abstractions": "1.0.0",
+          "Autojector.Abstraction": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
@@ -2797,22 +2797,19 @@
           "bin/placeholder/Autojector.dll": {}
         }
       },
-      "Autojector.Abstractions/1.0.0": {
+      "Autojector.Abstraction/1.0.2": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Autojector.Abstractions.dll": {}
+          "bin/placeholder/Autojector.Abstraction.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Autojector.Abstractions.dll": {}
+          "bin/placeholder/Autojector.Abstraction.dll": {}
         }
       },
       "InjectableClassesAssembly/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Autojector": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/InjectableClassesAssembly.dll": {}
         },
@@ -9544,12 +9541,12 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Autojector/1.0.0": {
+    "Autojector/1.0.2": {
       "type": "project",
       "path": "../Autojector/Autojector.csproj",
       "msbuildProject": "../Autojector/Autojector.csproj"
     },
-    "Autojector.Abstractions/1.0.0": {
+    "Autojector.Abstraction/1.0.2": {
       "type": "project",
       "path": "../Autojector.Abstractions/Autojector.Abstractions.csproj",
       "msbuildProject": "../Autojector.Abstractions/Autojector.Abstractions.csproj"
@@ -9562,7 +9559,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Autojector >= 1.0.0",
+      "Autojector >= 1.0.2",
+      "Autojector.Abstraction >= 1.0.2",
       "InjectableClassesAssembly >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 6.0.0",
       "Microsoft.Extensions.DependencyInjection >= 6.0.0",
@@ -9608,6 +9606,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+              "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
+            },
             "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
               "projectPath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj"
             },

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autojector.Tests", "Autojec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InjectableClassesAssembly", "InjectableClassesAssembly\InjectableClassesAssembly.csproj", "{2AFB2F43-9B64-46A6-9026-97F368F1292D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autojector.Abstractions", "Autojector.Abstractions\Autojector.Abstractions.csproj", "{4AC1D62F-8059-472E-8E40-B5503141C9BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autojector.Abstractions", "Autojector.Abstractions\Autojector.Abstractions.csproj", "{4AC1D62F-8059-472E-8E40-B5503141C9BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

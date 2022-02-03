@@ -5,10 +5,10 @@
   },
   "projects": {
     "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
-        "projectName": "Autojector.Abstractions",
+        "projectName": "Autojector.Abstraction",
         "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
         "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
         "outputPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\obj\\",
@@ -92,6 +92,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
+              },
               "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
                 "projectPath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj"
               },
@@ -168,7 +171,7 @@
       }
     },
     "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj",
         "projectName": "Autojector",
@@ -195,11 +198,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -212,6 +211,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Autojector.Abstraction": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -272,11 +275,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
-                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

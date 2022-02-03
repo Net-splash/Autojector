@@ -1,14 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TkFsFa+XM8dSH7/pTjrK0WJjcIxT1gJJx0d23fpo57o3ydlSHUtrHF8436EONSliMIYNsopXbNDLC7j7d7V4oA==",
+  "dgSpecHash": "11V7C7ulx/UnR/8JRqKHOdvpX0UycmXQdoiNNTD4+6g/xlk2Els02qjEnKgE6bN1gcFeqmrAUwrM3JBZ4FVfEw==",
   "success": true,
   "projectFilePath": "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
-    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\crist\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

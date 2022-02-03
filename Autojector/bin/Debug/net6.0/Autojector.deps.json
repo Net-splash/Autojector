@@ -6,15 +6,23 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Autojector/1.0.0": {
+      "Autojector/1.0.2": {
         "dependencies": {
-          "Autojector.Abstractions": "1.0.0",
+          "Autojector.Abstraction": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "runtime": {
           "Autojector.dll": {}
+        }
+      },
+      "Autojector.Abstraction/1.0.0": {
+        "runtime": {
+          "lib/net6.0/Autojector.Abstractions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
@@ -58,19 +66,21 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
-      "Autojector.Abstractions/1.0.0": {
-        "runtime": {
-          "Autojector.Abstractions.dll": {}
-        }
-      }
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {}
     }
   },
   "libraries": {
-    "Autojector/1.0.0": {
+    "Autojector/1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Autojector.Abstraction/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JOa/W2QSGXWvXuwfQsXR98/J1UQLbqKupsuvsdC/QN2e1+dHOB5QVBa55w/K9JUkXZrL5brkVM+t/nTcbu5fiQ==",
+      "path": "autojector.abstraction/1.0.0",
+      "hashPath": "autojector.abstraction.1.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
       "type": "package",
@@ -106,11 +116,6 @@
       "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
-    },
-    "Autojector.Abstractions/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }
