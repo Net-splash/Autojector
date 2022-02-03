@@ -74,23 +74,14 @@ ISingleton<T>
 ```
 This will mark the class as an injectable service:
 ```
-internal interface IMyService : ITransient<IMyService>
-{
-}
-internal class MyService : IMyService
-{
-}
+internal interface IMyService : ITransient<IMyService>{}
+internal class MyService : IMyService{}
 ```
 or 
 
 ```
-internal interface IMyService
-{
-}
-
-internal class MyService : IMyService, ITransient<IMyService>
-{
-}
+internal interface IMyService{}
+internal class MyService : IMyService, ITransient<IMyService>{}
 ```
 Now you can use `IMyService` in other services and the Autojector will provide an instance of `MyService`.
 
