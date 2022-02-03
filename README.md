@@ -65,6 +65,9 @@ If no assembly is passed anywhere `AppDomain.CurrentDomain..GetAssemblies()` wil
 
 # Features
 
+1. [SimpleInjection](https://github.com/Net-splash/Autojector/blob/main/README.md#1-simple-injection)
+2. [Factories](https://github.com/Net-splash/Autojector/blob/main/README.md#2-factories)
+
 ## 1. Simple Injection
 
 In case you what a service to be injected as it interface you should implement one of the three interfaces that mark the class as a service.
