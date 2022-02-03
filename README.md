@@ -22,14 +22,14 @@ Add Autojector.Abstraction to each project that contains classes that you expect
 ### Installing
 
 The same as is discribed on the NuGet.com you should install :
-1. Autojector like it is discribed in [here](https://www.nuget.org/packages/Autojector/):
+1. Autojector like it is described in [here](https://www.nuget.org/packages/Autojector/):
 ```
 Install-Package Autojector
 ```
 ```
 dotnet add package Autojector
 ```
-2. Autojector.Abstraction like it is discribed in [here](https://www.nuget.org/packages/Autojector.Abstraction/):
+2. Autojector.Abstraction like it is described in [here](https://www.nuget.org/packages/Autojector.Abstraction/):
 ```
 Install-Package Autojector.Abstraction
 ```
@@ -58,7 +58,9 @@ You can also pass assemblies to the `WithAutojector` method or `UseSimpleInjecti
 ### Where does it loads that services from ?
 
 If some assemblies are passed to `AddAutojector` or `WithAutojector` the services will be searched here.
+
 If some assemblies are passed to `Use<*Feature>` the services will be searched here ignoring what is in `AddAutojector` or `WithAutojector`
+
 If no assembly is passed anywhere `AppDomain.CurrentDomain..GetAssemblies()` will be used.
 
 ##Features
