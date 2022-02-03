@@ -4,6 +4,7 @@
 
 Very simple library that can be used for automatic injection without registering or adding the classes in the default microsoft inversion of control container.
 
+I think that the lifetype of a class should be stated in the class definition.
 
 ### When should you use them
 
@@ -85,7 +86,7 @@ internal class MyService : IMyService, ITransient<IMyService>{}
 ```
 Now you can use `IMyService` in other services and the Autojector will provide an instance of `MyService`.
 
-No need to add this class anywhere else. Also you can see the expected lifetype of this class right from it's definision, you don't need to search for it
+No need to add this class anywhere else. Also you can see the expected lifetype of this class right from it's definision, you don't need to search for it.
 
 
 
