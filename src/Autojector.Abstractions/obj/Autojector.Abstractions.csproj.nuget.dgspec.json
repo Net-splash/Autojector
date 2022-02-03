@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {}
+  },
+  "projects": {
+    "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+      "version": "1.0.2",
+      "restore": {
+        "projectUniqueName": "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
+        "projectName": "Autojector.Abstraction",
+        "projectPath": "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
+        "outputPath": "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Installs\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

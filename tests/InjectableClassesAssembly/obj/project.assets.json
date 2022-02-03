@@ -1,0 +1,97 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Autojector.Abstraction/1.0.2": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Autojector.Abstraction.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Autojector.Abstraction.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Autojector.Abstraction/1.0.2": {
+      "type": "project",
+      "path": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj",
+      "msbuildProject": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Autojector.Abstraction >= 1.0.2"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\crist\\.nuget\\packages\\": {},
+    "D:\\Installs\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\PersonalWork\\Autojector\\tests\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj",
+      "projectName": "InjectableClassesAssembly",
+      "projectPath": "D:\\PersonalWork\\Autojector\\tests\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj",
+      "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
+      "outputPath": "D:\\PersonalWork\\Autojector\\tests\\InjectableClassesAssembly\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Installs\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+              "projectPath": "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

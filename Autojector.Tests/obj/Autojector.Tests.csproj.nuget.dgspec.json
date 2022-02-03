@@ -4,65 +4,6 @@
     "D:\\PersonalWork\\Autojector\\Autojector.Tests\\Autojector.Tests.csproj": {}
   },
   "projects": {
-    "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-      "version": "1.0.2",
-      "restore": {
-        "projectUniqueName": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
-        "projectName": "Autojector.Abstraction",
-        "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
-        "outputPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Installs\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "D:\\PersonalWork\\Autojector\\Autojector.Tests\\Autojector.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -92,12 +33,6 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
-              },
-              "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
-                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj"
-              },
               "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj": {
                 "projectPath": "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj"
               }
@@ -170,83 +105,6 @@
         }
       }
     },
-    "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj": {
-      "version": "1.0.2",
-      "restore": {
-        "projectUniqueName": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj",
-        "projectName": "Autojector",
-        "projectPath": "D:\\PersonalWork\\Autojector\\Autojector\\Autojector.csproj",
-        "packagesPath": "C:\\Users\\crist\\.nuget\\packages\\",
-        "outputPath": "D:\\PersonalWork\\Autojector\\Autojector\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Installs\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\crist\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "Autojector.Abstraction": {
-              "target": "Package",
-              "version": "[1.0.0, )"
-            },
-            "Microsoft.Extensions.Configuration.Abstractions": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Microsoft.Extensions.Configuration.Binder": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "D:\\PersonalWork\\Autojector\\InjectableClassesAssembly\\InjectableClassesAssembly.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -275,11 +133,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-                "projectPath": "D:\\PersonalWork\\Autojector\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

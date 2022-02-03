@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aZ2PVPys2WOJ3n4tzr47KPwgNDv5i3XYC5wD6PwpBNkfTwnUOz2yrni62JYuOC/wKDorPDM/inO73/vMzanyQQ==",
+  "dgSpecHash": "Qz6ShcyN/Dix+6VYqraQWnV8sZikOzkZ2tdSSSd2VRVZKwWBje02OnGmV4sIOAGMh7VHgUR/but56+1g4L4Dqg==",
   "success": true,
   "projectFilePath": "D:\\PersonalWork\\Autojector\\Autojector.Tests\\Autojector.Tests.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,6 @@
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\crist\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
