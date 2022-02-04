@@ -38,4 +38,4 @@ No need to add this class anywhere else. Also you can see the expected lifetype 
 
 
 
-In case you want to see real examples please take a look at the [samples]((https://github.com/Net-splash/Autojector/tree/main/samples))
+In case you want to see real examples please take a look at the [samples](https://github.com/Net-splash/Autojector/tree/main/samples)
