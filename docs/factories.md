@@ -12,7 +12,7 @@ ISingletonFactory<T>
 This will make the class as a factory and any `TService` will be injected using the method `GetService` implemented by the factory.
 
 Implementation examples:
-```
+```C#
 interface IMyService {}
 
 class MyService1 : IMyService {}
@@ -29,7 +29,7 @@ class MyServiceFactory: ITransientFactory<IMyService>{
 Now anywhere `IMyService` is requested it will actually inject the `MyService1` or `MyService2`.
 
 If `MyService1` or `MyService2` have some dependencies themself you can use the Simple Injection like: 
-```
+```c#
 interface IMyService {}
 
 class MyService1 : IMyService, ITransient<MyService1> {}
@@ -46,8 +46,8 @@ class MyServiceFactory: ITransientFactory<IMyService>{
 ```
 Now you can use `IMyService` in other services and the Autojector will provide an instance of `MyService`.
 
-```
+```C#
 class DependentService{
-public DependentService(IMyService myService){}
+  public DependentService(IMyService myService){}
 }
 ```
