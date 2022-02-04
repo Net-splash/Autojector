@@ -119,7 +119,7 @@ After implementing this you will no longer receive the previous implementation o
 
 Please read more about Decorators [here](/Autojector/decorators)
 
-## 5. [Configs](Autojector/configs)
+## 5. [Configs](/Autojector/configs)
 In case you just want to bind the data from `IConfiguration` to an instance of a class you can declare your class as a config.
 This feature will allow you to just create a class for the data that you have in config and use it.
 
@@ -131,7 +131,7 @@ This will mark the class as a config and will populate that class when it's requ
 
 Please read more about configs [here](/Autojector/configs)
 
-## 6. [Chains](Autojector/chains)
+## 6. [Chains](/Autojector/chains)
 This is a more advance feature.
 In case you need a set of chains of responsability that will handle your request you can use this feature
 This feature will allow you to determine which implementation of the chain is the best to use.
