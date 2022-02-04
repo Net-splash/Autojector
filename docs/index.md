@@ -57,6 +57,12 @@ If some assemblies are passed to `Use<*Feature>` the services will be searched h
 
 If no assembly is passed anywhere `AppDomain.CurrentDomain..GetAssemblies()` will be used.
 
+### Examples
+
+You can take a look of how the Autojector works in this simple solution with the minimum here
+
+## [Autojector Examples](https://github.com/Net-splash/Autojector/tree/main/samples)
+
 # Features
 
 ## 1. [Simple Injection](/Autojector/simple-injection)
