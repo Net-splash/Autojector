@@ -57,7 +57,7 @@ If no assembly is passed anywhere `AppDomain.CurrentDomain..GetAssemblies()` wil
 
 # Features
 
-## 1. [SimpleInjection](/simple-injection)
+## 1. [SimpleInjection](/Autojector/simple-injection)
 
 In case you what a service to be injected as it interface you should implement one of the three interfaces that mark the class as a service.
 
@@ -68,7 +68,7 @@ IScope<T>
 ISingleton<T>
 ```
 This will mark the class as an injectable service.
-## 2. [Factories](/factories)
+## 2. [Factories](/Autojector/factories)
 
 In case your service should be resolved at by a more complex logic and ca not be simply added with only one implmentation you can use this feature.
 
