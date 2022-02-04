@@ -25,7 +25,22 @@
       "ProjectGuid": "4ac1d62f-8059-472e-8e40-b5503141c9bc",
       "DisplayName": "Autojector.Abstractions",
       "ColorIndex": 3
+    },
+    "4e744f71-d4a9-4c9c-b07a-c9d824fdaa26": {
+      "ProjectGuid": "4e744f71-d4a9-4c9c-b07a-c9d824fdaa26",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 4
+    },
+    "bd33af8b-7fbe-4d3d-af21-1bef0ee4de37": {
+      "ProjectGuid": "bd33af8b-7fbe-4d3d-af21-1bef0ee4de37",
+      "DisplayName": "Autojector.Abstractions",
+      "ColorIndex": 5
+    },
+    "adfcbd5c-dae4-4027-b81f-5cb9e2bc2ece": {
+      "ProjectGuid": "adfcbd5c-dae4-4027-b81f-5cb9e2bc2ece",
+      "DisplayName": "Autojector",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 7
 }
