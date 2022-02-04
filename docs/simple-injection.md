@@ -1,6 +1,6 @@
 ## 1. Simple Injection
 
-In case you what a service to be injected as it interface you should implement one of the three interfaces that mark the class as a service.
+In case you what a service to be injected as it's interface you should implement one of the three interfaces that mark the class as a service.
 
 You should implement : 
 ```c#
