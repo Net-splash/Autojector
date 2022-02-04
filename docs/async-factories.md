@@ -5,7 +5,7 @@ In case your service should be resolved at by a more complex logic and ca not be
 This feature will provide your service in a wrapper called `IAsyncDependency` as the call stack will be async.
 
 You should implement 
-```
+```c#
 IAsyncTransientFactory<TService>
 IAsyncScopFactorye<TService>
 IAsyncSingletonFactory<TService>
@@ -14,7 +14,7 @@ This will make the class as an async factory and any `TService` will be injected
 You can inject your service after that like `IAsyncDependency<TService>` in any constructor.
 
 Implementation examples:
-```
+```c#
 interface IMyService {}
 
 class MyService1 : IMyService {}
@@ -33,7 +33,7 @@ class MyServiceFactory: IAsyncTransientFactory<IMyService>{
 Now anywhere `IAsyncDependency<IMyService>` is requested it will actually inject the `MyService1` or `MyService2`.
 
 If `MyService1` or `MyService2` have some dependencies themself you can use the Simple Injection like: 
-```
+```c#
 interface IMyService {}
 
 class MyService1 : IMyService, ITransient<MyService1> {}
@@ -51,14 +51,14 @@ class MyServiceFactory: IAsyncTransientFactory<IMyService>{
 ```
 Now you can use `IAsyncDependency<IMyService>` in other services and the Autojector will provide an instance of `IAsyncDependency<IMyService>`.
 
-```
+```c#
 class DependentService{
 public DependentService(IAsyncDependency<IMyService> myServiceDependency){}
 }
 ```
 
 In order to get your service you should call `ServiceAsync` or `Value` like:
-```
+```c#
 class DependentService{
     private IAsyncDependency<IMyService> _myServiceDependency;
     
