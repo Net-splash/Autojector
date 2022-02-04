@@ -23,6 +23,7 @@ internal class ChainLink1 : IChainLink<ChainLinkRequest, ChainLinkResponse>
     }
 }
 
+[ChainLinkOrder(2)]
 internal class ChainLink2 : IChainLink<ChainLinkRequest, ChainLinkResponse>
 {
     public bool CanHandleRequest(ChainLinkRequest request) => true;
@@ -30,5 +31,16 @@ internal class ChainLink2 : IChainLink<ChainLinkRequest, ChainLinkResponse>
     public ChainLinkResponse Handle(ChainLinkRequest request)
     {
         return new ChainLinkResponse();
+    }
+}
+
+[ChainLinkOrder(1)]
+internal class ChainLink3 : IChainLink<ChainLinkRequest, ChainLinkResponse>
+{
+    public bool CanHandleRequest(ChainLinkRequest request) => false;
+
+    public ChainLinkResponse Handle(ChainLinkRequest request)
+    {
+        return null;
     }
 }

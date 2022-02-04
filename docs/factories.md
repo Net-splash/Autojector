@@ -1,4 +1,3 @@
-
 ## 2. Factories
 
 In case your service should be resolved at by a more complex logic and ca not be simply added with only one implmentation you can use this feature.

@@ -50,7 +50,12 @@
       "ProjectGuid": "1acbecdf-931d-48d3-b43d-9d27aa99d717",
       "DisplayName": "Sample.Services",
       "ColorIndex": 8
+    },
+    "7f12e9fe-3102-487f-9040-cea0be53bcf1": {
+      "ProjectGuid": "7f12e9fe-3102-487f-9040-cea0be53bcf1",
+      "DisplayName": "Autojector.Tests",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 10
 }
