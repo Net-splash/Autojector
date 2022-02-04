@@ -1,6 +1,5 @@
 using Autojector;
 using Autojector.Abstractions;
-using Microsoft.AspNetCore.Mvc;
 using Sample.Services;
 
 var builder = WebApplication.CreateBuilder(args);

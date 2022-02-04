@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
-      "version": "1.0.2",
+      "version": "1.0.3",
       "restore": {
         "projectUniqueName": "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj",
         "projectName": "Autojector.Abstraction",
@@ -64,7 +64,7 @@
       }
     },
     "D:\\PersonalWork\\Autojector\\src\\Autojector\\Autojector.csproj": {
-      "version": "1.0.2",
+      "version": "1.0.3",
       "restore": {
         "projectUniqueName": "D:\\PersonalWork\\Autojector\\src\\Autojector\\Autojector.csproj",
         "projectName": "Autojector",

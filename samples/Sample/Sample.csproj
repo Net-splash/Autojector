@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autojector" Version="1.0.2" />
+    <PackageReference Include="Autojector" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>

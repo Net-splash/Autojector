@@ -10,3 +10,16 @@ D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.csproj.CoreCom
 D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.dll
 D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\ref\Autojector.dll
 D:\PersonalWork\Autojector\Autojector\obj\Debug\net6.0\Autojector.pdb
+D:\PersonalWork\Autojector\src\Autojector\bin\Debug\net6.0\Autojector.deps.json
+D:\PersonalWork\Autojector\src\Autojector\bin\Debug\net6.0\Autojector.dll
+D:\PersonalWork\Autojector\src\Autojector\bin\Debug\net6.0\ref\Autojector.dll
+D:\PersonalWork\Autojector\src\Autojector\bin\Debug\net6.0\Autojector.pdb
+D:\PersonalWork\Autojector\src\Autojector\bin\Debug\net6.0\Autojector.xml
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.GeneratedMSBuildEditorConfig.editorconfig
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.AssemblyInfoInputs.cache
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.AssemblyInfo.cs
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.csproj.CoreCompileInputs.cache
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.dll
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\ref\Autojector.dll
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.xml
+D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.pdb
