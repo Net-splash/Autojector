@@ -28,5 +28,4 @@ class DependentService{
 public DependentService(IMyService myService){}
 }
 ```
-
 No need to add this class anywhere else. Also you can see the expected lifetype of this class right from it's definision, you don't need to search for it.

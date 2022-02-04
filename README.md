@@ -4,5 +4,4 @@ Very simple library that can be used for automatic injection without registering
 
 I think that the lifetype of a class should be stated in the class definition.
 
-
-Have a look at our [Full documentation](https://net-splash.github.io/Autojector/)
+Have a look [Documentation](https://net-splash.github.io/Autojector/)

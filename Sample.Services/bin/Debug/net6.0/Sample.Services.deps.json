@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Sample.Services/1.0.0": {
+        "dependencies": {
+          "Autojector.Abstraction": "1.0.2"
+        },
+        "runtime": {
+          "Sample.Services.dll": {}
+        }
+      },
+      "Autojector.Abstraction/1.0.2": {
+        "runtime": {
+          "lib/net6.0/Autojector.Abstractions.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Sample.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Autojector.Abstraction/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-swNKVQUPeky2IKqbveqG+8NZU31VGjtqGrmp+85S+JKetPvHpBWoxn0ljlHr95V+6C3S4K6ySsG8iJhu9BMTEg==",
+      "path": "autojector.abstraction/1.0.2",
+      "hashPath": "autojector.abstraction.1.0.2.nupkg.sha512"
+    }
+  }
+}

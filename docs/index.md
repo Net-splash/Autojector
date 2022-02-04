@@ -68,6 +68,9 @@ IScope<T>
 ISingleton<T>
 ```
 This will mark the class as an injectable service.
+
+Please read more about Simple injection [here](/Autojector/simple-injection)
+
 ## 2. [Factories](/Autojector/factories)
 
 In case your service should be resolved at by a more complex logic and ca not be simply added with only one implmentation you can use this feature.
@@ -79,3 +82,19 @@ IScopFactorye<T>
 ISingletonFactory<T>
 ```
 This will make the class as a factory and any `TService` will be injected using the method `GetService` implemented by the factory.
+
+Please read more about Factories [here](/Autojector/factories)
+
+## 3. [Factories](/Autojector/async-factories)
+
+In case your service should be resolved at by a more complex logic and ca not be simply added with only one implmentation you can use this feature.
+This feature will provide your service in a wrapper called `IAsyncDependency` as the call stack will be async.
+
+You should implement 
+```
+IAsyncTransientFactory<TService>
+IAsyncScopFactorye<TService>
+IAsyncSingletonFactory<TService>
+```
+This will make the class as an async factory and any `TService` will be injected using the method `GetServiceAsync` implemented by the async factory.
+You can inject your service after that like `IAsyncDependency<TService>` in any constructor.
