@@ -53,7 +53,7 @@ Now you can use `IAsyncDependency<IMyService>` in other services and the Autojec
 
 ```c#
 class DependentService{
-public DependentService(IAsyncDependency<IMyService> myServiceDependency){}
+  public DependentService(IAsyncDependency<IMyService> myServiceDependency){}
 }
 ```
 
@@ -71,4 +71,4 @@ class DependentService{
     }
 }
 ```
-In this case the method call `GetServiceAsync` from the factory will not be called until you call `ServiceAsync` or `Value`.
+In this case the method call `GetServiceAsync` from the factory will not be called until you await `ServiceAsync` or `Value`.
