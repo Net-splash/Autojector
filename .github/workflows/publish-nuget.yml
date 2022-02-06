@@ -37,7 +37,7 @@ jobs:
         run: |
           cd ..
           cd ..  
-          cd /src/Autojector
+          cd src/Autojector
           dotnet build --configuration Release
           dotnet pack -c Release -o out  
 
