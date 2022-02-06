@@ -1,0 +1,43 @@
+name: publish-nuget
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    environment: publishnuget
+    name: Update NuGet package
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v1
+        with:
+          source-url: https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET}}
+          
+      - name: Build solution and generate NuGet package for Autojector.Abstractions
+        run: |  
+          cd ./src/Autojector.Abstractions
+          dotnet pack -c Release -o out  
+
+      - name: Push generated package to GitHub registry for Autojector.Abstractions
+        run: dotnet nuget push ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true
+          
+      - name: Build solution and generate NuGet package for Autojector
+        run: |  
+          cd ./src/Autojector
+          dotnet pack -c Release -o out  
+
+      - name: Push generated package to GitHub registry for Autojector
+        run: dotnet nuget push ./src/Autojector/out/*.nupkg --skip-duplicate --no-symbols true
+
