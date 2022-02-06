@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     environment: publishnuget
-    name: Update NuGet package
+    name: Upload nuget to Nuget.com
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
@@ -27,6 +27,7 @@ jobs:
           
       - name: Build solution and generate NuGet package for Autojector.Abstractions
         run: |  
+          ls -la
           cd src/Autojector.Abstractions
           dotnet pack -c Release -o out  
 
@@ -37,6 +38,7 @@ jobs:
         run: |
           cd ..
           cd ..  
+          ls -la
           cd ./src/Autojector
           dotnet pack -c Release -o out  
 
