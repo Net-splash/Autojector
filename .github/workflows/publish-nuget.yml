@@ -27,29 +27,21 @@ jobs:
           
       - name: Build solution and generate NuGet package for Autojector.Abstractions
         run: |  
-          pwd
-          ls -la
-          cd src
-          pwd
-          ls -la
-          cd Autojector.Abstractions
+          cd src/Autojector.Abstractions
           dotnet build --configuration Release
           dotnet pack -c Release -o out  
 
       - name: Push generated package to GitHub registry for Autojector.Abstractions
-        run: |
-        printenv 
-        dotnet nuget push ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true
+        run: dotnet nuget push --api-key ${{ secrets.NUGET }} ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true
           
       - name: Build solution and generate NuGet package for Autojector
         run: |
-          pwd
           cd ..
           cd ..  
-          ls -la
           cd /src/Autojector
+          dotnet build --configuration Release
           dotnet pack -c Release -o out  
 
       - name: Push generated package to GitHub registry for Autojector
-        run: dotnet nuget push ./src/Autojector/out/*.nupkg --skip-duplicate --no-symbols true
+        run: dotnet nuget push --api-key ${{ secrets.NUGET }} ./src/Autojector/out/*.nupkg --skip-duplicate --no-symbols true
 
