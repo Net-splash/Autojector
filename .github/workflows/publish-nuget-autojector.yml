@@ -1,4 +1,4 @@
-name: publish-nuget
+name: Publish Autojector
 
 on:
   push:
