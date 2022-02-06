@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autojector" Version="1.0.3" />
-    <PackageReference Include="Autojector.Abstraction" Version="1.0.3" />
+    <PackageReference Include="Autojector" Version="1.0.10" />
+    <PackageReference Include="Autojector.Abstraction" Version="1.0.10" />
   </ItemGroup>
 
 </Project>
