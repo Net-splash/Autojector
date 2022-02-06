@@ -3,13 +3,13 @@ using Autojector.Registers.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 
 namespace Autojector.Registers.Decorators;
 internal record DecoratorTypesOperator(
     Type DecoratedType,
     IEnumerable<Type> Decorators, 
-    IDecoratorRegisterStrategy DecoratorRegisterStrategy) : BaseOperator, ITypeConfigurator
+    IDecoratorRegisterStrategy DecoratorRegisterStrategy) : ITypeConfigurator
 {
     public void ConfigureServices()
     {

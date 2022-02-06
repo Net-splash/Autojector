@@ -13,6 +13,9 @@ using System.Linq;
 using System.Reflection;
 
 namespace Autojector;
+/// <summary>
+/// This class should be used when you want to build the instance of the Autojector
+/// </summary>
 public class AutojectorBuilder
 {
     internal AutojectorBuilder(Assembly[] assemblies, IServiceCollection services)
@@ -134,7 +137,7 @@ public class AutojectorBuilder
 
     /// <summary>
     /// This method will add the feature of Autoinjector will register all clases that implement IChainLink<TRequest,TResponse> 
-    /// as a chain grouped by TRequest and TResponse. Will provide the class IChain<TRequest,TResponse> that expose the method Handle.
+    /// as a chain grouped by TRequest and TResponse. Will provide the class IChain\f[TRequest,TResponse\f] that expose the method Handle.
     /// That dependnecy will search for the first IChainLink that can be used to handle the request and will return the response from the first one that can.
     /// You can use ChainLinkOrderAttribute to ensure the order in which a the ChainLink will be called
     /// </summary>
@@ -154,6 +157,12 @@ public class AutojectorBuilder
         return this;
     }
 
+
+    /// <summary>
+    /// This should be the last method that should be called from the building process as is the only one that reurns 
+    /// an instance of the IAutojectorService
+    /// </summary>
+    /// <returns></returns>
     public IAutojectorService Build()
     {
         ValidateAgainstOnlyDecoratorAdded();

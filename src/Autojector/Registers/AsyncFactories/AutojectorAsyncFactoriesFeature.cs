@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 namespace Autojector.Features.AsyncFactories;
 internal class AutojectorAsyncFactoriesFeature : BaseAutojectorFeature
 {

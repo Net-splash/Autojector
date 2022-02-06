@@ -3,11 +3,11 @@ using Autojector.Registers.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 
 namespace Autojector.Registers.SimpleInjection;
 internal record SimpleInjectableTypeOperator(Type Type, IEnumerable<Type> ImplementedGenericLifetypeInterface, ISimpleRegisterStrategyFactory SimpleRegisterStrategyFactory) : 
-    BaseTypeOperator(Type), ITypeConfigurator
+    ITypeConfigurator
 {
     private IEnumerable<Type> ImplementedLifetypeInterface => Type.GetInterfacesFromTree(x => x.IsGenericType);
     public void ConfigureServices()

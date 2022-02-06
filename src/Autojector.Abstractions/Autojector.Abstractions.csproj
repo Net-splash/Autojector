@@ -5,16 +5,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<PackageId>Autojector.Abstraction</PackageId>
-	<Version>1.0.3</Version>
+	<Version>1.0.4</Version>
 	<Authors>CristianScaueru</Authors>
 	<Company>Netsplash</Company>
 	<PackageIcon>autojector-icon.png</PackageIcon>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\autojector-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

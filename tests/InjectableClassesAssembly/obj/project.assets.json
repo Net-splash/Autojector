@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Autojector.Abstraction/1.0.3": {
+      "Autojector.Abstraction/1.0.4": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
@@ -15,7 +15,7 @@
     }
   },
   "libraries": {
-    "Autojector.Abstraction/1.0.3": {
+    "Autojector.Abstraction/1.0.4": {
       "type": "project",
       "path": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj",
       "msbuildProject": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj"
@@ -23,7 +23,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Autojector.Abstraction >= 1.0.3"
+      "Autojector.Abstraction >= 1.0.4"
     ]
   },
   "packageFolders": {

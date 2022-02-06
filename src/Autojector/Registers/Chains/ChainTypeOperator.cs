@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Autojector.Registers.Chains;
-internal record ChainTypeOperator(Type RequestType, Type ResponseType, IEnumerable<Type> ChainLinks,IChainRegisterStrategy ChainRegisterStrategy) : BaseOperator, ITypeConfigurator
+internal record ChainTypeOperator(Type RequestType, Type ResponseType, IEnumerable<Type> ChainLinks,IChainRegisterStrategy ChainRegisterStrategy) : ITypeConfigurator
 {
     public void ConfigureServices()
     {

@@ -5,14 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 
 namespace Autojector.Registers.Factories;
 internal record FactoryInjectableTypeOperator(
     Type Type,
     IFactoryRegisterStrategyFactory FactoryRegisterStrategyFactory) 
     : 
-    BaseTypeOperator(Type), 
     ITypeConfigurator
 {
     public void ConfigureServices()

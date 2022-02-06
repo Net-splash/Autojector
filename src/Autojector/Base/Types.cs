@@ -1,8 +1,11 @@
-﻿namespace Autojector.Abstractions;
-public class Types
+﻿using Autojector.Abstractions;
+using System;
+using System.Collections.Generic;
+
+namespace Autojector.Base;
+internal class Types
 {
     public static Type InjectableType = typeof(IInjectable);
-
 
     public static Type TransientType = typeof(ITransient<>);
     public static Type ScopeType = typeof(IScope<>);

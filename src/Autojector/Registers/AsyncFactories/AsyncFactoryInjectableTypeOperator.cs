@@ -1,14 +1,12 @@
 ﻿using Autojector.Base;
 using Autojector.Registers.Base;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 
 namespace Autojector.Registers.AsyncFactories;
 internal record AsyncFactoryInjectableTypeOperator(Type Type, IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory) : 
-    BaseTypeOperator(Type), 
     ITypeConfigurator
 {
     public void ConfigureServices()

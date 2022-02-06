@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 namespace Autojector.Registers.SimpleInjection;
 internal interface ISimpleRegisterStrategyFactory
 {

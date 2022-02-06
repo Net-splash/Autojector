@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Linq;
-using static Autojector.Abstractions.Types;
+using static Autojector.Base.Types;
 namespace Autojector.Registers.Decorators;
 internal interface IDecoratorRegisterStrategy
 {

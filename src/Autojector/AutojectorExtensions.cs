@@ -3,6 +3,9 @@ using System;
 using System.Reflection;
 
 namespace Autojector;
+/// <summary>
+/// Should be used in order to add the autojector to the IServiceCollection
+/// </summary>
 public static class AutojectorExtensions
 {
     /// <summary>
