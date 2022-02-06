@@ -54,7 +54,7 @@ internal class ChainLink2 : IChainLink<MyRequest, MyResponse>
 After this you can just request the chain in your service constructor
 ```c#
 internal class MyService{
-    public MyService(IChian<MyRequest,MyResponse> chain)
+    public MyService(IChain<MyRequest,MyResponse> chain)
     {
 
     }
