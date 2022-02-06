@@ -33,13 +33,3 @@ jobs:
 
       - name: Push generated package to GitHub registry for Autojector.Abstractions
         run: dotnet nuget push --api-key ${{ secrets.NUGET }} ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true --source https://api.nuget.org/v3/index.json
-      - name: Build solution and generate NuGet package for Autojector
-        run: |
-          cd ..
-          cd ..  
-          cd src/Autojector
-          dotnet build --configuration Release
-          dotnet pack -c Release -o out  
-
-      - name: Push generated package to GitHub registry for Autojector
-        run: dotnet nuget push --api-key ${{ secrets.NUGET }} ./src/Autojector/out/*.nupkg --skip-duplicate --no-symbols true --source https://api.nuget.org/v3/index.json
