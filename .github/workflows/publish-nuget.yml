@@ -3,11 +3,11 @@ name: publish-nuget
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [closed]
     branches:
-      - master
+      - main
 
 jobs:
   build:
