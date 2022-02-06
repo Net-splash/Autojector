@@ -2781,7 +2781,7 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "Autojector/1.0.6": {
+      "Autojector/1.0.10": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -2797,7 +2797,7 @@
           "bin/placeholder/Autojector.dll": {}
         }
       },
-      "Autojector.Abstraction/1.0.6": {
+      "Autojector.Abstraction/1.0.10": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
@@ -2811,7 +2811,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Autojector.Abstraction": "1.0.6"
+          "Autojector.Abstraction": "1.0.10"
         },
         "compile": {
           "bin/placeholder/InjectableClassesAssembly.dll": {}
@@ -9544,12 +9544,12 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Autojector/1.0.6": {
+    "Autojector/1.0.10": {
       "type": "project",
       "path": "../../src/Autojector/Autojector.csproj",
       "msbuildProject": "../../src/Autojector/Autojector.csproj"
     },
-    "Autojector.Abstraction/1.0.6": {
+    "Autojector.Abstraction/1.0.10": {
       "type": "project",
       "path": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj",
       "msbuildProject": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj"
@@ -9562,8 +9562,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Autojector >= 1.0.6",
-      "Autojector.Abstraction >= 1.0.6",
+      "Autojector >= 1.0.10",
+      "Autojector.Abstraction >= 1.0.10",
       "InjectableClassesAssembly >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 6.0.0",
       "Microsoft.Extensions.DependencyInjection >= 6.0.0",
