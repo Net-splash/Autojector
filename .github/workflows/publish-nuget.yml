@@ -27,14 +27,16 @@ jobs:
           
       - name: Build solution and generate NuGet package for Autojector.Abstractions
         run: |  
-          cd ./src/Autojector.Abstractions
+          cd src/Autojector.Abstractions
           dotnet pack -c Release -o out  
 
       - name: Push generated package to GitHub registry for Autojector.Abstractions
         run: dotnet nuget push ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true
           
       - name: Build solution and generate NuGet package for Autojector
-        run: |  
+        run: |
+          cd ..
+          cd ..  
           cd ./src/Autojector
           dotnet pack -c Release -o out  
 
