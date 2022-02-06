@@ -37,7 +37,9 @@ jobs:
           dotnet pack -c Release -o out  
 
       - name: Push generated package to GitHub registry for Autojector.Abstractions
-        run: dotnet nuget push ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true
+        run: |
+        printenv 
+        dotnet nuget push ./src/Autojector.Abstractions/out/*.nupkg --skip-duplicate --no-symbols true
           
       - name: Build solution and generate NuGet package for Autojector
         run: |
