@@ -3,13 +3,19 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>Autojector</PackageId>
-		<Version>1.0.11</Version>
+		<Version>1.0.12</Version>
 		<Authors>CristianScaueru</Authors>
 		<Company>Netsplash</Company>
 		<PackageIcon>autojector-icon.png</PackageIcon>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>http://automaticinjector.com/</Description>
+		<RepositoryUrl>https://github.com/Net-splash/Autojector</RepositoryUrl>
+		<PackageProjectUrl>http://automaticinjector.com/</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>dependency injection,injection, abstraction</PackageTags>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
 	<ItemGroup>
