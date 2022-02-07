@@ -4,6 +4,11 @@ Very simple library that can be used for automatic injection without registering
 
 I think that the lifetype of a class should be stated in the class definition.
 
+The goal of this library is to make the injection more easy to use and at the same time to make design patterns more accessible.
+
+In case you think that there is a design pattern that might be better to see more in real life please leave a comment as feedback or create a github issue and 
+I will try to introduce it as much as possible into the library.
+
 ### Composition
 Autojector is composed from 2 libraries:
 1. Autojector
