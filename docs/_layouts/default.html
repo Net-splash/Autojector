@@ -11,11 +11,17 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
-    <style>
-        *,*>*{
-            border: solid 1px red;;
-        }
-    </style>
+    <!-- Start of Survicate (www.survicate.com) code -->
+    <script type='text/javascript'>
+      (function(w) {
+        var s = document.createElement('script');
+        s.src = 'https://survey.survicate.com/workspaces/5535a5dabd8dbb99489b419d29158d01/web_surveys.js';
+        s.async = true;
+        var e = document.getElementsByTagName('script')[0];
+        e.parentNode.insertBefore(s, e);
+      })(window);
+    </script>
+  <!-- End of Survicate code -->
   </head>
   <body>
     <a id="skip-to-content" href="#content">Skip to the content.</a>
