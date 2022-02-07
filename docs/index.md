@@ -1,4 +1,4 @@
-# ![Autojector](https://github.com/Net-splash/Autojector/blob/main/autojector-icon.png) Automatic Injector - Autojector
+# ![Autojector](autojector-icon.png) Automatic Injector - Autojector
 
 Very simple library that can be used for automatic injection without registering or adding the classes in the default microsoft inversion of control container.
 
