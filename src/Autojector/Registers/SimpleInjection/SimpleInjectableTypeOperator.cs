@@ -6,18 +6,21 @@ using System.Linq;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.SimpleInjection;
-internal record SimpleInjectableTypeOperator(Type Type, IEnumerable<Type> ImplementedGenericLifetypeInterface, ISimpleRegisterStrategyFactory SimpleRegisterStrategyFactory) : 
+internal record SimpleInjectableTypeOperator(Type Type, IEnumerable<Type> ImplementedGenericLifetypeInterfaces, ISimpleRegisterStrategyFactory SimpleRegisterStrategyFactory) : 
     ITypeConfigurator
 {
-    private IEnumerable<Type> ImplementedLifetypeInterface => Type.GetInterfacesFromTree(x => x.IsGenericType);
     public void ConfigureServices()
     {
-        ValidateUnknownInjectableType();
+        ValidateUnknownLifetype();
         ValidateNotImplementedInterface();
-        foreach (var injectableType in ImplementedLifetypeInterface)
+        foreach (var injectableType in ImplementedGenericLifetypeInterfaces)
         {
+            ValidateOnlyOneGenericArgument(injectableType);
+            
+            var lifetimeType = injectableType.GetGenericTypeDefinition();
+            var registerStrategy = SimpleRegisterStrategyFactory.GetSimpleLifetypeRegisterStrategy(lifetimeType);
+            
             var injectableInterface = injectableType.GetGenericArguments().First();
-            var registerStrategy = SimpleRegisterStrategyFactory.GetSimpleLifetypeRegisterStrategy(injectableType.GetGenericTypeDefinition());
             registerStrategy.Add(injectableInterface, Type);
         }
     }
@@ -28,7 +31,7 @@ internal record SimpleInjectableTypeOperator(Type Type, IEnumerable<Type> Implem
             .Where(i => !SimpleLifetypeInterfaces.Contains(i))
             .Concat(new Type[] { Type });
 
-        var customInterfaceFromLifeType = ImplementedLifetypeInterface.Select(i => i.GetGenericArguments().First());
+        var customInterfaceFromLifeType = ImplementedGenericLifetypeInterfaces.Select(i => i.GetGenericArguments().First());
         var nonImplementedInterfaceFromLifetype = customInterfaceFromLifeType.Except(customInterface);
         if (nonImplementedInterfaceFromLifetype.Any())
         {
@@ -38,9 +41,17 @@ internal record SimpleInjectableTypeOperator(Type Type, IEnumerable<Type> Implem
         }
     }
 
-    private void ValidateUnknownInjectableType()
+    private void ValidateOnlyOneGenericArgument(Type injectableType)
     {
-        if (!ImplementedGenericLifetypeInterface.Any())
+        if (injectableType.GetGenericArguments().HasMany())
+        {
+            throw new InvalidOperationException("Can not have more than one argument in a simple life type interface implementation");
+        }
+    }
+
+    private void ValidateUnknownLifetype()
+    {
+        if (!ImplementedGenericLifetypeInterfaces.Any())
         {
             var lifetypeInterfacesNames = SimpleLifetypeInterfaces.Select(c => c.Name);
             throw new InvalidOperationException(@$"

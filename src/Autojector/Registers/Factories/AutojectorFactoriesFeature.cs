@@ -1,4 +1,5 @@
-﻿using Autojector.Registers;
+﻿using Autojector.Base;
+using Autojector.Registers;
 using Autojector.Registers.Base;
 using Autojector.Registers.Factories;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,9 +22,7 @@ internal class AutojectorFactoriesFeature : BaseAutojectorFeature
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
         var factories = NonAbstractClassesFromAssemblies
-            .Where(type => type.GetInterfaces()
-                               .Any(i => i.IsGenericType && 
-                                    i.GetGenericTypeDefinition() == FactoryType));
+            .Where(type => type.GetInterfacesFromTree(i => i.IsGenericType && FactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition())).Any());
 
         return factories.Select(type => new FactoryInjectableTypeOperator(type, FactoryRegisterStrategyFactory));
     }

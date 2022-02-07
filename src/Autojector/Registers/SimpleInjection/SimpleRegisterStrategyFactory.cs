@@ -25,11 +25,20 @@ internal class SimpleRegisterStrategyFactory : ISimpleRegisterStrategyFactory
             };
     public ISimpleRegisterStrategy GetSimpleLifetypeRegisterStrategy(Type lifetimeType)
     {
-        if (!SimpleLifetypeRegisterStrategies.ContainsKey(lifetimeType))
+        ValidateAgainstLifetimeTypeArgument(lifetimeType);
+        return SimpleLifetypeRegisterStrategies[lifetimeType](Services);
+    }
+
+    private void ValidateAgainstLifetimeTypeArgument(Type lifetimeType)
+    {
+        if (lifetimeType == null)
         {
-            throw new InvalidOperationException($"Unknown lifetime implementation");
+            throw new ArgumentNullException($"lifetimeType argument is null. Please ensure that {nameof(GetSimpleLifetypeRegisterStrategy)} is called with a value");
         }
 
-        return SimpleLifetypeRegisterStrategies[lifetimeType](Services);
+        if (!SimpleLifetypeRegisterStrategies.ContainsKey(lifetimeType))
+        {
+            throw new InvalidOperationException($"Unknown lifetime implementation for {lifetimeType.FullName}");
+        }
     }
 }

@@ -12,7 +12,7 @@ using static Autojector.Base.Types;
 namespace Autojector.Features.SimpleInjection;
 internal class AutojectorSimpleInjectionFeature : BaseAutojectorFeature
 {
-    private record TypeWithSimpleInjectableInterface(Type Type,IEnumerable<Type> SimpleInjectableInterface);
+    private record TypeWithSimpleInjectableInterface(Type Type,IEnumerable<Type> implementedLifetypeInterfaces);
     private ISimpleRegisterStrategyFactory RegisterStrategyFactory { get; }
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.SimpleInjection;
 
@@ -25,17 +25,16 @@ internal class AutojectorSimpleInjectionFeature : BaseAutojectorFeature
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
         var injectables = NonAbstractClassesFromAssemblies
-            .Select(t => new TypeWithSimpleInjectableInterface(t, GetInjectableInterfaces(t)))
-            .Where(t => t.SimpleInjectableInterface.Any());
+            .Select(GetTypeWithSimpleInjectableInterfaces)
+            .Where(t => t.implementedLifetypeInterfaces.Any());
         
-        return injectables.Select(pair => new SimpleInjectableTypeOperator(pair.Type,pair.SimpleInjectableInterface, RegisterStrategyFactory));
+        return injectables.Select(pair => new SimpleInjectableTypeOperator(pair.Type,pair.implementedLifetypeInterfaces, RegisterStrategyFactory));
     }
 
-    private IEnumerable<Type> GetInjectableInterfaces(Type type)
+    private TypeWithSimpleInjectableInterface GetTypeWithSimpleInjectableInterfaces(Type type)
     {
-        var typeGenericInterfaces = type.GetInterfacesFromTree(x => x.IsGenericType)
-            .Select(type => type.GetGenericTypeDefinition());
-
-        return SimpleLifetypeInterfaces.Intersect(typeGenericInterfaces);
+        var implementedLifetypeInterfaces = type.GetInterfacesFromTree(x => x.IsGenericType)
+            .Where(type => SimpleLifetypeInterfaces.Contains(type.GetGenericTypeDefinition())); ;
+        return new TypeWithSimpleInjectableInterface(type, implementedLifetypeInterfaces) ;
     }
 }

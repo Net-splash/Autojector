@@ -1,5 +1,7 @@
 ﻿namespace Autojector.Abstractions;
-
+/// <summary>
+/// This is the base interface of all the async factories in autojector.
+/// </summary>
 public interface IAsyncFactory<T> : IInjectable
 {
     /// <summary>

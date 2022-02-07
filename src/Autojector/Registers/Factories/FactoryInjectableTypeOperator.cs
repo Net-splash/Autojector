@@ -16,15 +16,15 @@ internal record FactoryInjectableTypeOperator(
 {
     public void ConfigureServices()
     {
-        var allFactoriesFromCurrentType = GetAllFactories();
-        foreach (var factoryInterface in allFactoriesFromCurrentType)
+        var ImplementedFactoryInterfaces = ExctractImplementedFactoryInterfaces();
+        foreach (var factoryInterface in ImplementedFactoryInterfaces)
         {
             var lifetypeRegisterStrategy = FactoryRegisterStrategyFactory.GetFactoryLifetypeRegisterStrategy(factoryInterface.GetGenericTypeDefinition());
             lifetypeRegisterStrategy.Add(Type, factoryInterface);
         }
     }
 
-    private IEnumerable<Type> GetAllFactories()
+    private IEnumerable<Type> ExctractImplementedFactoryInterfaces()
     {
         var filteredInterfaces = Type.GetInterfacesFromTree(i => i.IsGenericType && FactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
         return filteredInterfaces;

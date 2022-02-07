@@ -6,5 +6,10 @@
 /// </summary>
 public interface IChain<TRequest,TResponse>
 {
+    /// <summary>
+    /// The implementation for this method will be provided by Autojector and will represent an iteration over the chain links
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns>The response from the chain</returns>
     public TResponse Handle(TRequest request);
 }

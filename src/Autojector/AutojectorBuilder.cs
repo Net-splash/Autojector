@@ -33,7 +33,7 @@ public class AutojectorBuilder
     private IServiceCollection Services { get; }
 
     /// <summary>
-    /// This method will add the feature of Autoinjector where all the classes that implement simple interface: ITransient<T>, IScope<T>, ISingleton<T>
+    /// This method will add the feature of Autoinjector where all the classes that implement simple interface: ITransient\f[T\f], IScope\f[T\f], ISingleton\f[T\f]
     /// will be injected automatically without registing them anywhere.
     /// </summary>
     /// <param name="assemblies">
@@ -53,7 +53,7 @@ public class AutojectorBuilder
     }
 
     /// <summary>
-    /// This method will add the feature of Autoinjector where all the classes that implement factory interfaces: ITransientFactory<T>, IScopFactorye<T>, ISingletonFactory<T>
+    /// This method will add the feature of Autoinjector where all the classes that implement factory interfaces: ITransientFactory\f[T\f], IScopFactorye\f[T\f], ISingletonFactory\f[T\f]
     /// will be registered as the factory for the service specifited as T.
     /// </summary>
     /// <param name="assemblies">
@@ -73,9 +73,9 @@ public class AutojectorBuilder
     }
 
     /// <summary>
-    /// This method will add the feature of Autoinjector where all the classes that implement async factory interfaces: IAsyncTransientFactory<T>, IAsyncScopFactorye<T>, IAsyncSingletonFactory<T>
-    /// will be registered as the factory for the service specifited as IAsyncDependency<T>.
-    /// The IAsyncDependency<T> contains a properties (Value,ServiceAsync) that return asynchronous the service.
+    /// This method will add the feature of Autoinjector where all the classes that implement async factory interfaces: IAsyncTransientFactory\f[T\f], IAsyncScopFactorye\f[T\f], IAsyncSingletonFactory\f[T\f]
+    /// will be registered as the factory for the service specifited as IAsyncDependency\f[T\f].
+    /// The IAsyncDependency\f[T\f] contains a properties (Value,ServiceAsync) that return asynchronous the service.
     /// </summary>
     /// <param name="assemblies">
     /// This should be a list with all the assembies where the autojector will search for services.
@@ -94,7 +94,7 @@ public class AutojectorBuilder
     }
 
     /// <summary>
-    /// This method will add the feature of Autoinjector where all the classes that implement IDecorator<T>
+    /// This method will add the feature of Autoinjector where all the classes that implement IDecorator\f[T\f]
     /// will take the place of the currently existing service and will receive, if requested, an instance of that service.
     /// To decorate a decorator you should add DecoratorOrderAttribute on the second class or any other after that
     /// to make sure in which the decorator is used
@@ -136,7 +136,7 @@ public class AutojectorBuilder
     }
 
     /// <summary>
-    /// This method will add the feature of Autoinjector will register all clases that implement IChainLink<TRequest,TResponse> 
+    /// This method will add the feature of Autoinjector will register all clases that implement IChainLink\f[TRequest,TResponse\f] 
     /// as a chain grouped by TRequest and TResponse. Will provide the class IChain\f[TRequest,TResponse\f] that expose the method Handle.
     /// That dependnecy will search for the first IChainLink that can be used to handle the request and will return the response from the first one that can.
     /// You can use ChainLinkOrderAttribute to ensure the order in which a the ChainLink will be called

@@ -8,6 +8,12 @@
 /// <typeparam name="T"></typeparam>
 public interface IAsyncDependency<T>
 {
+    /// <summary>
+    /// The same as ServiceAsync
+    /// </summary>
     public Task<T> Value { get; }
+    /// <summary>
+    /// This will return a task that can be awaited to obtain the service
+    /// </summary>
     public Task<T> ServiceAsync { get; }
 }
