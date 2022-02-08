@@ -1,6 +1,6 @@
 name: Run Unit Tests
 
-on: [push,pull_request];
+on: [push,pull_request]
 
 jobs:
   tests:
@@ -11,7 +11,7 @@ jobs:
       - name: Setup .NET Core @ Latest
         uses: actions/setup-dotnet@v1
       - name: Move to tests directory
-      - use: cd src/Autojector/Autojector.Abstractions
+        run: cd src/Autojector/Autojector.Abstractions
       - name: Restore nugets
         run: dotnet restore
       - name: Build
