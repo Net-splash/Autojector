@@ -6,20 +6,17 @@ using Xunit;
 
 namespace Autojector.Tests;
 
-public class AutojectorExtensionsAsyncFactoryInjectorTests : AutojectorBaseTest
+public class AsyncFactoryInjector : TestBase
 {
-    public AutojectorExtensionsAsyncFactoryInjectorTests() : base()
+    public AsyncFactoryInjector() : base(a => a.UseAsyncFactories().Build())
     {
     }
 
     [Fact]
     public async void ShouldAddAsyncTransientServiceFromFactory()
     {
-        //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseAsyncFactories().Build());
-
         //Assert
-        var dependency = ServiceShouldNotBeNull<IAsyncDependency<ITestTransientAsyncService>>();
+        var dependency = ServiceShouldSucceedLocally<IAsyncDependency<ITestTransientAsyncService>>();
         var service = await dependency.ServiceAsync;
         service.ShouldBeAssignableTo<TestTransientAsyncService>();
     }
@@ -27,11 +24,8 @@ public class AutojectorExtensionsAsyncFactoryInjectorTests : AutojectorBaseTest
     [Fact]
     public async void ShouldAddAsyncScopeServiceFromFactory()
     {
-        //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseAsyncFactories().Build());
-
         //Assert
-        var dependency = ServiceShouldNotBeNull<IAsyncDependency<ITestScopeAsyncService>>();
+        var dependency = ServiceShouldSucceedLocally<IAsyncDependency<ITestScopeAsyncService>>();
         var service = await dependency.ServiceAsync;
         service.ShouldBeAssignableTo<TestScopeAsyncService>();
     }
@@ -39,11 +33,8 @@ public class AutojectorExtensionsAsyncFactoryInjectorTests : AutojectorBaseTest
     [Fact]
     public async void ShouldAddAsyncSingletonServiceFromFactory()
     {
-        //Arrange & Act
-        ServiceCollection.WithAutojector(a => a.UseAsyncFactories().Build());
-
         //Assert
-        var dependency = ServiceShouldNotBeNull<IAsyncDependency<ITestSingletonAsyncService>>();
+        var dependency = ServiceShouldSucceedLocally<IAsyncDependency<ITestSingletonAsyncService>>();
         var service = await dependency.ServiceAsync;
         service.ShouldBeAssignableTo<TestSingletonAsyncService>();
     }

@@ -8,9 +8,9 @@ using Xunit;
 
 namespace Autojector.Tests;
 
-public class AutojectorExtensionsConfigInjectorTests : AutojectorBaseTest
+public class ConfigInjector : TestBase
 {
-    public AutojectorExtensionsConfigInjectorTests() : base()
+    public ConfigInjector() : base(a => a.UseConfigs().Build())
     {
     }
 
@@ -28,11 +28,8 @@ public class AutojectorExtensionsConfigInjectorTests : AutojectorBaseTest
 
         ServiceCollection.AddSingleton(configuration);
         
-        //Act
-        ServiceCollection.WithAutojector(a => a.UseConfigs().Build());
-
         //Assert
-        var config = ServiceShouldNotBeNull<TestConfig>();
+        var config = ServiceShouldSucceedLocally<TestConfig>();
 
         config.Value.ShouldBe(5);
     }

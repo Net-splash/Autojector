@@ -55,7 +55,22 @@
       "ProjectGuid": "7f12e9fe-3102-487f-9040-cea0be53bcf1",
       "DisplayName": "Autojector.Tests",
       "ColorIndex": 9
+    },
+    "419f3ed7-e1fc-477d-8762-dba1248cdcde": {
+      "ProjectGuid": "419f3ed7-e1fc-477d-8762-dba1248cdcde",
+      "DisplayName": "InjectableClassesAssembly",
+      "ColorIndex": 10
+    },
+    "688b32b7-9d16-49e6-9f6d-9c62a7237784": {
+      "ProjectGuid": "688b32b7-9d16-49e6-9f6d-9c62a7237784",
+      "DisplayName": "Autojector.ClassLibrary.SuccessfullSimpleInjected",
+      "ColorIndex": 11
+    },
+    "39481cd3-9083-4bd1-bbf1-c728ddfd7207": {
+      "ProjectGuid": "39481cd3-9083-4bd1-bbf1-c728ddfd7207",
+      "DisplayName": "Autojector.TestAssemblyGenerator",
+      "ColorIndex": 12
     }
   },
-  "NextColorIndex": 10
+  "NextColorIndex": 13
 }

@@ -26,7 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Autojector.Abstractions\Autojector.Abstractions.csproj" />
     <ProjectReference Include="..\..\src\Autojector\Autojector.csproj" />
-    <ProjectReference Include="..\InjectableClassesAssembly\InjectableClassesAssembly.csproj" />
+    <ProjectReference Include="..\Autojector.TestAssemblyGenerator\Autojector.TestAssemblyGenerator.csproj" />
   </ItemGroup>
 
 </Project>
