@@ -11,7 +11,7 @@ jobs:
       - name: Setup .NET Core @ Latest
         uses: actions/setup-dotnet@v1
       - name: Move to tests directory
-        run: cd src/Autojector/Autojector.Abstractions
+        run: cd tests/Autojector.Tests
       - name: Restore nugets
         run: dotnet restore
       - name: Build
