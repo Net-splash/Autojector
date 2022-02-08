@@ -11,4 +11,3 @@ D:\PersonalWork\Autojector\src\Autojector.Abstractions\obj\Debug\net6.0\Autoject
 D:\PersonalWork\Autojector\src\Autojector.Abstractions\obj\Debug\net6.0\ref\Autojector.Abstractions.dll
 D:\PersonalWork\Autojector\src\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.xml
 D:\PersonalWork\Autojector\src\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.pdb
-D:\PersonalWork\Autojector\src\Autojector.Abstractions\obj\Debug\net6.0\Autojector.Abstractions.csproj.AssemblyReference.cache

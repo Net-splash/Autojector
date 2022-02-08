@@ -2,6 +2,16 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Autojector.Abstraction/1.0.13": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Autojector.Abstraction.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Autojector.Abstraction.dll": {}
+        }
+      },
       "Castle.Core/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -2912,7 +2922,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Autojector.Abstraction": "1.0.0",
+          "Autojector.Abstraction": "1.0.13",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
@@ -2922,16 +2932,6 @@
         },
         "runtime": {
           "bin/placeholder/Autojector.dll": {}
-        }
-      },
-      "Autojector.Abstraction/1.0.13": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/Autojector.Abstraction.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Autojector.Abstraction.dll": {}
         }
       },
       "Autojector.TestAssemblyGenerator/1.0.0": {
@@ -2951,6 +2951,11 @@
     }
   },
   "libraries": {
+    "Autojector.Abstraction/1.0.13": {
+      "type": "project",
+      "path": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj",
+      "msbuildProject": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj"
+    },
     "Castle.Core/4.4.0": {
       "sha512": "b5rRL5zeaau1y/5hIbI+6mGw3cwun16YjkHZnV9RRT5UyUIFsgLmNXJ0YnIN9p8Hw7K7AbG1q1UclQVU3DinAQ==",
       "type": "package",
@@ -9905,11 +9910,6 @@
       "type": "project",
       "path": "../../src/Autojector/Autojector.csproj",
       "msbuildProject": "../../src/Autojector/Autojector.csproj"
-    },
-    "Autojector.Abstraction/1.0.13": {
-      "type": "project",
-      "path": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj",
-      "msbuildProject": "../../src/Autojector.Abstractions/Autojector.Abstractions.csproj"
     },
     "Autojector.TestAssemblyGenerator/1.0.0": {
       "type": "project",

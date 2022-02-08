@@ -2,6 +2,7 @@
 using Autojector.Registers.Factories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 
 namespace Autojector.Registers.Configs;
 
@@ -13,7 +14,11 @@ internal interface IConfigRegisterStrategy
 internal class ConfigRegisterStrategy : IConfigRegisterStrategy
 {
     private IServiceCollection Services { get; }
-    private bool IsConfigFactoryRegistred = false;
+    private bool IsConfigFactoryRegistred {
+        get{
+            return Services.Any(s => s.ServiceType == typeof(ConfigFactory));
+        }
+    }
     public ConfigRegisterStrategy(IServiceCollection services)
     {
         Services = services;
@@ -34,7 +39,6 @@ internal class ConfigRegisterStrategy : IConfigRegisterStrategy
         if (!IsConfigFactoryRegistred)
         {
             Services.AddTransient<ConfigFactory>();
-            IsConfigFactoryRegistred = true;
         }
     }
 }
