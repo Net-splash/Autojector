@@ -12,7 +12,17 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="icon" href="../autojector-icon.png">
     {% include head-custom.html %}
-    
+    <!-- Start of Survicate (www.survicate.com) code -->
+    <script type='text/javascript'>
+      (function(w) {
+        var s = document.createElement('script');
+        s.src = 'https://survey.survicate.com/workspaces/5535a5dabd8dbb99489b419d29158d01/web_surveys.js';
+        s.async = true;
+        var e = document.getElementsByTagName('script')[0];
+        e.parentNode.insertBefore(s, e);
+      })(window);
+    </script>
+  <!-- End of Survicate code -->
   
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

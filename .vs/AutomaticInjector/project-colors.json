@@ -70,7 +70,12 @@
       "ProjectGuid": "39481cd3-9083-4bd1-bbf1-c728ddfd7207",
       "DisplayName": "Autojector.TestAssemblyGenerator",
       "ColorIndex": 12
+    },
+    "daf5e80d-9b67-4fd4-8b4e-65215d3c1740": {
+      "ProjectGuid": "daf5e80d-9b67-4fd4-8b4e-65215d3c1740",
+      "DisplayName": "Autojector.TestAssemblyGenerator",
+      "ColorIndex": 13
     }
   },
-  "NextColorIndex": 13
+  "NextColorIndex": 14
 }
