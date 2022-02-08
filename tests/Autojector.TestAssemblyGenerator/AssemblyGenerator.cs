@@ -26,7 +26,7 @@ internal class TestAssemblyContext : ITestAssemblyContext
 
     public void Dispose()
     {
-        if(AssemblyLoadContext != null)
+        if (AssemblyLoadContext != null)
         {
             AssemblyLoadContext.Unload();
             AssemblyLoadContext = null;
@@ -47,11 +47,14 @@ internal class AssemblyGenerator
     {
         SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(Code);
         string assemblyName = Path.GetRandomFileName();
+        var coreDir = Path.GetDirectoryName(typeof(object).GetTypeInfo().Assembly.Location);
         MetadataReference[] references = new MetadataReference[]
         {
-            MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+            MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location),
-            MetadataReference.CreateFromFile(typeof(ITransient<>).Assembly.Location)
+            MetadataReference.CreateFromFile(coreDir + Path.DirectorySeparatorChar + "mscorlib.dll"),
+            MetadataReference.CreateFromFile(coreDir + Path.DirectorySeparatorChar + "System.Runtime.dll"),
+            MetadataReference.CreateFromFile(typeof(ITransient<>).Assembly.Location),
         };
 
         CSharpCompilation compilation = CSharpCompilation.Create(

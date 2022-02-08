@@ -29,7 +29,7 @@ internal class DecoratorRegisterStrategy : IDecoratorRegisterStrategy
 
         if (wrappedDescriptor == null)
         {
-            throw new InvalidOperationException($"{serviceType.Name} is not registered");
+            throw new InvalidOperationException($"{serviceType.Name} is not registered. Can not be decorated");
         }
 
         var objectFactory = ActivatorUtilities.CreateFactory(

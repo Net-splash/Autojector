@@ -33,7 +33,7 @@ public class TestBase
     }
 
 
-    protected void ShouldThrowOnBuildingServices(string code, string exceptionMessage = null)
+    protected void ShouldThrowOnBuildingServicesExternally(string code, string exceptionMessage = null)
     {
         using (ITestAssemblyContext testAssemblyContext = AssembliesManager.GetAssemblyContextFromCode(code))
         {
@@ -47,12 +47,13 @@ public class TestBase
         }
     }
 
-    protected void ShouldThrowExceptionOnGettingService(string code, string serviceName, string exceptionMessage = null)
+    protected void ShouldThrowExceptionOnGettingServiceExternally(string code, string serviceName, string exceptionMessage = null)
     {
         using(ITestAssemblyContext testAssemblyContext = AssembliesManager.GetAssemblyContextFromCode(code))
         {
             var assembly = testAssemblyContext.Assembly;
             var serviceTypeFromAssembly = assembly.GetTypeFromAssembly(serviceName);
+            ServiceCollection.WithAutojector(ConfigureOptions, assembly);
             var serviceProvider = ServiceCollection.BuildServiceProvider();
 
             var exception = Should.Throw<Exception>(() => serviceProvider.GetRequiredService(serviceTypeFromAssembly));
@@ -70,19 +71,27 @@ public class TestBase
     protected object ShouldSucceedOnGetService(Assembly assembly, string serviceName)
     {
         var serviceTypeFromAssembly = assembly.GetTypeFromAssembly(serviceName);
+        return ShouldSucceedOnGetService(serviceTypeFromAssembly);
+    }
+
+    protected object ShouldSucceedOnGetService(Type serviceTypeFromAssembly)
+    {
         var serviceProvider = ServiceCollection.BuildServiceProvider();
         var service = serviceProvider.GetRequiredService(serviceTypeFromAssembly);
         service.ShouldNotBeNull();
         return service;
     }
 
-    protected object ShouldSucceedOnGetService(string code,string abstractServiceName,string implementationServiceName)
+    protected object ShouldSucceedOnGetService(string code,string abstractServiceName,string implementationServiceName = null)
     {
         using (ITestAssemblyContext testAssemblyContext = AssembliesManager.GetAssemblyContextFromCode(code))
         {
             ServiceCollection.WithAutojector(ConfigureOptions);
             var service = ShouldSucceedOnGetService(testAssemblyContext.Assembly, abstractServiceName);
-            service.GetType().Name.ShouldBe(implementationServiceName);
+            if(implementationServiceName != null)
+            {
+                service.GetType().Name.ShouldBe(implementationServiceName);
+            }
             return service;
         }
     }

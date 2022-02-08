@@ -32,7 +32,7 @@ internal record DecoratorTypesOperator(
     private int GetDecoratorOrderNumber(Type decoratorType)
     {
         var orderAttributes = GetOrderAttributes(decoratorType);
-        ValidateAgainstMultipleOrderDecoratorsOnSameClass(orderAttributes);
+        ValidateAgainstMultipleOrderDecoratorsOnSameClass(orderAttributes, decoratorType);
         var attribute = orderAttributes.First();
         return attribute.Order;
     }
@@ -43,18 +43,18 @@ internal record DecoratorTypesOperator(
             .Select(attribute => (DecoratorOrderAttribute)attribute);
     }
 
-    private static void ValidateAgainstMultipleOrderDecoratorsOnSameClass(IEnumerable<DecoratorOrderAttribute> attributes)
+    private void ValidateAgainstMultipleOrderDecoratorsOnSameClass(IEnumerable<DecoratorOrderAttribute> attributes, Type decoratorType)
     {
         if (attributes.Skip(1).Any())
         {
-            throw new InvalidOperationException("Can not have multiple order operators");
+            throw new InvalidOperationException($"Can not have multiple order operators for {decoratorType?.Name}");
         }
     }
-    private static void ValidateAgainstMultipleUnorderedDecorators(IEnumerable<Type> unordedDecorators)
+    private void ValidateAgainstMultipleUnorderedDecorators(IEnumerable<Type> unordedDecorators)
     {
         if (unordedDecorators.Skip(1).Any())
         {
-            throw new InvalidOperationException("Can not have more than one unordered decorator");
+            throw new InvalidOperationException($"Can not have more than one unordered decorator for {DecoratedType.Name}");
         }
     }
 }

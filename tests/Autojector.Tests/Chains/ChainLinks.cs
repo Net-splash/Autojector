@@ -3,16 +3,8 @@ using Autojector.Abstractions;
 
 namespace Autojector.Tests.Chains;
 
-internal class ChainLinkResponse
-{
-
-}
-
-internal class ChainLinkRequest
-{
-
-}
-
+internal class ChainLinkResponse{}
+internal class ChainLinkRequest{}
 internal class ChainLink1 : IChainLink<ChainLinkRequest, ChainLinkResponse>
 {
     public bool CanHandleRequest(ChainLinkRequest request) => false;

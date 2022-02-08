@@ -33,4 +33,16 @@ public class ConfigInjector : TestBase
 
         config.Value.ShouldBe(5);
     }
+
+    [Fact]
+    public void ShouldFailToCreateWithNonEmptyConstructor()
+    {
+        var code = @"
+        public class MyConfig: Autojector.Abstractions.IConfig{
+            public MyConfig(int i){}
+            }
+        ";
+
+        ShouldThrowExceptionOnGettingServiceExternally(code, $"The type MyConfig doens't have an empty constructor as each IConfig require");
+    }
 }

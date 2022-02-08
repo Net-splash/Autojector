@@ -28,7 +28,7 @@ public class SimpleInjectorExternalAssembly : TestBase
         ";
 
         var exceptionMessage = "The interfaces IMyService are not implemented by MyService but are registered as injectable";
-        ShouldThrowOnBuildingServices(code, exceptionMessage);
+        ShouldThrowOnBuildingServicesExternally(code, exceptionMessage);
     }
 
     [Fact]

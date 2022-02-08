@@ -23,4 +23,3 @@ D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.dll
 D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\ref\Autojector.dll
 D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.xml
 D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.pdb
-D:\PersonalWork\Autojector\src\Autojector\obj\Debug\net6.0\Autojector.csproj.AssemblyReference.cache

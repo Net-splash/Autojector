@@ -23,7 +23,7 @@ internal class ConfigFactory
     {
         if(constructor == null)
         {
-            throw new ArgumentNullException($"The type {configType.Name} doens't have an empty constructor as each IConfig require to be");
+            throw new ArgumentNullException($"The type {configType?.Name} doens't have an empty constructor as each IConfig require");
         }
     }
 }

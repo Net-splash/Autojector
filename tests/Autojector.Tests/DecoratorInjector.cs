@@ -46,4 +46,17 @@ public class DecoratorInjector : TestBase
         service.UndecoratedFactoryProvidedService.ShouldBeAssignableTo<UndecoratedFactoryProvidedService>();
 
     }
+
+    [Fact]
+    public void ShouldFailWithMultipleUndecoratedExternalServices()
+    {
+        var code = @"
+        public interface IMyService{}
+        public class MyService: IMyService,Autojector.Abstractions.ITransient<IMyService>{}
+        public class FirstDecorator: IMyService,Autojector.Abstractions.IDecorator<IMyService>{}
+        public class SecondDecorator: IMyService,Autojector.Abstractions.IDecorator<IMyService>{}
+        ";
+
+        ShouldThrowOnBuildingServicesExternally(code, "Can not have more than one unordered decorator for IMyService");
+    }
 }
