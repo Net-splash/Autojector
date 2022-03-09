@@ -1,5 +1,5 @@
 ﻿using Autojector.TestAssemblyGenerator;
-using Autojector.Tests.SimpleInjectableClasses;
+using Autojector.Tests.SimpleInjectable;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using System;

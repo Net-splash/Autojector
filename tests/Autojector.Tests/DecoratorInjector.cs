@@ -22,6 +22,12 @@ public class DecoratorInjector : TestBase
         ServiceShouldSucceedLocally<IUndecoratedService>().ShouldBeAssignableTo<DecoratedService>();
     }
 
+    [Fact]
+    public void ShouldDecorateAttributService()
+    {
+        ServiceShouldSucceedLocally<IDecoratedByAttribute>().ShouldBeAssignableTo<DecoratorByAttribute>();
+    }
+
 
     [Fact]
     public void ShouldAddOrderedDecorators()

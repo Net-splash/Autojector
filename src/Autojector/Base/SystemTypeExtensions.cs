@@ -11,9 +11,19 @@ internal static class SystemTypeExtensions
     {
         var allInterfaces = type.GetInterfaces();
         var groupedInterfaces = allInterfaces.ToLookup(filter);
-        var lifeTypeInterface = groupedInterfaces[true];
+        var matchCondition = groupedInterfaces[true];
         var otherInterfaces = groupedInterfaces[false];
         var lifeTypeInterfacesFromOtherInterfaces = otherInterfaces.SelectMany(x => x.GetInterfacesFromTree(filter));
-        return lifeTypeInterface.Concat(lifeTypeInterfacesFromOtherInterfaces).Distinct();
+        return matchCondition.Concat(lifeTypeInterfacesFromOtherInterfaces).Distinct();
+    }
+
+    public static IEnumerable<Type> GetConcrateImplementationThatMatchGenericsDefinition(this Type type, IEnumerable<Type> genericBaseDefinitions)
+    {
+        return type.GetInterfacesFromTree(i => i.IsGenericType && genericBaseDefinitions.Contains(i.GetGenericTypeDefinition()));
+    }
+
+    public static bool HasAnyConcrateImplementationThatMatchGenericsDefinition(this Type type, IEnumerable<Type> genericBaseDefinitions)
+    {
+        return type.GetConcrateImplementationThatMatchGenericsDefinition(genericBaseDefinitions).Any();
     }
 }

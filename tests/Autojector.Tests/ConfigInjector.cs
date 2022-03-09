@@ -17,21 +17,38 @@ public class ConfigInjector : TestBase
     [Fact]
     public void ShouldAddConfig()
     {
-        //Arrange
-        var configs = (new List<KeyValuePair<string, string>>() {
-            new KeyValuePair<string, string>("TestConfig:Value","5")
-        });
+        var config = ShouldCreateConfig<TestConfig>();
 
-        IConfiguration configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(configs)
-            .Build();
-
-        ServiceCollection.AddSingleton(configuration);
-        
         //Assert
-        var config = ServiceShouldSucceedLocally<TestConfig>();
+        config.Data.ShouldBe(5);
+    }
 
-        config.Value.ShouldBe(5);
+    [Fact]
+    public void ShouldAddTestAttributeConfig()
+    {
+        var config = ShouldCreateConfig<TestAttributeConfig>();
+
+        //Assert
+        config.Data.ShouldBe(5);
+    }
+
+
+    [Fact]
+    public void ShouldAddUnimplementedConfig()
+    {
+        var config = ShouldCreateConfig<IUnimplementedConfig>("UnimplementedConfig");
+
+        //Assert
+        config.Data.ShouldBe(5);
+    }
+
+    [Fact]
+    public void ShouldAddUnimplementedAttributeConfig()
+    {
+        var config = ShouldCreateConfig<IUnimplementedAttributeConfig>("UnimplementedAttributeConfig");
+
+        //Assert
+        config.Data.ShouldBe(5);
     }
 
     [Fact]
@@ -44,5 +61,25 @@ public class ConfigInjector : TestBase
         ";
 
         ShouldThrowExceptionOnGettingServiceExternally(code, $"The type MyConfig doens't have an empty constructor as each IConfig require");
+    }
+
+    private T ShouldCreateConfig<T>(string key = null)
+        where T : class
+    {
+        key = key == null ? typeof(T).Name : key;
+        //Arrange
+        var configs = (new List<KeyValuePair<string, string>>() {
+            new KeyValuePair<string, string>($"{key}:Data","5")
+        });
+
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(configs)
+            .Build();
+
+        ServiceCollection.AddSingleton(configuration);
+
+        //Act
+        var config = ServiceShouldSucceedLocally<T>();
+        return config;
     }
 }

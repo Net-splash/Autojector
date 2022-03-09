@@ -1,7 +1,8 @@
-﻿using Autojector.Registers;
+﻿using Autojector.Base;
+using Autojector.Registers;
 using Autojector.Registers.AsyncFactories;
 using Autojector.Registers.Base;
-using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,21 +10,36 @@ using static Autojector.Base.Types;
 namespace Autojector.Features.AsyncFactories;
 internal class AutojectorAsyncFactoriesFeature : BaseAutojectorFeature
 {
+    private record FactoryWithImplementedType(Type Factory)
+    {
+        public IEnumerable<Type> ImplementedFactories
+        {
+            get
+            {
+                return Factory.GetConcrateImplementationThatMatchGenericsDefinition(AsyncFactoriesTypeInterfaces);
+            }
+        }
+    }
     private IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory { get; }
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.AsyncFactories;
-    public AutojectorAsyncFactoriesFeature(IEnumerable<Assembly> assemblies,IServiceCollection service) : base(assemblies, service)
+    public AutojectorAsyncFactoriesFeature(
+        IEnumerable<Assembly> assemblies,
+        IAsyncFactoryRegisterStrategyFactory asyncFactoryRegisterStrategyFactory
+        ) : base(assemblies)
     {
-        AsyncFactoryRegisterStrategyFactory = new AsyncFactoryRegisterStrategyFactory(service);
+        AsyncFactoryRegisterStrategyFactory = asyncFactoryRegisterStrategyFactory;
     }
 
 
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
         var factories = NonAbstractClassesFromAssemblies
-            .Where(type => type.GetInterfaces()
-                               .Any(i => i.IsGenericType &&
-                                    i.GetGenericTypeDefinition() == AsyncFactoryType));
+            .Select(type => new FactoryWithImplementedType(FactoryType))
+            .Where(factoryWithImplementedType => factoryWithImplementedType.ImplementedFactories.Any());
 
-        return factories.Select(type => new AsyncFactoryInjectableTypeOperator(type, AsyncFactoryRegisterStrategyFactory));
+        return factories.Select(factoryWithImplementedType => new AsyncFactoryInjectableTypeOperator(
+            factoryWithImplementedType.Factory, 
+            factoryWithImplementedType.ImplementedFactories,
+            AsyncFactoryRegisterStrategyFactory));
     }
 }

@@ -9,8 +9,8 @@ namespace Autojector.Tests;
 public class TestBase
 {
     protected IServiceCollection ServiceCollection;
-    protected Func<AutojectorBuilder, IAutojectorService> ConfigureOptions { get; }
-    protected TestBase(Func<AutojectorBuilder, IAutojectorService> configureOptions) : base()
+    protected Func<IAutojectorBuilder, IAutojectorService> ConfigureOptions { get; }
+    protected TestBase(Func<IAutojectorBuilder, IAutojectorService> configureOptions) : base()
     {
         ServiceCollection = new ServiceCollection();
         ConfigureOptions = configureOptions;

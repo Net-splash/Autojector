@@ -1,4 +1,4 @@
-﻿using Autojector.Tests.SimpleInjectableClasses;
+﻿using Autojector.Tests.SimpleInjectable;
 using Shouldly;
 using Xunit;
 
@@ -14,53 +14,32 @@ public class SimpleInjectorInternalAssembly : TestBase
 
     [Fact]
     public void ShouldAddTestSingletonClass()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<TestSingleton>();
-    }
+        => ServiceShouldSucceedLocally<TestSingleton>();
 
     [Fact]
     public void ShouldAddTestSingletonInterface()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<ITestSingleton>();
-    }
+        => ServiceShouldSucceedLocally<ITestSingleton>();
+    
     [Fact]
     public void ShouldAddDependentSingletonClass()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<TestDependentSingleton>();
-    }
+        => ServiceShouldSucceedLocally<TestDependentSingleton>();
 
     [Fact]
     public void ShouldAddTransientClass()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<TestTransient>();
-    }
-
+        => ServiceShouldSucceedLocally<TestTransient>();
 
     [Fact]
     public void ShouldAddTransientInterface()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<ITestTransient>();
-    }
-
+        => ServiceShouldSucceedLocally<ITestTransient>();
+    
     [Fact]
     public void ShouldAddScopedInterface()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<ITestScope>();
-    }
+        => ServiceShouldSucceedLocally<ITestScope>();
 
     [Fact]
     public void ShouldAddScopedClass()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<TestScope>();
-    }
-
+        => ServiceShouldSucceedLocally<TestScope>();
+    
     [Fact]
     public void ShouldAddTransientDependentOnSingleton()
     {
@@ -70,16 +49,18 @@ public class SimpleInjectorInternalAssembly : TestBase
     }
 
     [Fact]
-    public void ShouldAddTransientClassesWithNoInterface()
-    {
-        //Assert
-        ServiceShouldSucceedLocally<NoInterfaceTransient>();
-    }
+    public void ShouldAddTransientClassesWithNoInterface() 
+        => ServiceShouldSucceedLocally<NoInterfaceTransient>();
 
     [Fact]
-    public void ShouldFailWhenNoDoesntImplementInjectable()
+    public void ShouldFailWhenNoDoesntImplementInjectable() 
+        => ShouldFailOnGetServiceLocally<NoLifetimeType>();
+
+
+    [Fact]
+    public void ShouldAddTransientClassesWithAttribute()
     {
-        //Assert
-        ShouldFailOnGetServiceLocally<NoLifetimeType>();
+        ServiceShouldSucceedLocally<IAttributeTransient>();
     }
+
 }

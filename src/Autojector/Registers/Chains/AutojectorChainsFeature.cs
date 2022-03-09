@@ -11,11 +11,14 @@ namespace Autojector.Registers.Chains;
 internal class AutojectorChainsFeature : BaseAutojectorFeature
 {
     private record ChainLinkWithTypes(Type ChainLinkType,Type RequestType,Type ResponseType);
-    public ChainRegisterStrategy ChainRegisterStrategy { get; }
+    public IChainRegisterStrategy ChainRegisterStrategy { get; }
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.Chains;
-    public AutojectorChainsFeature(IEnumerable<Assembly> assemblies, IServiceCollection services) : base(assemblies, services)
+    public AutojectorChainsFeature(
+        IEnumerable<Assembly> assemblies,
+        IChainRegisterStrategy chainRegisterStrategy
+        ) : base(assemblies)
     {
-        ChainRegisterStrategy = new ChainRegisterStrategy(Services);
+        ChainRegisterStrategy = chainRegisterStrategy;
     }
 
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()

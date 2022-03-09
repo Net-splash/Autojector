@@ -32,7 +32,7 @@ public class ChainInjector : TestBase
             internal class ChainLinkResponse{}
             internal class ChainLinkRequest {}
             internal class Chain1 : Autojector.Abstractions.IChainLink<ChainLinkRequest,ChainLinkResponse>{
-                public bool CanHandleRequest(ChainLinkRequest request) => false;
+                public bool CanHandle(ChainLinkRequest request) => false;
 
                 public ChainLinkResponse Handle(ChainLinkRequest request)
                 {
@@ -41,7 +41,7 @@ public class ChainInjector : TestBase
             }
 
             internal class Chain2 : Autojector.Abstractions.IChainLink<ChainLinkRequest,ChainLinkResponse>{
-                public bool CanHandleRequest(ChainLinkRequest request) => false;
+                public bool CanHandle(ChainLinkRequest request) => false;
 
                 public ChainLinkResponse Handle(ChainLinkRequest request)
                 {
@@ -50,7 +50,7 @@ public class ChainInjector : TestBase
             }
 
             internal class Chain3 : Autojector.Abstractions.IChainLink<ChainLinkRequest,ChainLinkResponse>{
-                public bool CanHandleRequest(ChainLinkRequest request) => true;
+                public bool CanHandle(ChainLinkRequest request) => true;
 
                 public ChainLinkResponse Handle(ChainLinkRequest request)
                 {
@@ -59,8 +59,6 @@ public class ChainInjector : TestBase
             }
         ";
 
-        ;
-        ;
 
         using (ITestAssemblyContext testAssemblyContext = AssembliesManager.GetAssemblyContextFromCode(code))
         {

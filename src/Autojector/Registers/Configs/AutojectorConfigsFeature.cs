@@ -1,27 +1,28 @@
-﻿
-using Autojector.Registers.Base;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using Autojector.Base;
+using Autojector.Registers.Configs.ImplementationVersions;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using static Autojector.Base.Types;
 
 namespace Autojector.Registers.Configs;
-internal class AutojectorConfigsFeature : BaseAutojectorFeature
+internal class AutojectorConfigsFeature : BaseVersionedAutojectorFeature
 {
     private IConfigRegisterStrategy ConfigRegisterStrategy { get; }
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.Configs;
-    public AutojectorConfigsFeature(IEnumerable<Assembly> assemblies, IServiceCollection services) :
-        base(assemblies, services)
+    public AutojectorConfigsFeature(
+        IEnumerable<Assembly> assemblies,
+        IConfigRegisterStrategy configRegisterStrategy
+        ) : base(assemblies)
     {
-        ConfigRegisterStrategy = new ConfigRegisterStrategy(Services);
+        ConfigRegisterStrategy = configRegisterStrategy;
     }
 
-    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
+    protected override IEnumerable<IFeatureImplementationVersion> GetImplementationVersions()
     {
-        var configs = NonAbstractClassesFromAssemblies.Where(c => c.GetInterfaces().Any(t => t == ConfigType));
-        var configConfigurators = configs.Select(c => new ConfigTypeOperator(c, ConfigRegisterStrategy));
-        return configConfigurators;
+        return new List<IFeatureImplementationVersion>()
+        {
+            new ClassConfigVersion(NonAbstractClassesFromAssemblies,ConfigRegisterStrategy),
+            new AttributeConfigVersion(NonAbstractClassesFromAssemblies,ConfigRegisterStrategy),
+            new UnimplementedInterfaceConfigVersion(InterfacesFromAssemblies,ConfigRegisterStrategy)
+        };
     }
 }

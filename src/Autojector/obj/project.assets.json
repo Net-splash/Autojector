@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Autojector.Abstraction/1.0.13": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/Autojector.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net6.0/Autojector.Abstractions.dll": {}
-        }
-      },
       "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -73,25 +64,20 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "Autojector.Abstraction/1.0.13": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Autojector.Abstraction.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Autojector.Abstraction.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Autojector.Abstraction/1.0.13": {
-      "sha512": "b9aDtrqm6y2FFX8B9xq6kFOsbp3BD2qo9j+BQrxb/yhYIbP2lcmCQSL1kThXMTRo2YuPXrlt+B5tP5mTopBPLQ==",
-      "type": "package",
-      "path": "autojector.abstraction/1.0.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "autojector-icon.png",
-        "autojector.abstraction.1.0.13.nupkg.sha512",
-        "autojector.abstraction.nuspec",
-        "lib/net6.0/Autojector.Abstractions.dll",
-        "lib/net6.0/Autojector.Abstractions.xml"
-      ]
-    },
     "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
       "sha512": "qWzV9o+ZRWq+pGm+1dF+R7qTgTYoXvbyowRoBxQJGfqTpqDun2eteerjRQhq5PQ/14S+lqto3Ft4gYaRyl4rdQ==",
       "type": "package",
@@ -204,6 +190,11 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Autojector.Abstraction/1.0.13": {
+      "type": "project",
+      "path": "../Autojector.Abstractions/Autojector.Abstractions.csproj",
+      "msbuildProject": "../Autojector.Abstractions/Autojector.Abstractions.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -247,7 +238,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj": {
+              "projectPath": "D:\\PersonalWork\\Autojector\\src\\Autojector.Abstractions\\Autojector.Abstractions.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -260,10 +255,6 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "Autojector.Abstraction": {
-            "target": "Package",
-            "version": "[1.0.13, )"
-          },
           "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",
             "version": "[6.0.0, )"
@@ -292,7 +283,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

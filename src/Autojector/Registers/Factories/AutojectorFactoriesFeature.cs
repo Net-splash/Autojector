@@ -14,9 +14,12 @@ internal class AutojectorFactoriesFeature : BaseAutojectorFeature
 {
     private IFactoryRegisterStrategyFactory FactoryRegisterStrategyFactory { get; }
     public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.Factories;
-    public AutojectorFactoriesFeature(IEnumerable<Assembly> assemblies,IServiceCollection services) : base(assemblies, services)
+    public AutojectorFactoriesFeature(
+        IEnumerable<Assembly> assemblies,
+        IFactoryRegisterStrategyFactory factoryRegisterStrategyFactory
+        ) : base(assemblies)
     {
-        FactoryRegisterStrategyFactory = new FactoryRegisterStrategyFactory(Services);
+        FactoryRegisterStrategyFactory = factoryRegisterStrategyFactory;
     }
 
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()

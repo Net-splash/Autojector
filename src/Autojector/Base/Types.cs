@@ -6,12 +6,24 @@ namespace Autojector.Base;
 internal class Types
 {
     public static Type InjectableType = typeof(IInjectable);
+
     public static Type TransientType = typeof(ITransient<>);
     public static Type ScopeType = typeof(IScope<>);
     public static Type SingletonType = typeof(ISingleton<>);
     public static IEnumerable<Type> SimpleLifetypeInterfaces = new List<Type>()
         {
             TransientType,
+            ScopeType,
+            SingletonType
+        };
+
+    public static Type TransientAttributeType = typeof(TransientAttribute);
+    public static Type ScopeAttributeType = typeof(ScopeAttribute);
+    public static Type SingletonAttributeType = typeof(SingletonAttribute);
+
+    public static IEnumerable<Type> SimpleCustomAttributes = new List<Type>()
+        {
+            TransientAttributeType,
             ScopeType,
             SingletonType
         };

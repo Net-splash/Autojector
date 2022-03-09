@@ -22,12 +22,12 @@ public static class AutojectorExtensions
     /// </param>
     /// <param name="assemblies">
     /// This should be a list with all the assembies where the autojector will search for services.
-    /// If null the AppDomain.CurrentDomain..GetAssemblies() will be used.
+    /// If null the AppDomain.CurrentDomain.GetAssemblies() will be used.
     /// </param>
     /// <returns>
     /// Will return the same IServiceCollection received as input but modified so it will contain all autoinjected services.
     /// </returns>
-    public static IServiceCollection WithAutojector(this IServiceCollection services, Func<AutojectorBuilder,IAutojectorService> configureOptions = null, params Assembly[] assemblies)
+    public static IServiceCollection WithAutojector(this IServiceCollection services, Func<IAutojectorBuilder,IAutojectorService> configureOptions, params Assembly[] assemblies)
     {
         var autojectorBuilder = new AutojectorBuilder(assemblies, services);
         if(configureOptions == null)
@@ -73,7 +73,9 @@ public static class AutojectorExtensions
         autojectorBuilder.UseDecorator();
         autojectorBuilder.UseConfigs();
         autojectorBuilder.UseChains();
-        autojectorBuilder.Build().ConfigureServices();
+
+        var autojectorService = autojectorBuilder.Build();
+        autojectorService.ConfigureServices();
 
         return services;
     }

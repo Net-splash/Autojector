@@ -15,7 +15,7 @@ internal class Chain<TRequest, TResponse> : IChain<TRequest, TResponse>
     {
         foreach(var chainLink in ChainLinks)
         {
-            if (chainLink.CanHandleRequest(request))
+            if (chainLink.CanHandle(request))
             {
                 return chainLink.Handle(request);
             }

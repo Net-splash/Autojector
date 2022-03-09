@@ -1,5 +1,5 @@
 ﻿using Autojector.Tests.Factories;
-using Autojector.Tests.SimpleInjectableClasses;
+using Autojector.Tests.SimpleInjectable;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using Xunit;

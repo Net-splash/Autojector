@@ -1,28 +1,23 @@
-﻿using Autojector.Base;
-using Autojector.Registers.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autojector.Base;
+using Autojector.Registers.Base;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.AsyncFactories;
-internal record AsyncFactoryInjectableTypeOperator(Type Type, IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory) : 
+internal record AsyncFactoryInjectableTypeOperator(
+    Type Type, 
+    IEnumerable<Type> FactoriesFromCurrentType,
+    IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory) : 
     ITypeConfigurator
 {
     public void ConfigureServices()
     {
-        var allFactoriesFromCurrentType = GetAllAsyncFactories();
-        foreach (var factoryInterface in allFactoriesFromCurrentType)
+        foreach (var factoryInterface in FactoriesFromCurrentType)
         {
             var lifetypeRegisterStrategy = AsyncFactoryRegisterStrategyFactory.GetAsyncFactoryLifetypeRegisterStrategy(factoryInterface.GetGenericTypeDefinition());
             lifetypeRegisterStrategy.Add(Type, factoryInterface);
         }
-
-    }
-
-    private IEnumerable<Type> GetAllAsyncFactories()
-    {
-        var filteredInterfaces = Type.GetInterfacesFromTree(i => i.IsGenericType && AsyncFactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
-        return filteredInterfaces;
     }
 }

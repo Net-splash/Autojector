@@ -20,24 +20,19 @@ internal class DecoratorRegisterStrategy : IDecoratorRegisterStrategy
 
     public IServiceCollection Add(Type decorator, Type decorated)
     {
-        var serviceType = decorator.GetInterfaces()
-                                   .SingleOrDefault(s => s.IsGenericType && s.GetGenericTypeDefinition() == DecoratorType)
-                                   .GetGenericArguments()
-                                   .FirstOrDefault();
-
-        var wrappedDescriptor = Services.FirstOrDefault(s => s.ServiceType == serviceType);
+        var wrappedDescriptor = Services.FirstOrDefault(s => s.ServiceType == decorated);
 
         if (wrappedDescriptor == null)
         {
-            throw new InvalidOperationException($"{serviceType.Name} is not registered. Can not be decorated");
+            throw new InvalidOperationException($"{decorated.Name} is not registered. Can not be decorated");
         }
 
         var objectFactory = ActivatorUtilities.CreateFactory(
           decorator,
-          new[] { serviceType });
+          new[] { decorated });
 
         Services.Replace(ServiceDescriptor.Describe(
-          serviceType,
+          decorated,
           s => objectFactory(s, new[] { CreateInstance(s, wrappedDescriptor) }),
           wrappedDescriptor.Lifetime)
         );

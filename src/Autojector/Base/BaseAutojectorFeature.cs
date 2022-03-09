@@ -12,7 +12,7 @@ internal abstract class BaseAutojectorFeature : BaseTypeConfigurator,IAutojector
 {
     protected IEnumerable<Assembly> Assemblies { get; }
 
-    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies,IServiceCollection services) : base(services)
+    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies)
     {
         Assemblies = assemblies;
     }
@@ -39,6 +39,14 @@ internal abstract class BaseAutojectorFeature : BaseTypeConfigurator,IAutojector
         get
         {
             return AllTypesFromAssemblies.Where(type => type.IsClass && !type.IsAbstract);
+        }
+    }
+
+    protected IEnumerable<Type> InterfacesFromAssemblies
+    {
+        get
+        {
+            return AllTypesFromAssemblies.Where(type => type.IsInterface);
         }
     }
 
