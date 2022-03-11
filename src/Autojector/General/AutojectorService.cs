@@ -23,7 +23,7 @@ internal class AutojectorService : IAutojectorService, ITypeConfigurator
     }
     private void ValidateAgainstOnlyDecoratorAdded()
     {
-        var decoratorFeatures = OrderedFeatures.Where(f => f.FeatureType == Registers.AutojectorFeaturesEnum.Decorators);
+        var decoratorFeatures = OrderedFeatures.Where(f => f.FeatureType == AutojectorFeaturesEnum.Decorators);
         if (!OrderedFeatures.Except(decoratorFeatures).Any())
         {
             throw new InvalidOperationException(@$"You can't have only decorators feature because there will be nothing to decorate. 

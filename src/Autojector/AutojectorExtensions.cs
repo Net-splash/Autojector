@@ -1,4 +1,5 @@
-﻿using Autojector.General;
+﻿using Autojector.DependencyInjector;
+using Autojector.General;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
@@ -40,7 +41,7 @@ public static class AutojectorExtensions
         params Assembly[] assemblies)
     {
         configureAutojectorBuilder = configureAutojectorBuilder ?? throw new ArgumentNullException(nameof(configureAutojectorBuilder));
-        var autojectorBuilder = new AutojectorBuilder(assemblies, services);
+        var autojectorBuilder = new AutojectorBuilder(assemblies, new MicrosoftDependencyInjectorProvider(services));
         configureAutojectorBuilder(autojectorBuilder);
         var autojectorService = autojectorBuilder.Build();
         autojectorService.ConfigureServices();
@@ -63,7 +64,8 @@ public static class AutojectorExtensions
     /// </returns>
     public static IServiceCollection AddAutojector(
         this IServiceCollection services,
-        params Assembly[] assemblies) => services.WithAutojector(new ConfigureAutojectorBuilderDelegate(UseAllAutojectorFeatures), assemblies);
+        params Assembly[] assemblies) 
+        => services.WithAutojector(new ConfigureAutojectorBuilderDelegate(UseAllAutojectorFeatures), assemblies);
 
     /// <summary>
     /// This method is used to create a ConfigureAutojectorBuilderDelegate with all the features Autojector supports
