@@ -2,10 +2,10 @@
 internal enum AutojectorFeaturesEnum
 {
     SimpleInjection = 0,
-    Factories = 1,
-    AsyncFactories = 2,
-    Chains = 3,
-    Decorators = 4,
-    Configs = 9,
-    Validators = 10,
+    Factories = 10,
+    AsyncFactories = 20,
+    Chains = 30,
+    Decorators = 40,
+    Configs = 50,
+    Validators = 60,
 }

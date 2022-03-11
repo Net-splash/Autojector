@@ -1,10 +1,9 @@
 ﻿
-using Autojector.Registers.Base;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Autojector.Base;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.Chains;
@@ -12,7 +11,7 @@ internal class AutojectorChainsFeature : BaseAutojectorFeature
 {
     private record ChainLinkWithTypes(Type ChainLinkType,Type RequestType,Type ResponseType);
     public IChainRegisterStrategy ChainRegisterStrategy { get; }
-    public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.Chains;
+    public override AutojectorFeaturesEnum FeatureType => AutojectorFeaturesEnum.Chains;
     public AutojectorChainsFeature(
         IEnumerable<Assembly> assemblies,
         IChainRegisterStrategy chainRegisterStrategy

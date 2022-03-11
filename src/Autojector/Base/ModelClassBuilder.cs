@@ -1,14 +1,15 @@
 ﻿using Autojector.Base;
+using Autojector.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text.RegularExpressions;
 
-namespace Autojector.Registers.Base;
+namespace Autojector.Base;
 
-internal record ClassBuilder(Type InterfaceType)
+internal record ModelClassBuilder(Type InterfaceType)
 {
     private static ModuleBuilder _moduleBuilder;
     private static ModuleBuilder ModuleBuilder
@@ -31,19 +32,35 @@ internal record ClassBuilder(Type InterfaceType)
     }
     public Type BuildType()
     {
-        var typeName = $"{ Constants.AutojectorPrefixKey}{InterfaceType.Name.RemoveInterfacePrefix()}_{Guid.NewGuid():N}";
+        var properties = InterfaceType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+        ValidateAgainstMethods();
+        var typeName = $"{ Constants.AutojectorPrefixKey}{InterfaceType.Name.RemoveInterfacePrefix()}{Guid.NewGuid()}";
         var typeBuilder = ModuleBuilder.DefineType(typeName, TypeAttributes.Public);
 
         typeBuilder.AddInterfaceImplementation(InterfaceType);
         typeBuilder.DefineDefaultConstructor(MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
 
-        var properties = InterfaceType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
 
         BuildProperties(typeBuilder, properties);
 
         return typeBuilder.CreateType();
 
     }
+
+    private void ValidateAgainstMethods()
+    {
+        var methods = InterfaceType.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+            .Where(m => !m.IsSpecialName);
+        if (methods.Any())
+        {
+            var methodNames = methods.Select(m => m.Name);
+            var joinedMethodNames = string.Join(",",methodNames);
+            throw new InvalidOperationException(@$"
+                        The Autojector class generator is unable to create implement methods. 
+                        Please try removing the methods from your code : {joinedMethodNames}");
+        }
+    }
+
     private static void BuildProperties(TypeBuilder typeBuilder, IEnumerable<PropertyInfo> properties)
     {
         foreach (var property in properties)

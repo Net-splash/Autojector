@@ -20,7 +20,10 @@ public interface IAutojectorBuilder
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
     /// Only exception is the Build method.
     /// </returns>
-    public IAutojectorBuilder UseSimpleInjection(params Assembly[] assemblies);
+    public IAutojectorBuilder UseSimpleInjectionByInterface(params Assembly[] assemblies);
+
+
+    public IAutojectorBuilder UseSimpleInjectionByAttribute(params Assembly[] assemblies);
 
     /// <summary>
     /// This method will add the feature of Autoinjector where all the classes that implement factory interfaces: ITransientFactory\f[T\f], IScopFactorye\f[T\f], ISingletonFactory\f[T\f]
@@ -36,7 +39,6 @@ public interface IAutojectorBuilder
     /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseFactories(params Assembly[] assemblies);
-
 
     /// <summary>
     /// This method will add the feature of Autoinjector where all the classes that implement async factory interfaces: IAsyncTransientFactory\f[T\f], IAsyncScopFactorye\f[T\f], IAsyncSingletonFactory\f[T\f]
@@ -70,8 +72,8 @@ public interface IAutojectorBuilder
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
     /// Only exception is the Build method.
     /// </returns>
-    public IAutojectorBuilder UseDecorator(params Assembly[] assemblies);
-
+    public IAutojectorBuilder UseDecoratorByInterface(params Assembly[] assemblies);
+    public IAutojectorBuilder UseDecoratorByAttribute(params Assembly[] assemblies);
     /// <summary>
     /// This method will add the feature of Autoinjector which will register all clases that implement the IConfig interface
     /// as self services and will bind the data from Configuration to an instance of the class.
@@ -85,8 +87,11 @@ public interface IAutojectorBuilder
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
     /// Only exception is the Build method.
     /// </returns>
-    public IAutojectorBuilder UseConfigs(params Assembly[] assemblies);
-
+    public IAutojectorBuilder UseConfigsByInteface(params Assembly[] assemblies);
+    public IAutojectorBuilder UseConfigsByAttribute(params Assembly[] assemblies);
+    public IAutojectorBuilder UseUnimplementedConfigsByInteface(params Assembly[] assemblies);
+    public IAutojectorBuilder UseUnimplementedConfigsByAttribute(params Assembly[] assemblies);
+    
     /// <summary>
     /// This method will add the feature of Autoinjector will register all clases that implement IChainLink\f[TRequest,TResponse\f] 
     /// as a chain grouped by TRequest and TResponse. Will provide the class IChain\f[TRequest,TResponse\f] that expose the method Handle.

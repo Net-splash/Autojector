@@ -1,6 +1,5 @@
 ﻿using Autojector.Base;
 using Autojector.Features.AsyncFactories;
-using Autojector.Features.Base;
 using Autojector.Features.Decorators;
 using Autojector.Features.Factories;
 using Autojector.Features.SimpleInjection;
@@ -16,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Autojector;
+namespace Autojector.General;
 
 internal class AutojectorBuilder : IAutojectorBuilder
 {
@@ -27,18 +26,27 @@ internal class AutojectorBuilder : IAutojectorBuilder
         {
             assemblies = AppDomain.CurrentDomain.GetAssemblies();
         }
-        Assemblies = assemblies;
-        Services = services;
+
+        Assemblies = assemblies ?? throw new ArgumentNullException(nameof(assemblies));
+        Services = services ?? throw new ArgumentNullException(nameof(services));
     }
     private List<IAutojectorFeature> Features { get; }
     private Assembly[] Assemblies { get; }
     private IServiceCollection Services { get; }
 
-    public IAutojectorBuilder UseSimpleInjection(params Assembly[] assemblies)
+    public IAutojectorBuilder UseSimpleInjectionByInterface(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
         var simpleRegisterStrategyFactory = new SimpleRegisterStrategyFactory(Services);
-        Features.Add(new AutojectorSimpleInjectionFeature(assemblies, simpleRegisterStrategyFactory));
+        Features.Add(new AutojectorSimpleInjectionByInterfaceFeature(assemblies, simpleRegisterStrategyFactory));
+        return this;
+    }
+
+    public IAutojectorBuilder UseSimpleInjectionByAttribute(params Assembly[] assemblies)
+    {
+        assemblies = GetAssemblies(assemblies);
+        var simpleRegisterStrategyFactory = new SimpleRegisterStrategyFactory(Services);
+        Features.Add(new AutojectorSimpleInjectionByAttributeFeature(assemblies, simpleRegisterStrategyFactory));
         return this;
     }
 
@@ -58,19 +66,51 @@ internal class AutojectorBuilder : IAutojectorBuilder
         return this;
     }
 
-    public IAutojectorBuilder UseDecorator(params Assembly[] assemblies)
+    public IAutojectorBuilder UseDecoratorByInterface(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
         var decoratorRegisterStrategy = new DecoratorRegisterStrategy(Services);
-        Features.Add(new AutojectorDecoratorsFeature(assemblies, decoratorRegisterStrategy));
+        Features.Add(new AutojectorDecoratorsByInterfaceFeature(assemblies, decoratorRegisterStrategy));
         return this;
     }
 
-    public IAutojectorBuilder UseConfigs(params Assembly[] assemblies)
+    public IAutojectorBuilder UseDecoratorByAttribute(params Assembly[] assemblies)
+    {
+        assemblies = GetAssemblies(assemblies);
+        var decoratorRegisterStrategy = new DecoratorRegisterStrategy(Services);
+        Features.Add(new AutojectorDecoratorsByAttributeFeature(assemblies, decoratorRegisterStrategy));
+        return this;
+    }
+
+    public IAutojectorBuilder UseConfigsByInteface(params Assembly[] assemblies)
     {
         assemblies = GetAssemblies(assemblies);
         var configRegisterStrategy = new ConfigRegisterStrategy(Services);
-        Features.Add(new AutojectorConfigsFeature(assemblies, configRegisterStrategy));
+        Features.Add(new AutojectorConfigsByInterfaceFeature(assemblies, configRegisterStrategy));
+        return this;
+    }
+
+    public IAutojectorBuilder UseConfigsByAttribute(params Assembly[] assemblies)
+    {
+        assemblies = GetAssemblies(assemblies);
+        var configRegisterStrategy = new ConfigRegisterStrategy(Services);
+        Features.Add(new AutojectorConfigsByAttributeFeature(assemblies, configRegisterStrategy));
+        return this;
+    }
+
+    public IAutojectorBuilder UseUnimplementedConfigsByInteface(params Assembly[] assemblies)
+    {
+        assemblies = GetAssemblies(assemblies);
+        var configRegisterStrategy = new ConfigRegisterStrategy(Services);
+        Features.Add(new AutojectorConfigsUnimplementedByInterfaceFeature(assemblies, configRegisterStrategy));
+        return this;
+    }
+
+    public IAutojectorBuilder UseUnimplementedConfigsByAttribute(params Assembly[] assemblies)
+    {
+        assemblies = GetAssemblies(assemblies);
+        var configRegisterStrategy = new ConfigRegisterStrategy(Services);
+        Features.Add(new AutojectorConfigsUnimplementedByAttributeFeature(assemblies, configRegisterStrategy));
         return this;
     }
 
@@ -84,27 +124,14 @@ internal class AutojectorBuilder : IAutojectorBuilder
 
     public IAutojectorService Build()
     {
-        ValidateAgainstOnlyDecoratorAdded();
         var orderedFeatures = GetAutojectorFeatures();
         return new AutojectorService(orderedFeatures);
     }
-
-    private void ValidateAgainstOnlyDecoratorAdded()
-    {
-        var decoratorFeatures = Features.Where(f => f.GetType() == typeof(AutojectorDecoratorsFeature));
-        if(decoratorFeatures.Count() == Features.Count())
-        {
-            throw new InvalidOperationException(@$"You can't have only decorators feature because there will be nothing to decorate. 
-                            Please make sure to call other methods from builder beside UseDecorator");
-        }
-    }
-
     private IEnumerable<IAutojectorFeature> GetAutojectorFeatures()
     {
-        var orderedFeatures = Features.OrderBy(feature => feature.Priority);
+        var orderedFeatures = Features.OrderBy(feature => feature.FeatureType);
         return orderedFeatures;
     }
-
     private Assembly[] GetAssemblies(Assembly[] assemblies)
     {
         if (assemblies == null || !assemblies.Any())

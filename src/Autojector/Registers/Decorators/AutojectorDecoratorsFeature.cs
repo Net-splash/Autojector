@@ -1,32 +1,31 @@
-﻿using Autojector.Base;
-using Autojector.Features.Decorators.ImplementationVersion;
+﻿using Autojector.Abstractions;
+using Autojector.Base;
 using Autojector.Registers;
 using Autojector.Registers.Decorators;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Autojector.Features.Decorators;
-internal record DecoratorWithDecoratedType(Type Decorator, Type Decorated);
-internal class AutojectorDecoratorsFeature : BaseVersionedAutojectorFeature
+internal class AutojectorDecoratorsByAttributeFeature : BaseAutojectorFeature
 {
     private IDecoratorRegisterStrategy DecoratorRegisterStrategy { get; }
-    public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.Decorators;
-    public AutojectorDecoratorsFeature(
+    public override AutojectorFeaturesEnum FeatureType => AutojectorFeaturesEnum.Decorators;
+    public AutojectorDecoratorsByAttributeFeature(
         IEnumerable<Assembly> assemblies,
         IDecoratorRegisterStrategy decoratorRegisterStrategy
         ) : base(assemblies)
     {
         DecoratorRegisterStrategy = decoratorRegisterStrategy;
     }
-
-    protected override IEnumerable<IFeatureImplementationVersion> GetImplementationVersions()
+    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
-        return new List<IFeatureImplementationVersion>()
-        {
-            new DecoratorAttributeVersion(NonAbstractClassesFromAssemblies,DecoratorRegisterStrategy),
-            new DecoratorInterfaceVersion(NonAbstractClassesFromAssemblies,DecoratorRegisterStrategy)
-        };
+        var decoratorsFromAttributes = NonAbstractClassesFromAssemblies.Select(type => new TypeWithAttributes<DecoratorAttribute>(type))
+                                      .Where(typeWithAttribute => typeWithAttribute.HasAttributes)
+                                      .Select(d => new DecoratorWithDecoratedType(d.Type, d.Attributes.First().DecoratedType));
+
+
+        return decoratorsFromAttributes.GroupBy(d => d.Decorated)
+                                .Select(g => new DecoratorTypesOperator(g.Key, g.Select(x => x.Decorator), DecoratorRegisterStrategy));
     }
 }

@@ -5,11 +5,18 @@ namespace Autojector.Registers.SimpleInjection;
 
 internal interface ISimpleRegisterStrategy
 {
-    public IServiceCollection Add(Type classType, Type interfaceType);
+    public IServiceCollection Add(Type interfaceType, Type implementationType);
 }
 
-internal record SimpleRegisterStrategy(Func<Type, Type, IServiceCollection> Method) : ISimpleRegisterStrategy
+internal class SimpleRegisterStrategy : ISimpleRegisterStrategy
 {
+    public SimpleRegisterStrategy(Func<Type, Type, IServiceCollection> method)
+    {
+        Method = method ?? throw new ArgumentNullException(nameof(method));
+    }
+
+    private Func<Type, Type, IServiceCollection> Method { get; }
+
     public IServiceCollection Add(Type interfaceType, Type implementationType)
         => Method(interfaceType, implementationType);
 }

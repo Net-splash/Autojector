@@ -15,7 +15,7 @@ internal class SimpleRegisterStrategyFactory : ISimpleRegisterStrategyFactory
     private IServiceCollection Services { get; }
     public SimpleRegisterStrategyFactory(IServiceCollection services)
     {
-        Services = services;
+        Services = services ?? throw new ArgumentNullException(nameof(services));
     }
 
     private Dictionary<Type, Func<IServiceCollection, ISimpleRegisterStrategy>> SimpleLifetypeRegisterStrategies = new Dictionary<Type, Func<IServiceCollection, ISimpleRegisterStrategy>>()
@@ -43,7 +43,6 @@ internal class SimpleRegisterStrategyFactory : ISimpleRegisterStrategyFactory
             throw new InvalidOperationException($"Unknown lifetime implementation for {lifetimeType.FullName}");
         }
     }
-
 
     private void ValidateAgainstLifetimeTypeArgument(BaseInjectionAttribute attribute)
     {

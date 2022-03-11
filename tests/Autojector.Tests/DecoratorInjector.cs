@@ -7,9 +7,10 @@ namespace Autojector.Tests;
 public class DecoratorInjector : TestBase
 {
     public DecoratorInjector() : base(a => a
-           .UseSimpleInjection()
+           .UseSimpleInjectionByInterface()
            .UseFactories()
-           .UseDecorator()
+           .UseDecoratorByInterface()
+           .UseDecoratorByAttribute()
            .Build())
     {
     }

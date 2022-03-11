@@ -1,4 +1,4 @@
-﻿using Autojector.Registers.Base;
+﻿using Autojector.Base;
 using System;
 
 namespace Autojector.Registers.Configs;

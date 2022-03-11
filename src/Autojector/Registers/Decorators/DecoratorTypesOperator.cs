@@ -1,5 +1,6 @@
 ﻿using Autojector.Abstractions;
-using Autojector.Registers.Base;
+using Autojector.Base;
+using Autojector.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,14 +46,14 @@ internal record DecoratorTypesOperator(
 
     private void ValidateAgainstMultipleOrderDecoratorsOnSameClass(IEnumerable<DecoratorOrderAttribute> attributes, Type decoratorType)
     {
-        if (attributes.Skip(1).Any())
+        if (attributes.HasMany())
         {
             throw new InvalidOperationException($"Can not have multiple order operators for {decoratorType?.Name}");
         }
     }
     private void ValidateAgainstMultipleUnorderedDecorators(IEnumerable<Type> unordedDecorators)
     {
-        if (unordedDecorators.Skip(1).Any())
+        if (unordedDecorators.HasMany())
         {
             throw new InvalidOperationException($"Can not have more than one unordered decorator for {DecoratedType.Name}");
         }

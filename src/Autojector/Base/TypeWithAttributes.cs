@@ -7,7 +7,7 @@ namespace Autojector.Base;
 internal record TypeWithAttributes<T>(Type Type)
     where T : Attribute
 {
-    public bool HasImplementedLifetypeAttributes => Attributes.Any();
+    public bool HasAttributes => Attributes.Any();
     public IEnumerable<T> Attributes
     {
         get

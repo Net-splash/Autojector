@@ -1,4 +1,4 @@
-﻿namespace Autojector.Registers.Base;
+﻿namespace Autojector.Base;
 internal interface ITypeConfigurator
 {
     void ConfigureServices();

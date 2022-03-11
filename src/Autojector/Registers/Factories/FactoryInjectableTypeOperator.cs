@@ -1,6 +1,6 @@
 ﻿using Autojector.Abstractions;
 using Autojector.Base;
-using Autojector.Registers.Base;
+using Autojector.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

@@ -1,14 +1,11 @@
-﻿using Autojector.Base;
-using Autojector.Features;
-using Autojector.Features.Base;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Autojector.Registers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Autojector.Registers.Base;
-internal abstract class BaseAutojectorFeature : BaseTypeConfigurator,IAutojectorFeature
+namespace Autojector.Base;
+internal abstract class BaseAutojectorFeature : BaseTypeConfigurator, IAutojectorFeature
 {
     protected IEnumerable<Assembly> Assemblies { get; }
 
@@ -52,5 +49,5 @@ internal abstract class BaseAutojectorFeature : BaseTypeConfigurator,IAutojector
 
     protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators();
 
-    public abstract AutojectorFeaturesEnum Priority { get; }
+    public abstract AutojectorFeaturesEnum FeatureType { get; }
 }

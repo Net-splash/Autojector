@@ -1,8 +1,7 @@
 ﻿using Autojector.Registers;
-using Autojector.Registers.Base;
 
-namespace Autojector.Features.Base;
+namespace Autojector.Base;
 interface IAutojectorFeature : ITypeConfigurator
 {
-    internal AutojectorFeaturesEnum Priority { get; }
+    internal AutojectorFeaturesEnum FeatureType { get; }
 }

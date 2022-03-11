@@ -1,7 +1,7 @@
 ﻿using Autojector.Base;
+using Autojector.Extensions;
 using Autojector.Registers;
 using Autojector.Registers.AsyncFactories;
-using Autojector.Registers.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ internal class AutojectorAsyncFactoriesFeature : BaseAutojectorFeature
         }
     }
     private IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory { get; }
-    public override AutojectorFeaturesEnum Priority => AutojectorFeaturesEnum.AsyncFactories;
+    public override AutojectorFeaturesEnum FeatureType => AutojectorFeaturesEnum.AsyncFactories;
     public AutojectorAsyncFactoriesFeature(
         IEnumerable<Assembly> assemblies,
         IAsyncFactoryRegisterStrategyFactory asyncFactoryRegisterStrategyFactory
@@ -34,7 +34,7 @@ internal class AutojectorAsyncFactoriesFeature : BaseAutojectorFeature
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
         var factories = NonAbstractClassesFromAssemblies
-            .Select(type => new FactoryWithImplementedType(FactoryType))
+            .Select(type => new FactoryWithImplementedType(type))
             .Where(factoryWithImplementedType => factoryWithImplementedType.ImplementedFactories.Any());
 
         return factories.Select(factoryWithImplementedType => new AsyncFactoryInjectableTypeOperator(

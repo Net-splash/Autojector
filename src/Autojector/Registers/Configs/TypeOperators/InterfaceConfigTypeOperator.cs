@@ -1,5 +1,5 @@
 ﻿using Autojector.Base;
-using Autojector.Registers.Base;
+using Autojector.Extensions;
 using System;
 
 namespace Autojector.Registers.Configs.TypeOperators;
@@ -10,7 +10,7 @@ internal record InterfaceConfigTypeOperator(Type InterfaceType, IConfigRegisterS
 
     public void ConfigureServices()
     {
-        var classBuilder = new ClassBuilder(InterfaceType);
+        var classBuilder = new ModelClassBuilder(InterfaceType);
         var classType = classBuilder.BuildType();
         ConfigRegisterStrategy.Add(InterfaceType, classType, new string []
         {

@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Autojector.Base;
+namespace Autojector.Extensions;
 
-internal static class StringExtensionMethods { 
+internal static class StringExtensions { 
     public static string RemoveInterfacePrefix(this string name) => Regex.Replace(name, "^I", string.Empty);
 }

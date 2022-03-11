@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autojector.General;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
 
@@ -29,12 +30,8 @@ public static class AutojectorExtensions
     /// </returns>
     public static IServiceCollection WithAutojector(this IServiceCollection services, Func<IAutojectorBuilder,IAutojectorService> configureOptions, params Assembly[] assemblies)
     {
+        configureOptions = configureOptions ?? throw new ArgumentNullException(nameof(configureOptions));
         var autojectorBuilder = new AutojectorBuilder(assemblies, services);
-        if(configureOptions == null)
-        {
-            configureOptions = (options) => options.UseSimpleInjection().Build();  
-        }
-
         var autojectorService = configureOptions(autojectorBuilder);
         autojectorService.ConfigureServices();
 
@@ -67,14 +64,20 @@ public static class AutojectorExtensions
     {
         var autojectorBuilder = new AutojectorBuilder(assemblies, services);
 
-        autojectorBuilder.UseSimpleInjection();
-        autojectorBuilder.UseFactories();
-        autojectorBuilder.UseAsyncFactories();
-        autojectorBuilder.UseDecorator();
-        autojectorBuilder.UseConfigs();
-        autojectorBuilder.UseChains();
+        var autojectorService = autojectorBuilder
+            .UseSimpleInjectionByInterface()
+            .UseSimpleInjectionByAttribute()
+            .UseFactories()
+            .UseAsyncFactories()
+            .UseDecoratorByInterface()
+            .UseDecoratorByAttribute()
+            .UseConfigsByInteface()
+            .UseConfigsByAttribute()
+            .UseUnimplementedConfigsByInteface()
+            .UseUnimplementedConfigsByAttribute()
+            .UseChains()
+            .Build();
 
-        var autojectorService = autojectorBuilder.Build();
         autojectorService.ConfigureServices();
 
         return services;

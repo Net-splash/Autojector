@@ -1,8 +1,8 @@
-﻿using Autojector.Base;
-using Autojector.Registers.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autojector.Base;
+using Autojector.Extensions;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.SimpleInjection.Operators;

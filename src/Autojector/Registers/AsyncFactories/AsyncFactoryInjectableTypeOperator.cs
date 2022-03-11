@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Autojector.Base;
-using Autojector.Registers.Base;
-using static Autojector.Base.Types;
 
 namespace Autojector.Registers.AsyncFactories;
 internal record AsyncFactoryInjectableTypeOperator(

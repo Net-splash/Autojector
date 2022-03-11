@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Autojector.Base;
+namespace Autojector.Extensions;
 internal static class SystemTypeExtensions
 {
     public static IEnumerable<Type> GetInterfacesFromTree(this Type type, Func<Type, bool> filter)

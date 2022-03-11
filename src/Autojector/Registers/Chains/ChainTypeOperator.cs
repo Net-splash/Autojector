@@ -1,5 +1,6 @@
 ﻿using Autojector.Abstractions;
-using Autojector.Registers.Base;
+using Autojector.Base;
+using Autojector.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ internal record ChainTypeOperator(
 
     private static void ValidateAgainstMultipleOrderDecoratorsOnSameClass(object[] attributes)
     {
-        if (attributes.Skip(1).Any())
+        if (attributes.HasMany())
         {
             throw new InvalidOperationException("Can not have multiple order operators");
         }

@@ -21,7 +21,7 @@ internal class TestAssemblyContext : ITestAssemblyContext
 
     internal TestAssemblyContext(AssemblyLoadContext assemblyLoadContext)
     {
-        AssemblyLoadContext = assemblyLoadContext;
+        AssemblyLoadContext = assemblyLoadContext ?? throw new ArgumentNullException(nameof(assemblyLoadContext));
     }
 
     public void Dispose()

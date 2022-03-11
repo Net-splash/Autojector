@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Autojector.Base;
+namespace Autojector.Extensions;
 internal static class EnumerableExtension
 {
     public static bool HasMany<T>(this IEnumerable<T> enumerable)

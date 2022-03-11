@@ -10,7 +10,12 @@ namespace Autojector.Tests;
 
 public class ConfigInjector : TestBase
 {
-    public ConfigInjector() : base(a => a.UseConfigs().Build())
+    public ConfigInjector() : base(a => a
+                .UseConfigsByInteface()
+                .UseConfigsByAttribute()
+                .UseUnimplementedConfigsByInteface()
+                .UseUnimplementedConfigsByAttribute()
+                .Build())
     {
     }
 
