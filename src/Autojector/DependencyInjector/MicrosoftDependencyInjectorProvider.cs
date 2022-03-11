@@ -1,10 +1,10 @@
 ﻿using Autojector.DependencyInjector.Public;
-using Autojector.Registers.AsyncFactories;
-using Autojector.Registers.Chains;
-using Autojector.Registers.Configs;
-using Autojector.Registers.Decorators;
-using Autojector.Registers.Factories;
-using Autojector.Registers.SimpleInjection;
+using Autojector.Features.AsyncFactories;
+using Autojector.Features.Chains;
+using Autojector.Features.Configs;
+using Autojector.Features.Decorators;
+using Autojector.Features.Factories;
+using Autojector.Features.SimpleInjection;
 using Microsoft.Extensions.DependencyInjection;
 namespace Autojector.DependencyInjector;
 internal class MicrosoftDependencyInjectorProvider : IDependencyInjectorProvider

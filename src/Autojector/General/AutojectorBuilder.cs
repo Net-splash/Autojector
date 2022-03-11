@@ -1,10 +1,11 @@
 ﻿using Autojector.Base;
+using Autojector.DependencyInjector;
 using Autojector.Features.AsyncFactories;
+using Autojector.Features.Chains;
+using Autojector.Features.Configs;
 using Autojector.Features.Decorators;
 using Autojector.Features.Factories;
 using Autojector.Features.SimpleInjection;
-using Autojector.Registers.Chains;
-using Autojector.Registers.Configs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
