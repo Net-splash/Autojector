@@ -14,8 +14,7 @@ public class ConfigInjector : TestBase
                 .UseConfigsByInteface()
                 .UseConfigsByAttribute()
                 .UseUnimplementedConfigsByInteface()
-                .UseUnimplementedConfigsByAttribute()
-                .Build())
+                .UseUnimplementedConfigsByAttribute())
     {
     }
 
@@ -65,13 +64,29 @@ public class ConfigInjector : TestBase
             }
         ";
 
-        ShouldThrowExceptionOnGettingServiceExternally(code, $"The type MyConfig doens't have an empty constructor as each IConfig require");
+        AddConfig("MyConfig");
+
+        ShouldThrowOnBuildingServicesExternally(code, $"The type MyConfig doens't have an empty constructor as each IConfig require");
     }
 
     private T ShouldCreateConfig<T>(string key = null)
         where T : class
     {
+        AddConfig<T>(key);
+
+        //Act
+        var config = ServiceShouldSucceedLocally<T>();
+        return config;
+    }
+
+    private void AddConfig<T>(string key) where T : class
+    {
         key = key == null ? typeof(T).Name : key;
+        AddConfig(key);
+    }
+
+    private void AddConfig(string key)
+    {
         //Arrange
         var configs = (new List<KeyValuePair<string, string>>() {
             new KeyValuePair<string, string>($"{key}:Data","5")
@@ -82,9 +97,5 @@ public class ConfigInjector : TestBase
             .Build();
 
         ServiceCollection.AddSingleton(configuration);
-
-        //Act
-        var config = ServiceShouldSucceedLocally<T>();
-        return config;
     }
 }

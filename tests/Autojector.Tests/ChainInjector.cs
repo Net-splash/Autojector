@@ -8,7 +8,7 @@ namespace Autojector.Tests;
 
 public class ChainInjector : TestBase
 {
-    public ChainInjector() : base(a => a.UseChains().Build())
+    public ChainInjector() : base(a => a.UseChains())
     {
     }
 
@@ -63,8 +63,8 @@ public class ChainInjector : TestBase
         using (ITestAssemblyContext testAssemblyContext = AssembliesManager.GetAssemblyContextFromCode(code))
         {
             ServiceCollection.WithAutojector(ConfigureOptions, testAssemblyContext.Assembly);
-            var requestType = testAssemblyContext.Assembly.GetTypeFromAssembly("ChainLinkRequest");
-            var responseType = testAssemblyContext.Assembly.GetTypeFromAssembly("ChainLinkResponse");
+            var requestType = testAssemblyContext.Assembly.GetTypeFromAssemblyByName("ChainLinkRequest");
+            var responseType = testAssemblyContext.Assembly.GetTypeFromAssemblyByName("ChainLinkResponse");
             var chainType = typeof(IChain<,>).MakeGenericType(new System.Type[] { requestType ,responseType});
             var service = ShouldSucceedOnGetService(chainType);
         }

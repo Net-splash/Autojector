@@ -9,8 +9,8 @@ namespace Autojector.Tests;
 public class TestBase
 {
     protected IServiceCollection ServiceCollection;
-    protected Func<IAutojectorBuilder, IAutojectorService> ConfigureOptions { get; }
-    protected TestBase(Func<IAutojectorBuilder, IAutojectorService> configureOptions) : base()
+    protected ConfigureAutojectorBuilderDelegate ConfigureOptions { get; }
+    protected TestBase(ConfigureAutojectorBuilderDelegate configureOptions) : base()
     {
         ServiceCollection = new ServiceCollection();
         ConfigureOptions = configureOptions;
@@ -52,7 +52,7 @@ public class TestBase
         using(ITestAssemblyContext testAssemblyContext = AssembliesManager.GetAssemblyContextFromCode(code))
         {
             var assembly = testAssemblyContext.Assembly;
-            var serviceTypeFromAssembly = assembly.GetTypeFromAssembly(serviceName);
+            var serviceTypeFromAssembly = assembly.GetTypeFromAssemblyByName(serviceName);
             ServiceCollection.WithAutojector(ConfigureOptions, assembly);
             var serviceProvider = ServiceCollection.BuildServiceProvider();
 
@@ -70,7 +70,7 @@ public class TestBase
 
     protected object ShouldSucceedOnGetService(Assembly assembly, string serviceName)
     {
-        var serviceTypeFromAssembly = assembly.GetTypeFromAssembly(serviceName);
+        var serviceTypeFromAssembly = assembly.GetTypeFromAssemblyByName(serviceName);
         return ShouldSucceedOnGetService(serviceTypeFromAssembly);
     }
 

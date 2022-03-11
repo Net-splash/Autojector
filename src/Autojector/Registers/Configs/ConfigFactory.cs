@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Autojector.Registers.Configs;
 internal class ConfigFactory
@@ -12,10 +13,8 @@ internal class ConfigFactory
     }
 
     private IConfiguration Configuration { get; }
-    internal object GetConfig(Type configType, IEnumerable<string> keys = null)
+    internal object GetConfig(ConstructorInfo constructor, Type configType, IEnumerable<string> keys = null)
     {
-        var constructor = configType.GetConstructor(Type.EmptyTypes);
-        ValidateAgainstNonexistentEmptyConstructor(constructor, configType);
         var config = constructor.Invoke(null);
         keys = keys.Concat(new string[] { configType.Name });
 
@@ -31,11 +30,4 @@ internal class ConfigFactory
         throw new InvalidProgramException("No config section found with keys :" + string.Join(",", keys));
     }
 
-    private void ValidateAgainstNonexistentEmptyConstructor(System.Reflection.ConstructorInfo constructor, Type configType)
-    {
-        if (constructor == null)
-        {
-            throw new ArgumentNullException($"The type {configType?.Name} doens't have an empty constructor as each IConfig require");
-        }
-    }
 }

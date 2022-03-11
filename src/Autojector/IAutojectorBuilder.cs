@@ -18,11 +18,22 @@ public interface IAutojectorBuilder
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
-    /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseSimpleInjectionByInterface(params Assembly[] assemblies);
 
-
+    /// <summary>
+    /// This method will add the feature of Autoinjector where all the classes that have simple injection attribute:
+    /// TransientAttribute, ScopeAttribute, SingletonAttribute
+    /// will be injected automatically without registing them anywhere.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// </returns>
     public IAutojectorBuilder UseSimpleInjectionByAttribute(params Assembly[] assemblies);
 
     /// <summary>
@@ -36,7 +47,6 @@ public interface IAutojectorBuilder
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
-    /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseFactories(params Assembly[] assemblies);
 
@@ -52,10 +62,8 @@ public interface IAutojectorBuilder
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
-    /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseAsyncFactories(params Assembly[] assemblies);
-
 
     /// <summary>
     /// This method will add the feature of Autoinjector where all the classes that implement IDecorator\f[T\f]
@@ -70,12 +78,27 @@ public interface IAutojectorBuilder
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
-    /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseDecoratorByInterface(params Assembly[] assemblies);
-    public IAutojectorBuilder UseDecoratorByAttribute(params Assembly[] assemblies);
+
     /// <summary>
-    /// This method will add the feature of Autoinjector which will register all clases that implement the IConfig interface
+    /// This method will add the feature of Autoinjector where all the classes that have the attribute DecoratorAttribute
+    /// will take the place of the currently existing service and will receive, if requested, an instance of that service.
+    /// To decorate a decorator you should add DecoratorOrderAttribute on the second class or any other after that
+    /// to make sure in which the decorator is used
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// </returns>
+    public IAutojectorBuilder UseDecoratorByAttribute(params Assembly[] assemblies);
+
+    /// <summary>
+    /// This method will add the feature of Autoinjector which will register all classes that implement the IConfig interface
     /// as self services and will bind the data from Configuration to an instance of the class.
     /// </summary>
     /// <param name="assemblies">
@@ -85,11 +108,49 @@ public interface IAutojectorBuilder
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
-    /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseConfigsByInteface(params Assembly[] assemblies);
+
+    /// <summary>
+    /// This method will add the feature of Autoinjector which will register all classes that are maked by ConfigAttribute
+    /// as self services and will bind the data from Configuration to an instance of the class.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// </returns>
     public IAutojectorBuilder UseConfigsByAttribute(params Assembly[] assemblies);
+
+    /// <summary>
+    /// This method will add the feature of Autoinjector which will register all interfaces that extend the IConfig interface
+    /// as self services and will bind the data from Configuration to an instance of the class.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// </returns>
     public IAutojectorBuilder UseUnimplementedConfigsByInteface(params Assembly[] assemblies);
+
+    /// <summary>
+    /// This method will add the feature of Autoinjector which will register all interfaces that are maked by ConfigAttribute
+    /// as self services and will bind the data from Configuration to an instance of the class.
+    /// </summary>
+    /// <param name="assemblies">
+    /// This should be a list with all the assembies where the autojector will search for services.
+    /// If null the assemblies provided in AutojectorBuilder constructor (extension method) will be used
+    /// If those are also null the AppDomain.CurrentDomain.GetAssemblies() will be used.
+    /// </param>
+    /// <returns>
+    /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
+    /// </returns>
     public IAutojectorBuilder UseUnimplementedConfigsByAttribute(params Assembly[] assemblies);
     
     /// <summary>
@@ -105,14 +166,6 @@ public interface IAutojectorBuilder
     /// </param>
     /// <returns>
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
-    /// Only exception is the Build method.
     /// </returns>
     public IAutojectorBuilder UseChains(params Assembly[] assemblies);
-
-    /// <summary>
-    /// This should be the last method that should be called from the building process as is the only one that reurns 
-    /// an instance of the IAutojectorService
-    /// </summary>
-    /// <returns></returns>
-    public IAutojectorService Build();
 }

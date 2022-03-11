@@ -9,7 +9,7 @@ var app = builder.Build();
 
 app.MapGet("/simple-injected-service", (ISimpleInjectedService simpleInjectedService) =>
 {
-    return simpleInjectedService.GetData() ;
+    return simpleInjectedService.GetData();
 });
 
 app.MapGet("/factory-injected-service1", (IFactoryInjectedService1 factoryInjectedService1) =>

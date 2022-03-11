@@ -3,6 +3,7 @@ using Autojector.Abstractions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Runtime.Loader;
 
@@ -17,7 +18,7 @@ internal class TestAssemblyContext : ITestAssemblyContext
 {
     private AssemblyLoadContext AssemblyLoadContext { get; set; }
 
-    public Assembly Assembly => AssemblyLoadContext.Assemblies.FirstOrDefault();
+    public Assembly Assembly => AssemblyLoadContext.Assemblies.First();
 
     internal TestAssemblyContext(AssemblyLoadContext assemblyLoadContext)
     {
@@ -29,7 +30,6 @@ internal class TestAssemblyContext : ITestAssemblyContext
         if (AssemblyLoadContext != null)
         {
             AssemblyLoadContext.Unload();
-            AssemblyLoadContext = null;
         }
     }
 }
@@ -52,9 +52,8 @@ internal class AssemblyGenerator
         {
             MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location),
-            MetadataReference.CreateFromFile(coreDir + Path.DirectorySeparatorChar + "mscorlib.dll"),
-            MetadataReference.CreateFromFile(coreDir + Path.DirectorySeparatorChar + "System.Runtime.dll"),
             MetadataReference.CreateFromFile(typeof(ITransient<>).Assembly.Location),
+            MetadataReference.CreateFromFile(typeof(IConfiguration).Assembly.Location),
         };
 
         CSharpCompilation compilation = CSharpCompilation.Create(

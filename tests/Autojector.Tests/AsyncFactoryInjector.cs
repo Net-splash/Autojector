@@ -8,7 +8,7 @@ namespace Autojector.Tests;
 
 public class AsyncFactoryInjector : TestBase
 {
-    public AsyncFactoryInjector() : base(a => a.UseAsyncFactories().Build())
+    public AsyncFactoryInjector() : base(a => a.UseAsyncFactories())
     {
     }
 

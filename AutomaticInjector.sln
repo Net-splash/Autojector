@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8AD146C8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autojector.Tests", "tests\Autojector.Tests\Autojector.Tests.csproj", "{7F12E9FE-3102-487F-9040-CEA0BE53BCF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autojector.TestAssemblyGenerator", "tests\Autojector.TestAssemblyGenerator\Autojector.TestAssemblyGenerator.csproj", "{DAF5E80D-9B67-4FD4-8B4E-65215D3C1740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autojector.TestAssemblyGenerator", "tests\Autojector.TestAssemblyGenerator\Autojector.TestAssemblyGenerator.csproj", "{DAF5E80D-9B67-4FD4-8B4E-65215D3C1740}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

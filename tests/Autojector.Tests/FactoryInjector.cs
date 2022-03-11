@@ -8,7 +8,7 @@ namespace Autojector.Tests;
 
 public class FactoryInjector : TestBase
 {
-    public FactoryInjector() : base(a => a.UseFactories().Build())
+    public FactoryInjector() : base(a => a.UseFactories())
     {
     }
 

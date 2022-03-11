@@ -12,7 +12,7 @@ namespace Autojector.Tests;
 public class SimpleInjectorExternalAssembly : TestBase
 {
     public SimpleInjectorExternalAssembly() : base(
-        a =>a.UseSimpleInjectionByInterface().UseSimpleInjectionByAttribute().Build()
+        a =>a.UseSimpleInjectionByInterface().UseSimpleInjectionByAttribute()
     )
     {
     }

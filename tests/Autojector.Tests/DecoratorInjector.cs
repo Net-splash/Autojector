@@ -10,8 +10,7 @@ public class DecoratorInjector : TestBase
            .UseSimpleInjectionByInterface()
            .UseFactories()
            .UseDecoratorByInterface()
-           .UseDecoratorByAttribute()
-           .Build())
+           .UseDecoratorByAttribute())
     {
     }
 

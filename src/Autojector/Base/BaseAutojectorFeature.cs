@@ -1,8 +1,8 @@
-﻿using Autojector.Registers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Autojector.Registers;
 
 namespace Autojector.Base;
 internal abstract class BaseAutojectorFeature : BaseTypeConfigurator, IAutojectorFeature

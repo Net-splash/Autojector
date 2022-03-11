@@ -11,13 +11,14 @@ public static class AssembliesManager
 
     public static IEnumerable<Assembly> GetNonRuntimeAssemblies()
     {
-        return AppDomain.CurrentDomain.GetAssemblies().Where(a => !RuntimeLoadedAssemblyNames.Contains(a.FullName));
+        return AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a => !RuntimeLoadedAssemblyNames.Contains(a.FullName));
     }
 
     public static ITestAssemblyContext GetAssemblyContextFromCode(string code)
     {
         var assemblyGenerator = new AssemblyGenerator(code);
-        var assemblyContext = assemblyGenerator.GetAssemblyContext();
+        ITestAssemblyContext assemblyContext = assemblyGenerator.GetAssemblyContext();
         RuntimeLoadedAssemblyNames.Add(assemblyContext.Assembly.FullName);
         return assemblyContext;
     }

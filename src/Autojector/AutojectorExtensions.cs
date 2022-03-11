@@ -4,6 +4,13 @@ using System;
 using System.Reflection;
 
 namespace Autojector;
+
+/// <summary>
+/// This delegate represends the method pass to configure the features Autojector features
+/// </summary>
+/// <param name="autojectorBuilder">An instance for IAutojectorBuilder where methods can be called to enable features</param>
+public delegate void ConfigureAutojectorBuilderDelegate(IAutojectorBuilder autojectorBuilder);
+
 /// <summary>
 /// Should be used in order to add the autojector to the IServiceCollection
 /// </summary>
@@ -15,11 +22,10 @@ public static class AutojectorExtensions
     /// <param name="services">
     /// This should be the IServiceCollection in which the autojector should inject all detected services 
     /// </param>
-    /// <param name="configureOptions">
+    /// <param name="configureAutojectorBuilder">
     /// This is the method that will configure all the features injected by autojector.
-    /// After adding all needed features you should call the Build method that will return from autojector builder.
     /// E.g:
-    /// autojectorBuilder => autojectorBuilder.UseSimpleInjection().UseFactories().Build();
+    /// autojectorBuilder => autojectorBuilder.UseSimpleInjection().UseFactories();
     /// </param>
     /// <param name="assemblies">
     /// This should be a list with all the assembies where the autojector will search for services.
@@ -28,27 +34,22 @@ public static class AutojectorExtensions
     /// <returns>
     /// Will return the same IServiceCollection received as input but modified so it will contain all autoinjected services.
     /// </returns>
-    public static IServiceCollection WithAutojector(this IServiceCollection services, Func<IAutojectorBuilder,IAutojectorService> configureOptions, params Assembly[] assemblies)
+    public static IServiceCollection WithAutojector(
+        this IServiceCollection services,
+        ConfigureAutojectorBuilderDelegate configureAutojectorBuilder,
+        params Assembly[] assemblies)
     {
-        configureOptions = configureOptions ?? throw new ArgumentNullException(nameof(configureOptions));
+        configureAutojectorBuilder = configureAutojectorBuilder ?? throw new ArgumentNullException(nameof(configureAutojectorBuilder));
         var autojectorBuilder = new AutojectorBuilder(assemblies, services);
-        var autojectorService = configureOptions(autojectorBuilder);
+        configureAutojectorBuilder(autojectorBuilder);
+        var autojectorService = autojectorBuilder.Build();
         autojectorService.ConfigureServices();
 
         return services;
     }
-
+    
     /// <summary>
     /// This method will add the autojector with all its features. 
-    /// For the current version the autojector include
-    /// <list type="number">
-    /// <item>Simple injection</item>
-    /// <item>Factories</item>
-    /// <item>Async Factories</item>
-    /// <item>Decorators</item>
-    /// <item>Configs</item>
-    /// <item>Chains</item>
-    /// </list>
     /// </summary>
     /// <param name="services">
     ///     This should be the IServiceCollection in which the autojector should inject all detected services 
@@ -60,11 +61,17 @@ public static class AutojectorExtensions
     /// <returns>
     /// Will return the same IServiceCollection received as input but modified so it will contain all autoinjected services.
     /// </returns>
-    public static IServiceCollection AddAutojector(this IServiceCollection services, params Assembly[] assemblies)
-    {
-        var autojectorBuilder = new AutojectorBuilder(assemblies, services);
+    public static IServiceCollection AddAutojector(
+        this IServiceCollection services,
+        params Assembly[] assemblies) => services.WithAutojector(new ConfigureAutojectorBuilderDelegate(UseAllAutojectorFeatures), assemblies);
 
-        var autojectorService = autojectorBuilder
+    /// <summary>
+    /// This method is used to create a ConfigureAutojectorBuilderDelegate with all the features Autojector supports
+    /// </summary>
+    /// <param name="autojectorBuilder">An instance for IAutojectorBuilder where methods can be called to enable features</param>
+    public static void UseAllAutojectorFeatures(IAutojectorBuilder autojectorBuilder)
+    {
+        autojectorBuilder
             .UseSimpleInjectionByInterface()
             .UseSimpleInjectionByAttribute()
             .UseFactories()
@@ -75,11 +82,6 @@ public static class AutojectorExtensions
             .UseConfigsByAttribute()
             .UseUnimplementedConfigsByInteface()
             .UseUnimplementedConfigsByAttribute()
-            .UseChains()
-            .Build();
-
-        autojectorService.ConfigureServices();
-
-        return services;
+            .UseChains();
     }
 }

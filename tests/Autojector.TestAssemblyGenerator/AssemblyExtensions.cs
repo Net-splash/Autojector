@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace Autojector.TestAssemblyGenerator;
 public static class AssemblyExtensions
 {
-    public static Type GetTypeFromAssembly(this Assembly assembly, string typeName)
+    public static Type GetTypeFromAssemblyByName(this Assembly assembly, string typeName)
     {
-        return assembly.GetTypes().Where(t => t.Name == typeName).FirstOrDefault(); ;
+        return assembly.GetTypes().Where(t => t.Name == typeName).First();
     }
 }

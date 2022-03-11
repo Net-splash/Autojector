@@ -122,11 +122,12 @@ internal class AutojectorBuilder : IAutojectorBuilder
         return this;
     }
 
-    public IAutojectorService Build()
+    internal IAutojectorService Build()
     {
         var orderedFeatures = GetAutojectorFeatures();
         return new AutojectorService(orderedFeatures);
     }
+
     private IEnumerable<IAutojectorFeature> GetAutojectorFeatures()
     {
         var orderedFeatures = Features.OrderBy(feature => feature.FeatureType);
