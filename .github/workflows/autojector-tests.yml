@@ -1,0 +1,20 @@
+name: Run Unit Tests
+
+on: [push,pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v1
+      - name: Move to tests directory
+        run: cd tests/Autojector.Tests
+      - name: Restore nugets
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
