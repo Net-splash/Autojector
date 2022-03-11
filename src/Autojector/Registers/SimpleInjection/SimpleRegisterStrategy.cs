@@ -1,12 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autojector.DependencyInjector.Public;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace Autojector.Registers.SimpleInjection;
-
-internal interface ISimpleRegisterStrategy
-{
-    public IServiceCollection Add(Type interfaceType, Type implementationType);
-}
 
 internal class SimpleRegisterStrategy : ISimpleRegisterStrategy
 {

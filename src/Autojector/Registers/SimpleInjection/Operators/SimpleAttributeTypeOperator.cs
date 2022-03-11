@@ -1,5 +1,6 @@
 ﻿using Autojector.Abstractions;
 using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 using System;
 using System.Collections.Generic;
 using System.Linq;

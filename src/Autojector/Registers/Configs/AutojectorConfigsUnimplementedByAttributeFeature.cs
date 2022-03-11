@@ -1,4 +1,5 @@
 ﻿using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 using Autojector.Registers.Configs.TypeOperators;
 using System.Collections.Generic;
 using System.Linq;

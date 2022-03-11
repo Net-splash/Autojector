@@ -1,13 +1,10 @@
 ﻿using Autojector.Abstractions;
+using Autojector.DependencyInjector.Public;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
 namespace Autojector.Registers.Factories;
-internal interface IFactoryRegisterStrategy
-{
-    IServiceCollection Add(Type factoryImplementationType, Type factoryInterfaceType);
-}
 
 internal record FactoryRegisterStrategy(
     Func<Type, IServiceCollection> registerFactoryMethod,

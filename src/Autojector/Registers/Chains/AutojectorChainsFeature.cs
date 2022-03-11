@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.Chains;

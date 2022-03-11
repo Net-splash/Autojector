@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autojector.Abstractions;
+using Autojector.DependencyInjector.Public;
 using Microsoft.Extensions.DependencyInjection;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.SimpleInjection;
-internal interface ISimpleRegisterStrategyFactory
-{
-    public ISimpleRegisterStrategy GetSimpleLifetypeRegisterStrategy(Type lifetimeType);
-    public ISimpleRegisterStrategy GetSimpleLifetypeRegisterStrategy(BaseInjectionAttribute attribute);
-}
 internal class SimpleRegisterStrategyFactory : ISimpleRegisterStrategyFactory
 {
     private IServiceCollection Services { get; }

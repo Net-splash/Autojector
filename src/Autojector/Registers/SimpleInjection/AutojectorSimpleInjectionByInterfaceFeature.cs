@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 using Autojector.Extensions;
 using Autojector.Registers;
 using Autojector.Registers.SimpleInjection;

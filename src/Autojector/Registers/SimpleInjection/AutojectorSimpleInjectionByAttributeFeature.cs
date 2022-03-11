@@ -5,9 +5,8 @@ using System.Reflection;
 using Autojector.Base;
 using Autojector.Registers;
 using Autojector.Abstractions;
-using Autojector.Registers.SimpleInjection;
 using Autojector.Registers.SimpleInjection.Operators;
-
+using Autojector.DependencyInjector.Public;
 
 namespace Autojector.Features.SimpleInjection;
 

@@ -1,13 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autojector.DependencyInjector.Public;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using static Autojector.Base.Types;
 
 namespace Autojector.Registers.AsyncFactories;
-internal interface IAsyncFactoryRegisterStrategyFactory
-{
-    public IAsyncFactoryRegisterStrategy GetAsyncFactoryLifetypeRegisterStrategy(Type lifetimeType);
-}
 internal class AsyncFactoryRegisterStrategyFactory : IAsyncFactoryRegisterStrategyFactory
 {
     private IServiceCollection Services { get; }

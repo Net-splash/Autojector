@@ -1,4 +1,5 @@
 ﻿using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 using Autojector.Extensions;
 using Autojector.Registers;
 using Autojector.Registers.AsyncFactories;

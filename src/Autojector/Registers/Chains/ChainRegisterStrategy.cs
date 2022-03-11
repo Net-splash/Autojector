@@ -1,14 +1,10 @@
 ﻿using Autojector.Abstractions;
+using Autojector.DependencyInjector.Public;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 
 namespace Autojector.Registers.Chains;
-internal interface IChainRegisterStrategy
-{
-    void Add(Type requestType, Type responseType, IEnumerable<Type> chainLinks);
-}
-
 internal class ChainRegisterStrategy : IChainRegisterStrategy
 {
     public ChainRegisterStrategy(IServiceCollection services)

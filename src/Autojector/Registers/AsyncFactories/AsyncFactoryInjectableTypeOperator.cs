@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 
 namespace Autojector.Registers.AsyncFactories;
 internal record AsyncFactoryInjectableTypeOperator(

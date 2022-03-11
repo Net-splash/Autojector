@@ -1,4 +1,5 @@
 ﻿using Autojector.Abstractions;
+using Autojector.DependencyInjector.Public;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -7,10 +8,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Autojector.Registers.AsyncFactories;
-internal interface IAsyncFactoryRegisterStrategy
-{
-    IServiceCollection Add(Type type, Type factoryInterface);
-}
 
 internal record AsyncFactoryRegisterStrategy(
 Func<Type, IServiceCollection> registerFactoryMethod,

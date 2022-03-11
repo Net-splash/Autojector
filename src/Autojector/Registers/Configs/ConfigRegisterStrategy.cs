@@ -1,4 +1,5 @@
 ﻿
+using Autojector.DependencyInjector.Public;
 using Autojector.Registers.Factories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -6,11 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Autojector.Registers.Configs;
-
-internal interface IConfigRegisterStrategy
-{
-    void Add(Type interfaceType, Type classType, IEnumerable<string> keys);
-}
 
 internal class ConfigRegisterStrategy : IConfigRegisterStrategy
 {

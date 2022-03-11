@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autojector.Base;
+using Autojector.DependencyInjector.Public;
 using Autojector.Extensions;
 using static Autojector.Base.Types;
 
