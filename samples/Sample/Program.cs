@@ -12,6 +12,11 @@ app.MapGet("/simple-injected-service", (ISimpleInjectedService simpleInjectedSer
     return simpleInjectedService.GetData();
 });
 
+app.MapGet("/simple-injected-by-attribute", (ISimpleInjectedByAttribute simpleInjectedByAttribute) =>
+{
+    return simpleInjectedByAttribute.GetData();
+});
+
 app.MapGet("/factory-injected-service1", (IFactoryInjectedService1 factoryInjectedService1) =>
 {
     return factoryInjectedService1.GetData();
@@ -20,6 +25,11 @@ app.MapGet("/factory-injected-service1", (IFactoryInjectedService1 factoryInject
 app.MapGet("/factory-injected-service2", (IFactoryInjectedService2 factoryInjectedService2) =>
 {
     return factoryInjectedService2.GetData();
+});
+
+app.MapGet("/simple-injected-decorated-by-attribute", (ISimpleInjectedDecoratedByAttributeService simpleInjectedDecoratedByAttributeService) =>
+{
+    return simpleInjectedDecoratedByAttributeService.GetData();
 });
 
 app.MapGet("/async-factory-injected-service", async (IAsyncDependency<IAsyncFactoryInjectedService> asyncFactoryInjectedServiceDependency) =>
@@ -34,6 +44,11 @@ app.MapGet("/decorated-simple-injected-service", (ISimpleInjectedDecoratedServic
 });
 
 app.MapGet("/config-service", (MyConfig myConfig) =>
+{
+    return myConfig.Data;
+});
+
+app.MapGet("/unimplemented-configs", (IUnimplmentedConfig myConfig) =>
 {
     return myConfig.Data;
 });

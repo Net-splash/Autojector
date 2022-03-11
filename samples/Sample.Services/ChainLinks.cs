@@ -5,7 +5,7 @@ public record MyRequest();
 public record MyResponse(string Data);
 internal class ChainLink1 : IChainLink<MyRequest, MyResponse>
 {
-    public bool CanHandleRequest(MyRequest request)
+    public bool CanHandle(MyRequest request)
     {
         return false;
     }
@@ -15,10 +15,9 @@ internal class ChainLink1 : IChainLink<MyRequest, MyResponse>
         return new MyResponse("ChainLink1Data");
     }
 }
-
 internal class ChainLink2 : IChainLink<MyRequest, MyResponse>
 {
-    public bool CanHandleRequest(MyRequest request)
+    public bool CanHandle(MyRequest request)
     {
         return true;
     }
