@@ -1,5 +1,11 @@
-In case you want to enhance the functionality of a service or you just want to debuggit without afecting the services that are dependent on this one you can use this feature.
+## 4. Decorators
+
+
+In case you want to enhance the functionality of a service or you just want to debugg it without afecting the services that are dependent on this one you can use this feature.
 This feature will receive in the constructor the instance of the service that you want to enhance.
+
+### By Interface
+Make sure that `AddAutojector` or `UseDecoratorByInterface` was called.
 
 You should implement only 
 ```c#
@@ -87,3 +93,44 @@ internal class UndecoratedFactoryProvidedServiceDecorator : IDecorator<IUndecora
 }
 ```
 In this case the value of `UndecoratedFactoryProvidedService` in `UndecoratedFactoryProvidedServiceDecorator` will actually be an instance of `UndecoratedFactoryProvidedService`
+
+
+### By attribute
+
+Mark the class as a decorator with the `DecoratorAttribute`.
+
+Make sure that `AddAutojector` or `UseDecoratorByAttribute` was called.
+
+Here is an implementation example by attribute
+
+Implementation Example
+```c#
+public interface ISimpleInjectedDecoratedByAttributeService
+{
+    string GetData();
+}
+
+[Transient(typeof(ISimpleInjectedDecoratedByAttributeService))]
+internal class SimpleInjectedDecoratedByAttributeService : ISimpleInjectedDecoratedByAttributeService
+{
+    public string GetData()
+    {
+        return "SimpleInjectedDecoratedByAttributeService";
+    }
+}
+
+[Decorator(typeof(ISimpleInjectedDecoratedByAttributeService))]
+internal class DecoratorByAttributeService : ISimpleInjectedDecoratedByAttributeService
+{
+    private ISimpleInjectedDecoratedByAttributeService SimpleInjectedDecoratedByAttributeService { get; }
+    public DecoratorByAttributeService(ISimpleInjectedDecoratedByAttributeService simpleInjectedDecoratedByAttributeService)
+    {
+        SimpleInjectedDecoratedByAttributeService = simpleInjectedDecoratedByAttributeService;
+    }
+
+    public string GetData()
+    {
+        return SimpleInjectedDecoratedByAttributeService.GetData() + " Decorated";
+    }
+}
+```

@@ -11,7 +11,8 @@ public interface ISimpleInjectedByAttribute
 {
     public string GetData();
 }
-[Transient(typeof(ISimpleInjectedByAttribute))]
+
+[TransientAttribute(typeof(ISimpleInjectedByAttribute))]
 internal class SimpleInjectedByAttribute : ISimpleInjectedByAttribute
 {
     public string GetData()
