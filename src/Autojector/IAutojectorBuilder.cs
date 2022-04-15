@@ -168,4 +168,5 @@ public interface IAutojectorBuilder
     /// Any method from AutojectorBuilder will return the AutojectorBuilder so it can be further called.
     /// </returns>
     public IAutojectorBuilder UseChains(params Assembly[] assemblies);
+
 }

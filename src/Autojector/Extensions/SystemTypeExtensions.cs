@@ -26,4 +26,18 @@ internal static class SystemTypeExtensions
     {
         return type.GetConcrateImplementationThatMatchGenericsDefinition(genericBaseDefinitions).Any();
     }
+
+
+    public static Type GetFirstArgument(this Type type) => type.GetNthArgument(1);
+    public static Type GetSecondArgument(this Type type) => type.GetNthArgument(2);
+    public static Type GetNthArgument(this Type type, int argumentIndex)
+    {
+        var arguments = type.GetGenericArguments();
+        if (arguments.Count() < argumentIndex)
+        {
+            throw new InvalidOperationException($"The type {type.Name} doesn't have {argumentIndex} arguments");
+        }
+
+        return arguments.Skip(argumentIndex - 1).First();
+    }
 }

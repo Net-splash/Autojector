@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Autojector.Base;
 using Autojector.DependencyInjector.Public;
+using Autojector.Extensions;
 using static Autojector.Base.Types;
 
 namespace Autojector.Features.Chains;
@@ -24,9 +25,10 @@ internal class AutojectorChainsFeature : BaseAutojectorFeature
     protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
     {
         var chainLinks = NonAbstractClassesFromAssemblies
-            .Where(type => type.GetInterfaces()
-                               .Any(i => i.IsGenericType &&
-                                    i.GetGenericTypeDefinition() == ChainLinkType));
+            .Where(type => type.HasAnyConcrateImplementationThatMatchGenericsDefinition(new Type[]
+            {
+                ChainLinkType
+            }));
 
         var chainLinkWithTypes = chainLinks.SelectMany(d => ExtractChainLinkWithTypes(d));
         var grouped = chainLinkWithTypes.GroupBy(c => new { c.RequestType, c.ResponseType });
@@ -42,12 +44,14 @@ internal class AutojectorChainsFeature : BaseAutojectorFeature
 
     private IEnumerable<ChainLinkWithTypes> ExtractChainLinkWithTypes(Type type)
     {
-        var implementedChainLinks = type.GetInterfaces().Where(d => d.IsGenericType &&
-                                        d.GetGenericTypeDefinition() == ChainLinkType);
+        var implementedChainLinks = type.GetConcrateImplementationThatMatchGenericsDefinition(new Type[]
+            {
+                ChainLinkType
+            });
 
         return implementedChainLinks.Select(d => new ChainLinkWithTypes(type,
-            d.GetGenericArguments().First(),
-            d.GetGenericArguments().Skip(1).First())
+            d.GetFirstArgument(),
+            d.GetSecondArgument())
         );
     }
 }
