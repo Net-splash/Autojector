@@ -1,22 +1,28 @@
-﻿namespace Autojector.Abstractions;
+﻿using System;
 
-/// <summary>
-/// This is the base attribute used by Transient,Scope and Singleton attributes
-/// It should not be used anywhere externally
-/// </summary>
-public abstract class BaseInjectionAttribute : Attribute {
+namespace Autojector.Abstractions
+{
     /// <summary>
-    /// This is the constructor for the BaseAttribute
+    /// This is the base attribute used by Transient,Scope and Singleton attributes
     /// It should not be used anywhere externally
     /// </summary>
-    /// <param name="abstractionType"></param>
-    public BaseInjectionAttribute(Type abstractionType)
+    public abstract class BaseInjectionAttribute : Attribute
     {
-        this.AbstractionType = abstractionType;
+        /// <summary>
+        /// This is the constructor for the BaseAttribute
+        /// It should not be used anywhere externally
+        /// </summary>
+        /// <param name="abstractionType"></param>
+        public BaseInjectionAttribute(Type abstractionType)
+        {
+            AbstractionType = abstractionType;
+        }
+
+        /// <summary>
+        /// It should not be used anywhere externally
+        /// </summary>
+        public Type AbstractionType { get; }
     }
 
-    /// <summary>
-    /// It should not be used anywhere externally
-    /// </summary>
-    public Type AbstractionType { get; }
 }
+
