@@ -2,12 +2,24 @@
 using Autojector.DependencyInjector.Public;
 using System;
 
-namespace Autojector.Features.Configs;
-internal record ConfigTypeOperator(Type Config, IConfigRegisterStrategy ConfigRegisterStrategy, string Key = null) :
-    ITypeConfigurator
+namespace Autojector.Features.Configs
 {
-    public void ConfigureServices() => ConfigRegisterStrategy.Add(Config, Config, new string[]
+    internal class ConfigTypeOperator : ITypeConfigurator
     {
-        Key
-    });
+        public ConfigTypeOperator(Type config, IConfigRegisterStrategy configRegisterStrategy, string key = null)
+        {
+            Config = config;
+            ConfigRegisterStrategy = configRegisterStrategy;
+            Key = key;
+        }
+
+        public Type Config { get; }
+        public IConfigRegisterStrategy ConfigRegisterStrategy { get; }
+        public string Key { get; }
+
+        public void ConfigureServices() => ConfigRegisterStrategy.Add(Config, Config, new string[]
+        {
+            Key
+        });
+    }
 }

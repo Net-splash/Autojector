@@ -1,5 +1,7 @@
-﻿namespace Autojector.Base;
-interface IAutojectorFeature : ITypeConfigurator
+﻿namespace Autojector.Base
 {
-    internal AutojectorFeaturesEnum FeatureType { get; }
+    interface IAutojectorFeature : ITypeConfigurator
+    {
+        AutojectorFeaturesEnum FeatureType { get; }
+    }
 }

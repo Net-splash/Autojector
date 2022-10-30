@@ -3,28 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using static Autojector.Base.Types;
 
-namespace Autojector.Features.SimpleInjection.Operators;
-
-internal record BaseSimpleInjectableOperator(Type Type)
+namespace Autojector.Features.SimpleInjection.Operators
 {
-    protected void ValidateNotImplementedInterface(IEnumerable<Type> nonImplementedInterfaceFromLifetype)
+    internal class BaseSimpleInjectableOperator
     {
-        if (nonImplementedInterfaceFromLifetype.Any())
+        protected BaseSimpleInjectableOperator(Type type)
         {
-            var interfacesNames = nonImplementedInterfaceFromLifetype.Select(i => i.Name);
-            var interfacesListNames = string.Join(",", interfacesNames);
-            throw new InvalidOperationException($@"The interfaces {interfacesListNames} are not implemented by {Type} but are registered as injectable");
+            Type = type;
         }
-    }
-    protected void ValidateUnknownLifetype(IEnumerable<Type> lifetypeInterfaces)
-    {
-        if (!lifetypeInterfaces.Any())
+
+        protected Type Type { get; }
+
+        protected void ValidateNotImplementedInterface(IEnumerable<Type> nonImplementedInterfaceFromLifetype)
         {
-            var lifetypeInterfacesNames = SimpleLifetypeInterfaces.Select(c => c.Name);
-            throw new InvalidOperationException(@$"
+            if (nonImplementedInterfaceFromLifetype.Any())
+            {
+                var interfacesNames = nonImplementedInterfaceFromLifetype.Select(i => i.Name);
+                var interfacesListNames = string.Join(",", interfacesNames);
+                throw new InvalidOperationException($@"The interfaces {interfacesListNames} are not implemented by {Type} but are registered as injectable");
+            }
+        }
+        protected void ValidateUnknownLifetype(IEnumerable<Type> lifetypeInterfaces)
+        {
+            if (!lifetypeInterfaces.Any())
+            {
+                var lifetypeInterfacesNames = SimpleLifetypeInterfaces.Select(c => c.Name);
+                throw new InvalidOperationException($@"
                             The class {Type.Name} doesn't implement a LifeType interface.
                             LifeTypeInterfacess allowed {string.Join(",", lifetypeInterfacesNames)}
                         ");
+            }
         }
     }
 }

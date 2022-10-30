@@ -4,20 +4,21 @@ using Autojector.Base;
 using System;
 using System.Linq;
 
-namespace Autojector.Features.Configs;
-
-internal record ConfigTypeWithAttribute : TypeWithAttributes<ConfigAttribute>
+namespace Autojector.Features.Configs
 {
-    public ConfigTypeWithAttribute(Type Type) : base(Type)
+    internal class ConfigTypeWithAttribute : TypeWithAttributes<ConfigAttribute>
     {
-    }
-
-    public string AttributeKey
-    {
-        get
+        public ConfigTypeWithAttribute(Type Type) : base(Type)
         {
-            var attribute = Attributes.First();
-            return attribute.Key;
+        }
+
+        public string AttributeKey
+        {
+            get
+            {
+                var attribute = Attributes.First();
+                return attribute.Key;
+            }
         }
     }
 }

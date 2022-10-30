@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Autojector.DependencyInjector.Public;
-internal interface IFactoryRegisterStrategy
+namespace Autojector.DependencyInjector.Public
 {
-    IServiceCollection Add(Type factoryImplementationType, Type factoryInterfaceType);
+    internal interface IFactoryRegisterStrategy
+    {
+        IServiceCollection Add(Type factoryImplementationType, Type factoryInterfaceType);
+    }
 }

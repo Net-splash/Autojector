@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Autojector.DependencyInjector.Public;
-internal interface IChainRegisterStrategy
+namespace Autojector.DependencyInjector.Public
 {
-    void Add(Type requestType, Type responseType, IEnumerable<Type> chainLinks);
+    internal interface IChainRegisterStrategy
+    {
+        void Add(Type requestType, Type responseType, IEnumerable<Type> chainLinks);
+    }
 }
-

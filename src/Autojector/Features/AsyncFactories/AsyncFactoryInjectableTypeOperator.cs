@@ -3,19 +3,33 @@ using System.Collections.Generic;
 using Autojector.Base;
 using Autojector.DependencyInjector.Public;
 
-namespace Autojector.Features.AsyncFactories;
-internal record AsyncFactoryInjectableTypeOperator(
-    Type Type, 
-    IEnumerable<Type> FactoriesFromCurrentType,
-    IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory) : 
-    ITypeConfigurator
+namespace Autojector.Features.AsyncFactories
 {
-    public void ConfigureServices()
+    internal class AsyncFactoryInjectableTypeOperator :
+    ITypeConfigurator
     {
-        foreach (var factoryInterface in FactoriesFromCurrentType)
+        public AsyncFactoryInjectableTypeOperator(
+            Type type,
+            IEnumerable<Type> factoriesFromCurrentType,
+            IAsyncFactoryRegisterStrategyFactory asyncFactoryRegisterStrategyFactory)
         {
-            var lifetypeRegisterStrategy = AsyncFactoryRegisterStrategyFactory.GetAsyncFactoryLifetypeRegisterStrategy(factoryInterface.GetGenericTypeDefinition());
-            lifetypeRegisterStrategy.Add(Type, factoryInterface);
+            Type = type;
+            FactoriesFromCurrentType = factoriesFromCurrentType;
+            AsyncFactoryRegisterStrategyFactory = asyncFactoryRegisterStrategyFactory;
+        }
+
+        public Type Type { get; }
+        public IEnumerable<Type> FactoriesFromCurrentType { get; }
+        public IAsyncFactoryRegisterStrategyFactory AsyncFactoryRegisterStrategyFactory { get; }
+
+        public void ConfigureServices()
+        {
+            foreach (var factoryInterface in FactoriesFromCurrentType)
+            {
+                var lifetypeRegisterStrategy = AsyncFactoryRegisterStrategyFactory.GetAsyncFactoryLifetypeRegisterStrategy(factoryInterface.GetGenericTypeDefinition());
+                lifetypeRegisterStrategy.Add(Type, factoryInterface);
+            }
         }
     }
+
 }

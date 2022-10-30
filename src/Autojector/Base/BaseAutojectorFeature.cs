@@ -3,50 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Autojector.Base;
-internal abstract class BaseAutojectorFeature : BaseTypeConfigurator, IAutojectorFeature
+namespace Autojector.Base
 {
-    protected IEnumerable<Assembly> Assemblies { get; }
-
-    protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies)
+    internal abstract class BaseAutojectorFeature : BaseTypeConfigurator, IAutojectorFeature
     {
-        Assemblies = assemblies;
-    }
+        protected IEnumerable<Assembly> Assemblies { get; }
 
-    public override void ConfigureServices()
-    {
-        var typeConfigurators = GetTypeConfigurators();
-        foreach (var configurator in typeConfigurators)
+        protected BaseAutojectorFeature(IEnumerable<Assembly> assemblies)
         {
-            configurator.ConfigureServices();
+            Assemblies = assemblies;
         }
-    }
 
-    protected IEnumerable<Type> AllTypesFromAssemblies
-    {
-        get
+        public override void ConfigureServices()
         {
-            return Assemblies.SelectMany(type => type.GetTypes());
+            var typeConfigurators = GetTypeConfigurators();
+            foreach (var configurator in typeConfigurators)
+            {
+                configurator.ConfigureServices();
+            }
         }
-    }
 
-    protected IEnumerable<Type> NonAbstractClassesFromAssemblies
-    {
-        get
+        protected IEnumerable<Type> AllTypesFromAssemblies
         {
-            return AllTypesFromAssemblies.Where(type => type.IsClass && !type.IsAbstract);
+            get
+            {
+                return Assemblies.SelectMany(type => type.GetTypes());
+            }
         }
-    }
 
-    protected IEnumerable<Type> InterfacesFromAssemblies
-    {
-        get
+        protected IEnumerable<Type> NonAbstractClassesFromAssemblies
         {
-            return AllTypesFromAssemblies.Where(type => type.IsInterface);
+            get
+            {
+                return AllTypesFromAssemblies.Where(type => type.IsClass && !type.IsAbstract);
+            }
         }
+
+        protected IEnumerable<Type> InterfacesFromAssemblies
+        {
+            get
+            {
+                return AllTypesFromAssemblies.Where(type => type.IsInterface);
+            }
+        }
+
+        protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators();
+
+        public abstract AutojectorFeaturesEnum FeatureType { get; }
     }
 
-    protected abstract IEnumerable<ITypeConfigurator> GetTypeConfigurators();
-
-    public abstract AutojectorFeaturesEnum FeatureType { get; }
 }

@@ -1,5 +1,7 @@
-﻿namespace Autojector.Base;
-internal interface ITypeConfigurator
+﻿namespace Autojector.Base
 {
-    void ConfigureServices();
+    internal interface ITypeConfigurator
+    {
+        void ConfigureServices();
+    }
 }

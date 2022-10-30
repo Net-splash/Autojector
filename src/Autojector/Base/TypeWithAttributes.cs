@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Autojector.Base;
-internal record TypeWithAttributes<T>(Type Type)
-    where T : Attribute
+namespace Autojector.Base
 {
-    public bool HasAttributes => Attributes.Any();
-    public IEnumerable<T> Attributes
+    internal class TypeWithAttributes<T>
+        where T : Attribute
     {
-        get
+        public TypeWithAttributes(Type Type)
         {
-            var allAttributes = Type.GetCustomAttributes()
-                .Where(attribute => attribute is T)
-                .Select(attribute => (T)attribute);
-            return allAttributes;
+            this.Type = Type;
         }
-    }
-}
+        public bool HasAttributes => Attributes.Any();
+        public IEnumerable<T> Attributes
+        {
+            get
+            {
+                var allAttributes = Type.GetCustomAttributes()
+                    .Where(attribute => attribute is T)
+                    .Select(attribute => (T)attribute);
+                return allAttributes;
+            }
+        }
 
+        public Type Type { get; }
+    }
+
+}

@@ -1,5 +1,7 @@
-﻿namespace Autojector.Base;
-internal abstract class BaseTypeConfigurator : ITypeConfigurator
+﻿namespace Autojector.Base
 {
-    public abstract void ConfigureServices();
+    internal abstract class BaseTypeConfigurator : ITypeConfigurator
+    {
+        public abstract void ConfigureServices();
+    }
 }

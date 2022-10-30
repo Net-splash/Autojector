@@ -1,7 +1,9 @@
-﻿namespace Autojector.Base;
-internal class Constants
+﻿namespace Autojector.Base
 {
-    public static readonly string AutojectorDynamicTypesKey = "AutojectorDynamicTypes";
-    public static readonly string AutojectorGeneratedModuleKey = "AutojectorGeneratedModule";
-    public static readonly string AutojectorPrefixKey = "AutojectorPrefix";
+    internal class Constants
+    {
+        public static readonly string AutojectorDynamicTypesKey = "AutojectorDynamicTypes";
+        public static readonly string AutojectorGeneratedModuleKey = "AutojectorGeneratedModule";
+        public static readonly string AutojectorPrefixKey = "AutojectorPrefix";
+    }
 }

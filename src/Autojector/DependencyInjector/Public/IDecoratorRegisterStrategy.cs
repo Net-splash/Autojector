@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-namespace Autojector.DependencyInjector.Public;
-
-internal interface IDecoratorRegisterStrategy
+namespace Autojector.DependencyInjector.Public
 {
-    IServiceCollection Add(Type decorator, Type decorated);
+    internal interface IDecoratorRegisterStrategy
+    {
+        IServiceCollection Add(Type decorator, Type decorated);
+    }
 }

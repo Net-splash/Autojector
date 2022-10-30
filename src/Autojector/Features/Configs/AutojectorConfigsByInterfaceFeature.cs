@@ -6,30 +6,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using static Autojector.Base.Types;
-namespace Autojector.Features.Configs;
-internal class AutojectorConfigsByInterfaceFeature : BaseAutojectorFeature
+namespace Autojector.Features.Configs
 {
-    private IConfigRegisterStrategy ConfigRegisterStrategy { get; }
-    public override AutojectorFeaturesEnum FeatureType => AutojectorFeaturesEnum.Configs;
-    public AutojectorConfigsByInterfaceFeature(
-        IEnumerable<Assembly> assemblies,
-        IConfigRegisterStrategy configRegisterStrategy
-        ) : base(assemblies)
+    internal class AutojectorConfigsByInterfaceFeature : BaseAutojectorFeature
     {
-        ConfigRegisterStrategy = configRegisterStrategy;
+        private IConfigRegisterStrategy ConfigRegisterStrategy { get; }
+        public override AutojectorFeaturesEnum FeatureType => AutojectorFeaturesEnum.Configs;
+        public AutojectorConfigsByInterfaceFeature(
+            IEnumerable<Assembly> assemblies,
+            IConfigRegisterStrategy configRegisterStrategy
+            ) : base(assemblies)
+        {
+            ConfigRegisterStrategy = configRegisterStrategy;
+        }
+
+        private bool ExtendsConfigType(Type type)
+        {
+            return type.GetInterfacesFromTree(t => t == ConfigType).Any();
+        }
+        protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
+        {
+            var configClasses = NonAbstractClassesFromAssemblies.Where(ExtendsConfigType);
+
+            var configConfigurators = configClasses
+                .Select(configType => new ConfigTypeOperator(configType, ConfigRegisterStrategy));
+
+            return configConfigurators;
+        }
     }
 
-    private bool ExtendsConfigType(Type type)
-    {
-        return type.GetInterfacesFromTree(t => t == ConfigType).Any();
-    }
-    protected override IEnumerable<ITypeConfigurator> GetTypeConfigurators()
-    {
-        var configClasses = NonAbstractClassesFromAssemblies.Where(ExtendsConfigType);
-
-        var configConfigurators = configClasses
-            .Select(configType => new ConfigTypeOperator(configType, ConfigRegisterStrategy));
-
-        return configConfigurators;
-    }
 }

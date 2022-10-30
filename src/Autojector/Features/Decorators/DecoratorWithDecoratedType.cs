@@ -1,5 +1,16 @@
 ﻿using System;
 
-namespace Autojector.Features.Decorators;
+namespace Autojector.Features.Decorators
+{
+    internal class DecoratorWithDecoratedType
+    {
+        public DecoratorWithDecoratedType(Type decorator, Type decorated)
+        {
+            Decorator = decorator;
+            Decorated = decorated;
+        }
 
-internal record DecoratorWithDecoratedType(Type Decorator, Type Decorated);
+        public Type Decorator { get; }
+        public Type Decorated { get; }
+    }
+}

@@ -4,31 +4,33 @@ using System;
 using System.Collections.Generic;
 using static Autojector.Base.Types;
 
-namespace Autojector.Features.AsyncFactories;
-internal class AsyncFactoryRegisterStrategyFactory : IAsyncFactoryRegisterStrategyFactory
+namespace Autojector.Features.AsyncFactories
 {
-    private IServiceCollection Services { get; }
-
-    public AsyncFactoryRegisterStrategyFactory(IServiceCollection services)
+    internal class AsyncFactoryRegisterStrategyFactory : IAsyncFactoryRegisterStrategyFactory
     {
-        this.Services = services;
-    }
+        private IServiceCollection Services { get; }
+
+        public AsyncFactoryRegisterStrategyFactory(IServiceCollection services)
+        {
+            this.Services = services;
+        }
 
 
-    private Dictionary<Type, Func<IServiceCollection, IAsyncFactoryRegisterStrategy>> AsyncFactoryLifetypeRegisterStrategies = new Dictionary<Type, Func<IServiceCollection, IAsyncFactoryRegisterStrategy>>()
+        private Dictionary<Type, Func<IServiceCollection, IAsyncFactoryRegisterStrategy>> AsyncFactoryLifetypeRegisterStrategies = new Dictionary<Type, Func<IServiceCollection, IAsyncFactoryRegisterStrategy>>()
         {
                 {AsyncTransientInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddTransient,services.AddTransient) },
                 {AsyncScopeInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddScoped,services.AddScoped) },
                 {AsyncSingletonInjectableType,(services) => new AsyncFactoryRegisterStrategy(services.AddSingleton,services.AddSingleton) },
         };
-    public IAsyncFactoryRegisterStrategy GetAsyncFactoryLifetypeRegisterStrategy(Type lifetimeType)
-    {
-        if (!AsyncFactoryLifetypeRegisterStrategies.ContainsKey(lifetimeType))
+        public IAsyncFactoryRegisterStrategy GetAsyncFactoryLifetypeRegisterStrategy(Type lifetimeType)
         {
-            throw new InvalidOperationException($"Unknown lifetime implementation");
+            if (!AsyncFactoryLifetypeRegisterStrategies.ContainsKey(lifetimeType))
+            {
+                throw new InvalidOperationException($"Unknown lifetime implementation");
+            }
+
+            return AsyncFactoryLifetypeRegisterStrategies[lifetimeType](Services);
         }
-
-        return AsyncFactoryLifetypeRegisterStrategies[lifetimeType](Services);
     }
-}
 
+}

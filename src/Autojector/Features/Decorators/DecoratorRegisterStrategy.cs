@@ -3,47 +3,48 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Linq;
-namespace Autojector.Features.Decorators;
-
-internal class DecoratorRegisterStrategy : IDecoratorRegisterStrategy
+namespace Autojector.Features.Decorators
 {
-    private IServiceCollection Services { get; }
-
-    public DecoratorRegisterStrategy(IServiceCollection services)
+    internal class DecoratorRegisterStrategy : IDecoratorRegisterStrategy
     {
-        Services = services;
-    }
+        private IServiceCollection Services { get; }
 
-    public IServiceCollection Add(Type decorator, Type decorated)
-    {
-        var wrappedDescriptor = Services.FirstOrDefault(s => s.ServiceType == decorated);
-
-        if (wrappedDescriptor == null)
+        public DecoratorRegisterStrategy(IServiceCollection services)
         {
-            throw new InvalidOperationException($"{decorated.Name} is not registered. Can not be decorated");
+            Services = services;
         }
 
-        var objectFactory = ActivatorUtilities.CreateFactory(
-          decorator,
-          new[] { decorated });
+        public IServiceCollection Add(Type decorator, Type decorated)
+        {
+            var wrappedDescriptor = Services.FirstOrDefault(s => s.ServiceType == decorated);
 
-        Services.Replace(ServiceDescriptor.Describe(
-          decorated,
-          s => objectFactory(s, new[] { CreateInstance(s, wrappedDescriptor) }),
-          wrappedDescriptor.Lifetime)
-        );
+            if (wrappedDescriptor == null)
+            {
+                throw new InvalidOperationException($"{decorated.Name} is not registered. Can not be decorated");
+            }
 
-        return Services;
-    }
+            var objectFactory = ActivatorUtilities.CreateFactory(
+              decorator,
+              new[] { decorated });
 
-    private static object CreateInstance(IServiceProvider services, ServiceDescriptor descriptor)
-    {
-        if (descriptor.ImplementationInstance != null)
-            return descriptor.ImplementationInstance;
+            Services.Replace(ServiceDescriptor.Describe(
+              decorated,
+              s => objectFactory(s, new[] { CreateInstance(s, wrappedDescriptor) }),
+              wrappedDescriptor.Lifetime)
+            );
 
-        if (descriptor.ImplementationFactory != null)
-            return descriptor.ImplementationFactory(services);
+            return Services;
+        }
 
-        return ActivatorUtilities.GetServiceOrCreateInstance(services, descriptor.ImplementationType);
+        private static object CreateInstance(IServiceProvider services, ServiceDescriptor descriptor)
+        {
+            if (descriptor.ImplementationInstance != null)
+                return descriptor.ImplementationInstance;
+
+            if (descriptor.ImplementationFactory != null)
+                return descriptor.ImplementationFactory(services);
+
+            return ActivatorUtilities.GetServiceOrCreateInstance(services, descriptor.ImplementationType);
+        }
     }
 }

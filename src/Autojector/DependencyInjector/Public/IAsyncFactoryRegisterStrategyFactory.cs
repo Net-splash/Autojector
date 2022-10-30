@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Autojector.DependencyInjector.Public;
-
-internal interface IAsyncFactoryRegisterStrategyFactory
+namespace Autojector.DependencyInjector.Public
 {
-    public IAsyncFactoryRegisterStrategy GetAsyncFactoryLifetypeRegisterStrategy(Type lifetimeType);
+    internal interface IAsyncFactoryRegisterStrategyFactory
+    {
+        IAsyncFactoryRegisterStrategy GetAsyncFactoryLifetypeRegisterStrategy(Type lifetimeType);
+    }
 }
-

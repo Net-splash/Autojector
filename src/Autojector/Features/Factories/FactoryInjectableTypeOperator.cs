@@ -8,26 +8,35 @@ using System.Collections.Generic;
 using System.Linq;
 using static Autojector.Base.Types;
 
-namespace Autojector.Features.Factories;
-internal record FactoryInjectableTypeOperator(
-    Type Type,
-    IFactoryRegisterStrategyFactory FactoryRegisterStrategyFactory) 
-    : 
-    ITypeConfigurator
+namespace Autojector.Features.Factories
 {
-    public void ConfigureServices()
+
+    internal class FactoryInjectableTypeOperator : ITypeConfigurator
     {
-        var ImplementedFactoryInterfaces = ExctractImplementedFactoryInterfaces();
-        foreach (var factoryInterface in ImplementedFactoryInterfaces)
+        public FactoryInjectableTypeOperator(Type Type, IFactoryRegisterStrategyFactory FactoryRegisterStrategyFactory)
         {
-            var lifetypeRegisterStrategy = FactoryRegisterStrategyFactory.GetFactoryLifetypeRegisterStrategy(factoryInterface.GetGenericTypeDefinition());
-            lifetypeRegisterStrategy.Add(Type, factoryInterface);
+            this.Type = Type;
+            this.FactoryRegisterStrategyFactory = FactoryRegisterStrategyFactory;
+        }
+
+        public Type Type { get; }
+        public IFactoryRegisterStrategyFactory FactoryRegisterStrategyFactory { get; }
+
+        public void ConfigureServices()
+        {
+            var ImplementedFactoryInterfaces = ExctractImplementedFactoryInterfaces();
+            foreach (var factoryInterface in ImplementedFactoryInterfaces)
+            {
+                var lifetypeRegisterStrategy = FactoryRegisterStrategyFactory.GetFactoryLifetypeRegisterStrategy(factoryInterface.GetGenericTypeDefinition());
+                lifetypeRegisterStrategy.Add(Type, factoryInterface);
+            }
+        }
+
+        private IEnumerable<Type> ExctractImplementedFactoryInterfaces()
+        {
+            var filteredInterfaces = Type.GetInterfacesFromTree(i => i.IsGenericType && FactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
+            return filteredInterfaces;
         }
     }
 
-    private IEnumerable<Type> ExctractImplementedFactoryInterfaces()
-    {
-        var filteredInterfaces = Type.GetInterfacesFromTree(i => i.IsGenericType && FactoriesTypeInterfaces.Contains(i.GetGenericTypeDefinition()));
-        return filteredInterfaces;
-    }
 }

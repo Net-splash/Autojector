@@ -1,6 +1,7 @@
-﻿namespace Autojector.General;
-
-internal interface IAutojectorService 
+﻿namespace Autojector.General
 {
-    void ConfigureServices();
+    internal interface IAutojectorService
+    {
+        void ConfigureServices();
+    }
 }
